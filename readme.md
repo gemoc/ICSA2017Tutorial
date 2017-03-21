@@ -78,10 +78,11 @@ Just open your FSM metamodel in the language workbench.
 
 ![](figs/Variable.png)
 
-1. Add the concept of Guard to the Transition. Add three subclasses : a StringGuard a BooleanGuard and a NumberGuard.
+1. Add the concept of Guard to the Transition. Add eight subclasses : a *StringGuard*, a *BooleanGuard* and an abstract *NumberGuard*, a *EqualNumberGuard*, 	a class *LessThanNumberGuard* that extends *NumberGuard*;
+	a class GreaterThanNumberGuard that extends *NumberGuard*, a class *GreaterOrEqualThanNumberGuard* that extends *NumberGuard*, a class *LessOrEqualThanNumberGuard* that extends *NumberGuard*.
 
 
-![](figs/Guard.png)
+![](figs/guard.png)
 
 
 1. Add the concept of Action to the Transition. Add three subclasses : a StringAction a BooleanAction and a NumberAction.
@@ -132,15 +133,35 @@ This annotation must be placed on operations applicable to the root model elemen
 
 ### 2.6 Test the execution of the model with its new semantics
 
-TODO
+Let's run the modelling workbench
+
+Create a FSM model with two steps and one transition. Create a variable **a** with 1 as an inital step. Create a guard associated to the transition that checks if *a == 1*.  Create an action that set 2 to the variable a.
+
+![](figs/extendedmodel.png)
+
+Lets us debug this model.
+
+1. Create the debug configuration.
+
+
+![](figs/debugconfiguration.png)
+
+2. You can debug your language
+
+![](figs/executingfsmextended.png)
+
+
+
 
 
 ## Step 3 Let us doing the integration between of a component metamodel.
 
-Let us design the monticore metamodel. We provide them the meta model, the odesign and the semantics.
+Let us design the monticore metamodel. We provide you the meta model, the odesign and the initial semantics.
 
 
 We just customize the odesign to introduce Sirius.
+
+
 
 Step 4. Language composition.
 We use melange to add language automata to Monticode component model.
