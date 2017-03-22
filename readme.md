@@ -1,5 +1,20 @@
 # ICSA Tutorial
 
+* [ICSA Tutorial](#icsa-tutorial)
+     * [What will you develop](#what-will-you-develop)
+     * [Slides](#slides)
+     * [Step 1 (Slides Only)](#step-1-slides-only)
+     * [Step 2: Build a simple finite state machine language for specifying your component behavior.](#step-2-build-a-simple-finite-state-machine-language-for-specifying-your-component-behavior)
+        * [2.1 Let us start from FSM Sequential example that exists in Gemoc Studio](#21-let-us-start-from-fsm-sequential-example-that-exists-in-gemoc-studio)
+        * [2.2 Lets us play with this language.](#22-lets-us-play-with-this-language)
+        * [2.3 Adding new concepts in your language](#23-adding-new-concepts-in-your-language)
+        * [2.4 Add OCL constraints](#24-add-ocl-constraints)
+        * [2.5 Complete the Dynamic semantics.](#25-complete-the-dynamic-semantics)
+        * [2.6 Test the execution of the model with its new semantics](#26-test-the-execution-of-the-model-with-its-new-semantics)
+     * [Step 3 Let us doing the integration between of a component metamodel.](#step-3-let-us-doing-the-integration-between-of-a-component-metamodel)
+     * [Step 4. Language composition.](#step-4-language-composition)
+
+
 
 This tutorial provides a practical approach for developing and integrating various Domain-Specific (modeling) Languages (DSLs) used in the development of modern complex software-intensive systems, with the main objective to support abstraction and separation of concerns. The tutorial leverages on the tooling provided by the GEMOC studio to present the various facilities offered by the Eclipse platform (incl., EMF/Ecore, Xtext, Sirius) and introduces the advanced features to extend a DSL with a well-defined execution semantics, possibly including formal concurrency constraints and coordination patterns. From such a specification, we demonstrate the ability of the studio to automatically support model execution, graphical animation, omniscient debugging, concurrency analysis and concurrent execution of heterogeneous models. The tutorial is composed of both lectures and hands-on sessions. Hands-on sessions allow participants to experiment on a concrete use case of an architecture description language used to coordinate heterogeneous behavioral and structural components.
 
