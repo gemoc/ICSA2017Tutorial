@@ -158,18 +158,116 @@ Lets us debug this model.
 
 Let us design the monticore metamodel. We provide you the meta model, the odesign and the initial semantics.
 
+In this step, we propose to show you how we could use sirius to specify the graphical respresentation of a language.
 
-We just customize the odesign to introduce Sirius.
+[Documentation](https://www.eclipse.org/sirius/doc/specifier/diagrams/Diagrams.html) is available here.
+
+We propose to manage the link between ports using Sirius. To do that, we have to do two taks:
+1. Explaining what you have to draw when for each Intermediate Connctor in the model.
+2. Explaining what you have to draw and set when you draw a connector in the diagram.
+
+Let us import an example of model (Project Test) to understand the current diagram specification in the modelling workbench.
+
+Let us open */Test/bumperbot/BumperBot.aird* file.
+And in the project explorer, let us open the BumperBot diagram. See snaphshot below.
+
+![](figs/BumperBot.png)
 
 
+In the modelling workbench, let us also import the project *ur1.diverse.xmontiarc.design*. The good things is that an odesign project is interpreted. As a result, you can modify the odesign diagram specification and just reload the diagram to see the impact.
 
-Step 4. Language composition.
-We use melange to add language automata to Monticode component model.
-We show the step to do to manage the composition
-We show how we could customize odesign to open sirius automaton diagram from the component diagram.
 
-That is over ;)
+Sirius is organized to query the model and create representation from the results of the queries. To draw the connector, we have to find each couple of port between which the connector must be drawn.
 
-Regards
+Let us create an element based edge. On the default Viewpoint, create a new Element based Edge.  You can customize the style. Next you have to specify the query. In out case, all the IntermediateConnector that have a source and a target and we map the border of the source and the border of the target. Finding the source and the target can be done using Java and AQL. We propose to use Java.
 
-Olivier
+![](figs/odesignTask1.png)
+
+Next, we have to create the action to do when we draw a new IntermediateConnector between port.
+
+In section *Edge Section Connector* in the odesign, let us create a new Edge Creation.
+
+![](figs/edgeCreation.png)
+
+This node gives you five subelements. Four that defines the source and the target model elements pointed by your edge, the source and the target views pointed by your edge. Finally it gives the action to execute when creating this edge. Basically, we will change the execution context for this action, create two variable and call an external Java Action already define. The source code of this action is the following.
+
+
+```Java
+package ur1.diverse.xmontiarc.design;
+
+import java.io.IOException;
+import java.util.Collection;
+import java.util.Map;
+
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.sirius.business.api.action.AbstractExternalJavaAction;
+import org.eclipse.sirius.tools.api.ui.IExternalJavaAction;
+
+import ur1.diverse.xmontiarc.xdsml.xmontiarc.xmontiarc.ComponentType;
+import ur1.diverse.xmontiarc.xdsml.xmontiarc.xmontiarc.IncomingPort;
+import ur1.diverse.xmontiarc.xdsml.xmontiarc.xmontiarc.IntermediateConnector;
+import ur1.diverse.xmontiarc.xdsml.xmontiarc.xmontiarc.OutgoingPort;
+import ur1.diverse.xmontiarc.xdsml.xmontiarc.xmontiarc.Subcomponent;
+import ur1.diverse.xmontiarc.xdsml.xmontiarc.xmontiarc.XmontiarcFactory;
+
+public class CreateIntermediateConnectorAction extends AbstractExternalJavaAction implements IExternalJavaAction {
+
+	@Override
+	public boolean canExecute(Collection<? extends EObject> arg0) {
+		return true;
+	}
+
+	@Override
+	public void execute(Collection<? extends EObject> args, Map<String, Object> options) {
+		OutgoingPort subcomponentOut = (OutgoingPort) options.get("source");
+		IncomingPort subcomponentIn = (IncomingPort) options.get("target");
+
+		Subcomponent sourceSubcomponent = (Subcomponent) options.get("sourceSubcomponent");
+		ComponentType type = sourceSubcomponent.getParent();
+		System.out.println("CreateIntermediateConnectorAction.execute(): Containing component type is '" + type.toString() + "'.");
+		IntermediateConnector con = XmontiarcFactory.eINSTANCE.createIntermediateConnector();
+		con.setSource(subcomponentOut);
+		con.setTarget(subcomponentIn);
+		con.setParent(type);
+		System.out.println("CreateIntermediateConnectorAction.execute(): Created connector '" + con.toString() + "'.");
+		type.getConnectors().add(con);
+		try {
+			type.eResource().save(null);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		System.out.println("CreateIntermediateConnectorAction.execute(): Connectors now is '" + type.getConnectors() + "'.");
+	}
+
+}
+```
+
+You can see in the next figures, the different configuration for these elements.
+
+![](figs/changeContext.png)
+![](figs/setsource.png)
+![](figs/settarget.png)
+![](figs/callExternalJavaAction.png)
+
+Please refer to Sirius documentation for learning and you can configure in details your editor.
+
+[Documentation](https://www.eclipse.org/sirius/doc/specifier/diagrams/Diagrams.html) is available here.
+
+
+## Step 4. Language composition.
+
+In this step, we will do the most tricky stuffs of this tutorial. We would create a new language in composing our extended Finite State Machine with the monticore metamode.
+
+To do that, we will us melange that let you create a language in assemblying several sublanguage.
+
+For this task, we prepare the composition. Please import the project from the [following archive file](3.0/3.0.zip).
+
+Please open */ur1.diverse.xmontiarc.xdsml.withautomaton/src/ur1/diverse/xmontiarc/xdsml/withautomaton/xmonticorewithautomon.melange*, you will see that we can create a new language which is a composition of xmonticore and the FSM in merging StateMachine with  AutomatonComponentBehavior.  
+
+```java
+language XMontiArcWithAutomaton inherits XMontiArc{
+	merge XSFSM renaming {"fsm" to "xmontiarc" {"StateMachine" to "AutomatonComponentBehavior" }}
+}
+```
+
+It remains to create Glue clode for the sematics. Lets do that together.
