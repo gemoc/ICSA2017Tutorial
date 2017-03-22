@@ -24,7 +24,7 @@ During this tutorial, the participants will develop a simplified version of the 
 
 ## Slides
 
-- The slides for the tutorials are available on [https://github.com/gemoc/ICSA2017Tutorial/tree/master/slides]
+- The slides for the tutorials are available on [github](https://github.com/gemoc/ICSA2017Tutorial/tree/master/slides)
 - The solution is available [here]()
 - Most of the documentations on Gemoc approches are available [here](http://gemoc.org/gemoc-studio/publish/guide/html_single/Guide.html).
 
