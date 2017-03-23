@@ -63,14 +63,14 @@ You got the general structure of a DSL project.
 ### 2.2 Lets us play with this language.
 
 1. Start a modelling workbench.
-![](figs/runmodellinglanguage.png)
+   ![](figs/runmodellinglanguage.png)
 
 2. Get the example for (Gemoc Model for FSM Sequential)
 
 ![](figs/NewExampleModelling.png)
 
 - Open the bitshifting.aird file.
-You can see and edit a FSM model.
+  You can see and edit a FSM model.
 
 Next Run this model.
 
@@ -94,7 +94,7 @@ Just open your FSM metamodel in the language workbench.
 ![](figs/Variable.png)
 
 1. Add the concept of Guard to the Transition. Add eight subclasses : a *StringGuard*, a *BooleanGuard* and an abstract *NumberGuard*, a *EqualNumberGuard*, 	a class *LessThanNumberGuard* that extends *NumberGuard*;
-	a class GreaterThanNumberGuard that extends *NumberGuard*, a class *GreaterOrEqualThanNumberGuard* that extends *NumberGuard*, a class *LessOrEqualThanNumberGuard* that extends *NumberGuard*.
+ a class GreaterThanNumberGuard that extends *NumberGuard*, a class *GreaterOrEqualThanNumberGuard* that extends *NumberGuard*, a class *LessOrEqualThanNumberGuard* that extends *NumberGuard*.
 
 
 ![](figs/guard.png)
