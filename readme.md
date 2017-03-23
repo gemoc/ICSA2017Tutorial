@@ -2,7 +2,7 @@
 
 * [Scope](#scope)
 * [Preliminaries](#preliminaries)
-* [Step 1: Slides only)](#step-1-slides-only)
+* [Step 1: (Slides only)](#step-1-slides-only)
 * [Step 2: Building a simple finite state machine language for specifying your component behavior](#step-2-building-a-simple-finite-state-machine-language-for-specifying-your-component-behavior)
    * [2.1 Starting from FSM Sequential example that exists in GEMOC Studio](#21-starting-from-fsm-sequential-example-that-exists-in-GEMOC-studio)
    * [2.2 Playing with the FMS language.](#22-playing-with-the-fsm-language)
@@ -153,7 +153,7 @@ Let's debug this model!
 
 
 
-## Step 3: Integrating FSM into a component meta model
+## Step 3: Integrating FSM into a component metamodel
 
 // TODO: the title is wrong. Here we add graphical editing capabilities
 
