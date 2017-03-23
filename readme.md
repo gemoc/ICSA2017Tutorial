@@ -98,7 +98,7 @@ Just open your FSM metamodel in the language workbench.
 
 ![](figs/Actions.png)
 
-​:warning: At the end of this task, you must regenerate the Java code for your metamodel. Right click on the *fsm.genmodel* in the same folder as the metamodel and select reload. Next open it and in the tree editor, right click and select *regenerate all*.
+​:warning:​ At the end of this task, you must regenerate the Java code for your metamodel. Right click on the *fsm.genmodel* in the same folder as the metamodel and select reload. Next open it and in the tree editor, right click and select *regenerate all*.
 
 ![](figs/reload.png)
 ![](figs/generateall.png)
@@ -107,12 +107,14 @@ Just open your FSM metamodel in the language workbench.
 
 ### 2.4 Adding OCL constraints
 
-In our language, you can define your static semantics (i.e., well-formedness rules) using OCL. Let us try to define that a state cannot have two outgoing transitions without a guard. To this effect, open the metamodel with the *OCLInEcore editor* via right clicking it and selecting that editor.
+In our language, you can define your static semantics (i.e., well-formedness rules) using OCL. Let us try to define that a state cannot have two outgoing transitions without a guard. To this effect, open the metamodel with the *OCLInEcore editor* via right clicking it and selecting that editor. Here, you can create an `invariant` for the concept `State`that restricts its outgoing transitions.
 
 TODO: Link OCL tutorial or point to OCL in FSM
 
+After creating the invariant, start the modeling workbench again and open the **BitShifting** model again. Rightclick on it and select validate. Now eclipse marks all states as erroneous as none uses a guarded transition.
 
-### 2.5 Complteing the dynamic semantics
+
+### 2.5 Completing the dynamic semantics
 
 For temporal constraints, we provide an implementation of the FSM dynamic semantics. We suggest, to restart from the FSM version in the [archive for step 2.5](https://github.com/gemoc/ICSA2017Tutorial/tree/master/2.5). Prior to that, delete all projects from your workspace.
 
@@ -125,9 +127,11 @@ We left two methods unimplemented with TODO. Try to implement these two methods.
 TODO: decide upon which methods to leave underspecified
 
 ​:warning: Execution Functions
+
 The Execution Functions define how the Execution Data evolve during the execution of the model. Execution Functions can be implemented by defining the body of a method. These methods must be annotated with the **@Step** annotation. Whenever a method with an @Step annotation returns, the changes in the model will be applied (via a transaction) to the resource. This means that the changes will be visible from an animator. K3 supports nested @Step annotation calls so that changes in the model will be applied when entering and leaving methods having this annotations.
 
 ​:warning: Entry Points
+
 The GEMOC sequential engines uses methods annotated with **@Main** as entry points to model execution. This annotation must be placed on operations applicable to the root model element.
 
 ### 2.6 Testing the execution of the model with its new semantics
