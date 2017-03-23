@@ -18,10 +18,11 @@ This tutorial provides a practical approach for developing and integrating vario
 
 ## Scope
 
-During this tutorial, the participants will develop a simplified version of the MontiArc component & connector ADL. The ADL is tailored for designing component-based distributed interactive systems that reliy on state-based models to describe component behavior. You will use the GEMOC Studio to develop a simplified version of MontiArc, including  syntax and semantics, and deploy it in the modeling workbench to edit, execute, animate and debug conforming models. In the modeling workbench, the participants will design a software architecture based on predefined components. Based on such a design, participants will be able to concurrently execute the various components according to the execution semantics (message passing) of MontiArc, to graphically animate the architecture, and to debug the system behavior.
+During this tutorial, the participants will develop a simplified version of the [MontiArc component & connector ADL](http://www.se-rwth.de/topics/Software-Architecture.php). The ADL is tailored for designing component-based distributed interactive systems that reliy on state-based models to describe component behavior. You will use the GEMOC Studio to develop a simplified version of MontiArc, including  syntax and semantics, and deploy it in the modeling workbench to edit, execute, animate and debug conforming models. In the modeling workbench, the participants will design a software architecture based on predefined components. Based on such a design, participants will be able to concurrently execute the various components according to the execution semantics (message passing) of MontiArc, to graphically animate the architecture, and to debug the system behavior.
 
 ## Slides
 
+- Please download the latest [GEMOC Studio](http://gemoc.org/studio.html) and provide a [Java 1.8 JDK](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html).
 - The slides for the tutorials are available on [github](https://github.com/GEMOC/ICSA2017Tutorial/tree/master/slides).
 - The solution is available [here]().
 - Most of the documentations on GEMOC approches are available [here](http://GEMOC.org/GEMOC-studio/publish/guide/html_single/Guide.html).
@@ -54,7 +55,7 @@ This produces the general structure of a DSL project.
 - org.GEMOC.sample.legacyfsm.fsm Contains the DSL description melange file  for your FSM language 
 - org.GEMOC.sample.legacyfsm.fsm.design Contains graphical representation desciption for you FSM model Sirius based  
 - org.GEMOC.sample.legacyfsm.xsfsm Contains the DSL description melange file  for your FSM language 
-- org.GEMOC.sample.legacyfsm.xsfsm.design Contains graphical representation extensio for you FSM model Sirius Animator  
+- org.GEMOC.sample.legacyfsm.xsfsm.design Contains graphical representation extension for you FSM model Sirius Animator  
 - org.GEMOC.sample.legacyfsm.xsfsm.trace Contains the generated project for efficient executable trace management 
 - org.GEMOC.sample.legacyfsm.xsfsm.xsfsm Generated executable FSM metamodel resulting from the org.GEMOC.sample.legacyfsm.xsfsm language specification melange file  
 
@@ -89,13 +90,11 @@ Just open your FSM metamodel in the language workbench.
 
 ![](figs/Variable.png)
 
-1.  Add theconcept of Guard to the Transition. Add eight subclasses : a `StringGuard`, a `BooleanGuard`and an abstract `NumberGuard`, a `EqualNumberGuard`, a LessThanNumberGuard`,a GreaterThanNumberGuard, a GreaterOrEqualThanNumberGuard`, and a `LessOrEqualThanNumberGuard` .
-
+2. Add theconcept of Guard to the Transition. Add eight subclasses : a `StringGuard`, a `BooleanGuard`and an abstract `NumberGuard`, a `EqualNumberGuard`, a LessThanNumberGuard`,a GreaterThanNumberGuard, a GreaterOrEqualThanNumberGuard`, and a `LessOrEqualThanNumberGuard` .
 
 ![](figs/guard.png)
 
-
-1. Add the concept of `Action` to the Transition. Add three subclasses : a `StringAction`, a `BooleanAction`, and a `NumberAction`.
+3. Add the concept of `Action` to the Transition. Add three subclasses : a `StringAction`, a `BooleanAction`, and a `NumberAction`.
 
 ![](figs/Actions.png)
 
@@ -113,7 +112,7 @@ In our language, you can define your static semantics (i.e., well-formedness rul
 TODO: Link OCL tutorial or point to OCL in FSM
 
 
-### 2.5 Completeing the dynamic semantics
+### 2.5 Complteing the dynamic semantics
 
 For temporal constraints, we provide an implementation of the FSM dynamic semantics. We suggest, to restart from the FSM version in the [archive for step 2.5](https://github.com/gemoc/ICSA2017Tutorial/tree/master/2.5). Prior to that, delete all projects from your workspace.
 
@@ -135,7 +134,7 @@ The GEMOC sequential engines uses methods annotated with **@Main** as entry poin
 
 Let's run the modelling workbench!
 
-Create a FSM model with two steps and one transition. Create a variable `a` with `1` as an inital step. Create a guard associated to the transition that checks whether `a == 1`.  Create an action that assigns `2` to the variable `a`.
+Create a FSM model with two steps and one transition. Create a variable `a` with `1` as an initial step. Create a guard associated to the transition that checks whether `a == 1`.  Create an action that assigns `2` to the variable `a`.
 
 ![](figs/extendedmodel.png)
 
@@ -169,7 +168,7 @@ TODO: Where do they get test from?
 
 TODO: Rename test to ICSA2017Example
 
-In this project, open the file */Test/bumperbot/BumperBot.aird* and in the project explorer, open the BumperBot diagram. See snaphshot below.
+In this project, open the file */Test/bumperbot/BumperBot.aird* and in the project explorer, open the BumperBot diagram. See below:
 
 ![](figs/BumperBot.png)
 
@@ -179,7 +178,7 @@ In the modelling workbench, let us also import the project *ur1.diverse.xmontiar
 
 Sirius is organized to query the model and create representation from the results of the queries. To draw the connector, we have to find each couple of port between which the connector must be drawn.
 
-Let us create an element based edge. On the default Viewpoint, create a new Element based Edge.  You can customize the style. Next you have to specify the query. In out case, all the IntermediateConnector that have a source and a target and we map the border of the source and the border of the target. Finding the source and the target can be done using Java and AQL. We propose to use Java.
+Let us create an element based edge. On the default Viewpoint, create a new Element based Edge.  You can customize the style. Next you have to specify the query. In our case, all the `IntermediateConnector` have a source and a target and we map the border of the source and the border of the target. Finding the source and the target can be done using Java and AQL. We propose to use Java.
 
 ![](figs/odesignTask1.png)
 
@@ -255,7 +254,7 @@ Please refer to the [Sirius documentation](https://www.eclipse.org/sirius/doc/sp
 
 ## Step 4: Composing languages
 
-This step is the most elaborate part of the tutorial. We aim to create a new language by composing our FSM with the MontiArc metamodel. To this end, we will use Melange, which lets you create a language by assemblying several sublanguages. To continue, please import the project from the [following archive file](3.0/3.0.zip).
+This step is the most elaborate part of the tutorial. We aim to create a new language by composing our FSM with the MontiArc metamodel. To this end, we will use Melange, which lets you create a language by composing several sublanguages. To continue, please import the project from the [following archive file](3.0/3.0.zip).
 
 The project *ur1.diverse.xmontiarc.xdsml.withautomaton* contains the Melange model defining our composed language in 
 
@@ -269,4 +268,4 @@ language XMontiArcWithAutomaton inherits XMontiArc{
 }
 ```
 
-It remains to create glue clode for the sematics. Lets do that together!
+It remains to create glue code for the semantics. Lets do that together!
