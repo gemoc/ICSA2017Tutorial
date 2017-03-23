@@ -1,167 +1,152 @@
 # ICSA Tutorial
 
-* [ICSA Tutorial](#icsa-tutorial)
-     * [What will you develop](#what-will-you-develop)
-     * [Slides](#slides)
-     * [Step 1 (Slides Only)](#step-1-slides-only)
-     * [Step 2: Build a simple finite state machine language for specifying your component behavior.](#step-2-build-a-simple-finite-state-machine-language-for-specifying-your-component-behavior)
-        * [2.1 Let us start from FSM Sequential example that exists in Gemoc Studio](#21-let-us-start-from-fsm-sequential-example-that-exists-in-gemoc-studio)
-        * [2.2 Lets us play with this language.](#22-lets-us-play-with-this-language)
-        * [2.3 Adding new concepts in your language](#23-adding-new-concepts-in-your-language)
-        * [2.4 Add OCL constraints](#24-add-ocl-constraints)
-        * [2.5 Complete the Dynamic semantics.](#25-complete-the-dynamic-semantics)
-        * [2.6 Test the execution of the model with its new semantics](#26-test-the-execution-of-the-model-with-its-new-semantics)
-     * [Step 3 Let us doing the integration between of a component metamodel.](#step-3-let-us-doing-the-integration-between-of-a-component-metamodel)
-     * [Step 4. Language composition.](#step-4-language-composition)
-
+* [Scope](#scope)
+* [Preliminaries](#preliminaries)
+* [Step 1: Slides only)](#step-1-slides-only)
+* [Step 2: Building a simple finite state machine language for specifying your component behavior](#step-2-building-a-simple-finite-state-machine-language-for-specifying-your-component-behavior)
+   * [2.1 Starting from FSM Sequential example that exists in GEMOC Studio](#21-starting-from-fsm-sequential-example-that-exists-in-GEMOC-studio)
+   * [2.2 Playing with the FMS language.](#22-playing-with-the-fsm-language)
+   * [2.3 Adding new concepts in your language](#23-adding-new-concepts-in-your-language)
+   * [2.4 Adding OCL constraints](#24-adding-ocl-constraints)
+   * [2.5 Completing the dynamic semantics](#25-completing-the-dynamic-semantics)
+   * [2.6 Testing the execution of the model with its new semantics](#26-testing-the-execution-of-the-model-with-its-new-semantics)
+* [Step 3: Integrating FSM into a component metamodel](#step-3-integrating-fsm-into-a-component-metamodel)
+* [Step 4: Composing languages](#step-4-composing-languages)
 
 
 This tutorial provides a practical approach for developing and integrating various Domain-Specific (modeling) Languages (DSLs) used in the development of modern complex software-intensive systems, with the main objective to support abstraction and separation of concerns. The tutorial leverages on the tooling provided by the GEMOC studio to present the various facilities offered by the Eclipse platform (incl., EMF/Ecore, Xtext, Sirius) and introduces the advanced features to extend a DSL with a well-defined execution semantics, possibly including formal concurrency constraints and coordination patterns. From such a specification, we demonstrate the ability of the studio to automatically support model execution, graphical animation, omniscient debugging, concurrency analysis and concurrent execution of heterogeneous models. The tutorial is composed of both lectures and hands-on sessions. Hands-on sessions allow participants to experiment on a concrete use case of an architecture description language used to coordinate heterogeneous behavioral and structural components.
 
-## What will you develop
+## Scope
 
 During this tutorial, the participants will develop a simplified version of the MontiArc component & connector ADL. The ADL is tailored for designing component-based distributed interactive systems that reliy on state-based models to describe component behavior. You will use the GEMOC Studio to develop a simplified version of MontiArc, including  syntax and semantics, and deploy it in the modeling workbench to edit, execute, animate and debug conforming models. In the modeling workbench, the participants will design a software architecture based on predefined components. Based on such a design, participants will be able to concurrently execute the various components according to the execution semantics (message passing) of MontiArc, to graphically animate the architecture, and to debug the system behavior.
 
 ## Slides
 
-- The slides for the tutorials are available on [github](https://github.com/gemoc/ICSA2017Tutorial/tree/master/slides)
-- The solution is available [here]()
-- Most of the documentations on Gemoc approches are available [here](http://gemoc.org/gemoc-studio/publish/guide/html_single/Guide.html).
+- The slides for the tutorials are available on [github](https://github.com/GEMOC/ICSA2017Tutorial/tree/master/slides).
+- The solution is available [here]().
+- Most of the documentations on GEMOC approches are available [here](http://GEMOC.org/GEMOC-studio/publish/guide/html_single/Guide.html).
+- Documentation of MontiArc's [structural](http://www.se-rwth.de/publications/MontiArc-Architectural-Modeling-of-Interactive-Distributed-and-Cyber-Physical-Systems.pdf) and [behavioral](http://www.se-rwth.de/publications/Architecture-and-Behavior-Modeling-of-Cyber-Physical-Systems-with-MontiArcAutomaton.pdf) features is available as well.
 
 
 You can refer to the documentation at any time.
 
-## Step 1 (Slides Only)
-- Language Engineering with Gemoc
+## Step 1: (Slides only)
+- Language Engineering with GEMOC
 - Monti Arc Introduction
 
 
-## Step 2: Build a simple finite state machine language for specifying your component behavior.
+TODO: provide slides
 
-### 2.1 Let us start from FSM Sequential example that exists in Gemoc Studio
+## Step 2: Building a simple finite state machine language for specifying your component behavior.
 
-- Open your gemoc Studio
+### 2.1 Starting from FSM Sequential example that exists in GEMOC Studio
+
+- Open your GEMOC Studio
 - Go to a new workspace.
-- Go to File -> new -> Example -> Select Gemoc FSM Language (Sequential)
+- Go to File -> new -> Example -> Select GEMOC FSM Language (Sequential)
 
 ![](figs/NewExample.png)
 
-Let us understand the structure of the project.
-
-You got the general structure of a DSL project.
-- **org.gemoc.sample.legacyfsm.fsm.model** (contains the metamodel (AST) of your language)
-- **org.gemoc.sample.legacyfsm.fsm.model.edit** (contains the metamodel helper classes of your metamodel (mainly Observer and Visitor Pattern))
-- **org.gemoc.sample.legacyfsm.fsm.model.editor** (Generate a generic tree based editor for your FSM Model)
-- **org.gemoc.sample.legacyfsm.fsm** (Contains the DSL desciption (melange file) for your FSM language)
-- **org.gemoc.sample.legacyfsm.fsm.design** (Contains graphical respresentation desciption for you FSM model (Sirius based))
-- **org.gemoc.sample.legacyfsm.xsfsm** (Contains the DSL desciption (melange file) for your FSM language)
-- **org.gemoc.sample.legacyfsm.xsfsm.design** (Contains graphical respresentation extensio for you FSM model (Sirius Animator))
-- **org.gemoc.sample.legacyfsm.xsfsm.trace** (Contains the generated project for efficient executable trace management)
-- **org.gemoc.sample.legacyfsm.xsfsm.xsfsm** (Generated executable FSM metamodel resulting from the org.gemoc.sample.legacyfsm.xsfsm language specification (melange file))
+This produces the general structure of a DSL project.
+- org.GEMOC.sample.legacyfsm.fsm.model Contains the metamodel of your language 
+- org.GEMOC.sample.legacyfsm.fsm.model.edit Contains the metamodel helper classes of your metamodel mainly Observer and Visitor Pattern  
+- org.GEMOC.sample.legacyfsm.fsm.model.editor Generate a generic tree based editor for your FSM Model 
+- org.GEMOC.sample.legacyfsm.fsm Contains the DSL description melange file  for your FSM language 
+- org.GEMOC.sample.legacyfsm.fsm.design Contains graphical representation desciption for you FSM model Sirius based  
+- org.GEMOC.sample.legacyfsm.xsfsm Contains the DSL description melange file  for your FSM language 
+- org.GEMOC.sample.legacyfsm.xsfsm.design Contains graphical representation extensio for you FSM model Sirius Animator  
+- org.GEMOC.sample.legacyfsm.xsfsm.trace Contains the generated project for efficient executable trace management 
+- org.GEMOC.sample.legacyfsm.xsfsm.xsfsm Generated executable FSM metamodel resulting from the org.GEMOC.sample.legacyfsm.xsfsm language specification melange file  
 
 
-### 2.2 Lets us play with this language.
+### 2.2 Playing with this language
 
-1. Start a modelling workbench.
+1. Start a modelling workbench
    ![](figs/runmodellinglanguage.png)
 
-2. Get the example for (Gemoc Model for FSM Sequential)
+2. Get the example for (GEMOC model for FSM Sequential)
 
 ![](figs/NewExampleModelling.png)
 
-- Open the bitshifting.aird file.
-  You can see and edit a FSM model.
+- Open the bitshifting.aird file: there you can see and edit the FSM model.
 
-Next Run this model.
+Next: Run this model. To this effect, open the *run* dialog:
 
-Open the run dialog:
-- Run in debug mode the **BitShifting.fsm 000101010** run configuration.
+- Run in **debug mode** the **BitShifting.fsm 000101010** run configuration.
 
-You can play with the debug model
+You then can play with the debug model by stepping through it and observing the state transitions.
 
 ![](figs/xfsmdemo.png)
 
-:warning:
-You can now close the modelling workbench
+​:warning: You can now close the modelling workbench
 
 
 ### 2.3 Adding new concepts in your language
 
 Just open your FSM metamodel in the language workbench.
 
-1. Add the concept of Variable that has a name to the FSM. Add three subclasses : a String variable a boolean Variable and a Number Variable.
+1. Add the concept of `Variable` that has a name to the FSM. Add three subclasses : a `StringVariable`, `BooleanVariable`, and a `NumberVariable`as depicted below:
 
 ![](figs/Variable.png)
 
-1. Add the concept of Guard to the Transition. Add eight subclasses : a *StringGuard*, a *BooleanGuard* and an abstract *NumberGuard*, a *EqualNumberGuard*, 	a class *LessThanNumberGuard* that extends *NumberGuard*;
- a class GreaterThanNumberGuard that extends *NumberGuard*, a class *GreaterOrEqualThanNumberGuard* that extends *NumberGuard*, a class *LessOrEqualThanNumberGuard* that extends *NumberGuard*.
+1.  Add theconcept of Guard to the Transition. Add eight subclasses : a `StringGuard`, a `BooleanGuard`and an abstract `NumberGuard`, a `EqualNumberGuard`, a LessThanNumberGuard`,a GreaterThanNumberGuard, a GreaterOrEqualThanNumberGuard`, and a `LessOrEqualThanNumberGuard` .
 
 
 ![](figs/guard.png)
 
 
-1. Add the concept of Action to the Transition. Add three subclasses : a StringAction a BooleanAction and a NumberAction.
+1. Add the concept of `Action` to the Transition. Add three subclasses : a `StringAction`, a `BooleanAction`, and a `NumberAction`.
 
 ![](figs/Actions.png)
 
-:warning:
-At the end of this task, you must regenerate the Java code for your metamodel.
-
-Do a right clic on the genmodel. Select reload. Next open it and in the tree editor, regenerate all.
+​:warning: At the end of this task, you must regenerate the Java code for your metamodel. Right click on the *fsm.genmodel* in the same folder as the metamodel and select reload. Next open it and in the tree editor, right click and select *regenerate all*.
 
 ![](figs/reload.png)
 ![](figs/generateall.png)
 
 
 
-### 2.4 Add OCL constraints
+### 2.4 Adding OCL constraints
+
+In our language, you can define your static semantics (i.e., well-formedness rules) using OCL. Let us try to define that a state cannot have two outgoing transitions without a guard. To this effect, open the metamodel with the *OCLInEcore editor* via right clicking it and selecting that editor.
+
+TODO: Link OCL tutorial or point to OCL in FSM
 
 
-In our language, you can your static semantics using OCL. Let us try to define that a state cannot have two outgoing transition with the same label without a guard.
+### 2.5 Completeing the dynamic semantics
 
+For temporal constraints, we provide an implementation of the FSM dynamic semantics. We suggest, to restart from the FSM version in the [archive for step 2.5](https://github.com/gemoc/ICSA2017Tutorial/tree/master/2.5). Prior to that, delete all projects from your workspace.
 
-### 2.5 Complete the Dynamic semantics.
+The operational semantics of FSM are defined in the following Xtend file, which employs Kermeta and the [Interpreter Design Pattern](https://en.wikipedia.org/wiki/Interpreter_pattern) to describe the dynamic behavior of FM models: 
 
-We provide an implementation of the dynamic semantics.
+- org.gemoc.sample.legacyfsm.fsm.k3dsa/src/org/gemoc/sample/legacyfsm/fsm/k3dsa/tfsmAspects.xtend, 
 
-At that step, we propose to restart from our current version for a lack of time. Just delete all your project. And get import the project from folder step2.5.
+We left two methods unimplemented with TODO. Try to implement these two methods.
 
-In this step, in the file /org.gemoc.sample.legacyfsm.fsm.k3dsa/src/org/gemoc/sample/legacyfsm/fsm/k3dsa/tfsmAspects.xtend, we provide an exerpt of the operational semantics of this language. It is implemented using Xtend and K3 using the [Interpreter Design Pattern](https://en.wikipedia.org/wiki/Interpreter_pattern).
+TODO: decide upon which methods to leave underspecified
 
-We let two methods unimplemented with TODO. Let us try to implement these two methods.
+​:warning: Execution Functions
+The Execution Functions define how the Execution Data evolve during the execution of the model. Execution Functions can be implemented by defining the body of a method. These methods must be annotated with the **@Step** annotation. Whenever a method with an @Step annotation returns, the changes in the model will be applied (via a transaction) to the resource. This means that the changes will be visible from an animator. K3 supports nested @Step annotation calls so that changes in the model will be applied when entering and leaving methods having this annotations.
 
-:warning:
-The Execution Functions define how the Execution Data evolve during the execution of the model. Execution Functions can be implemented by defining the body of a method.
+​:warning: Entry Points
+The GEMOC sequential engines uses methods annotated with **@Main** as entry points to model execution. This annotation must be placed on operations applicable to the root model element.
 
-These methods must have the @Step annotation.
+### 2.6 Testing the execution of the model with its new semantics
 
-Whenever a method with an @Step annotation returns, the changes in the model will be applied (via a transaction) to the resource. This means that the changes will be visible from an animator.
+Let's run the modelling workbench!
 
-The technology used be K3 with its @Step annotation allows nested call so that changes in the model will be applied when entering and leaving methods having this annotations.
-
-:warning:
-Defining the entry point
-
-The sequential engines will use as entry point methods having an @Main annotation.
-
-This annotation must be placed on operations applicable to the root model element.
-
-### 2.6 Test the execution of the model with its new semantics
-
-Let's run the modelling workbench
-
-Create a FSM model with two steps and one transition. Create a variable **a** with 1 as an inital step. Create a guard associated to the transition that checks if *a == 1*.  Create an action that set 2 to the variable a.
+Create a FSM model with two steps and one transition. Create a variable `a` with `1` as an inital step. Create a guard associated to the transition that checks whether `a == 1`.  Create an action that assigns `2` to the variable `a`.
 
 ![](figs/extendedmodel.png)
 
-Lets us debug this model.
+Let's debug this model!
 
-1. Create the debug configuration.
+1. Create the debug configuration
 
 
 ![](figs/debugconfiguration.png)
 
-2. You can debug your language
+2. You can then debug your language
 
 ![](figs/executingfsmextended.png)
 
@@ -169,27 +154,27 @@ Lets us debug this model.
 
 
 
-## Step 3 Let us doing the integration between of a component metamodel.
+## Step 3: Integrating FSM into a component meta model
 
-Let us design the monticore metamodel. We provide you the meta model, the odesign and the initial semantics.
+// TODO: the title is wrong. Here we add graphical editing capabilities
 
-In this step, we propose to show you how we could use sirius to specify the graphical respresentation of a language.
+For temporal restrictions, we provide to you the meta model, the odesign, and the initial semantics. In this step, we propose to show you how we could use the [Sirius](https://www.eclipse.org/sirius/doc/specifier/diagrams/Diagrams.html) framework to specify the graphical representation of a language. To show this, we aim to draw unidirectional connectors between ports using Sirius. This includes:
 
-[Documentation](https://www.eclipse.org/sirius/doc/specifier/diagrams/Diagrams.html) is available here.
+1. Defining what you have to draw when for each `IntermediateConnector` in the model.
+2. Defining what you have to draw and set when you add a new `IntermediateConnector` to the diagram.
 
-We propose to manage the link between ports using Sirius. To do that, we have to do two taks:
-1. Explaining what you have to draw when for each Intermediate Connctor in the model.
-2. Explaining what you have to draw and set when you draw a connector in the diagram.
+Let us import an example model (from project *Test*) to understand the current diagram specification in the modelling workbench.
 
-Let us import an example of model (Project Test) to understand the current diagram specification in the modelling workbench.
+TODO: Where do they get test from?
 
-Let us open */Test/bumperbot/BumperBot.aird* file.
-And in the project explorer, let us open the BumperBot diagram. See snaphshot below.
+TODO: Rename test to ICSA2017Example
+
+In this project, open the file */Test/bumperbot/BumperBot.aird* and in the project explorer, open the BumperBot diagram. See snaphshot below.
 
 ![](figs/BumperBot.png)
 
 
-In the modelling workbench, let us also import the project *ur1.diverse.xmontiarc.design*. The good things is that an odesign project is interpreted. As a result, you can modify the odesign diagram specification and just reload the diagram to see the impact.
+In the modelling workbench, let us also import the project *ur1.diverse.xmontiarc.design*. The good thing is that an odesign project is interpreted. As a result, you can modify the odesign diagram specification and just reload the diagram to see the impact.
 
 
 Sirius is organized to query the model and create representation from the results of the queries. To draw the connector, we have to find each couple of port between which the connector must be drawn.
@@ -198,13 +183,11 @@ Let us create an element based edge. On the default Viewpoint, create a new Elem
 
 ![](figs/odesignTask1.png)
 
-Next, we have to create the action to do when we draw a new IntermediateConnector between port.
-
-In section *Edge Section Connector* in the odesign, let us create a new Edge Creation.
+Next, we have to create the action to do when we draw a new `IntermediateConnector` between port. To this end, in section *Edge Section Connector* in the odesign, create a new Edge Creation.
 
 ![](figs/edgeCreation.png)
 
-This node gives you five subelements. Four that defines the source and the target model elements pointed by your edge, the source and the target views pointed by your edge. Finally it gives the action to execute when creating this edge. Basically, we will change the execution context for this action, create two variable and call an external Java Action already define. The source code of this action is the following.
+This node gives you five subelements. Four that define the `source` and the `target` model elements pointed by your edge, the `source view`and the `target view` pointed by your edge. Also, it defines the action to execute when creating this edge. Basically, we will change the execution context for this action, create two variable and call an external Java action already define. The source code of this action is the following.
 
 
 ```Java
@@ -229,29 +212,29 @@ public class CreateIntermediateConnectorAction extends AbstractExternalJavaActio
 
 	@Override
 	public boolean canExecute(Collection<? extends EObject> arg0) {
-		return true;
+		return true; // we can always add IntermediateConnector instances
 	}
 
 	@Override
 	public void execute(Collection<? extends EObject> args, Map<String, Object> options) {
+        // Load information from arguments
 		OutgoingPort subcomponentOut = (OutgoingPort) options.get("source");
 		IncomingPort subcomponentIn = (IncomingPort) options.get("target");
-
 		Subcomponent sourceSubcomponent = (Subcomponent) options.get("sourceSubcomponent");
+        // Identify containing component type
 		ComponentType type = sourceSubcomponent.getParent();
-		System.out.println("CreateIntermediateConnectorAction.execute(): Containing component type is '" + type.toString() + "'.");
+        // New connector
 		IntermediateConnector con = XmontiarcFactory.eINSTANCE.createIntermediateConnector();
 		con.setSource(subcomponentOut);
 		con.setTarget(subcomponentIn);
-		con.setParent(type);
-		System.out.println("CreateIntermediateConnectorAction.execute(): Created connector '" + con.toString() + "'.");
+        // Add connector to component type 
 		type.getConnectors().add(con);
 		try {
-			type.eResource().save(null);
+			type.eResource().save(null); // Save model
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		System.out.println("CreateIntermediateConnectorAction.execute(): Connectors now is '" + type.getConnectors() + "'.");
+		System.out.println("Connectors '" + type.getConnectors() + "'.");
 	}
 
 }
@@ -260,24 +243,25 @@ public class CreateIntermediateConnectorAction extends AbstractExternalJavaActio
 You can see in the next figures, the different configuration for these elements.
 
 ![](figs/changeContext.png)
+
 ![](figs/setsource.png)
+
 ![](figs/settarget.png)
+
 ![](figs/callExternalJavaAction.png)
 
-Please refer to Sirius documentation for learning and you can configure in details your editor.
-
-[Documentation](https://www.eclipse.org/sirius/doc/specifier/diagrams/Diagrams.html) is available here.
+Please refer to the [Sirius documentation](https://www.eclipse.org/sirius/doc/specifier/diagrams/Diagrams.html) for learning and you can configure in details your editor.
 
 
-## Step 4. Language composition.
+## Step 4: Composing languages
 
-In this step, we will do the most tricky stuffs of this tutorial. We would create a new language in composing our extended Finite State Machine with the monticore metamode.
+This step is the most elaborate part of the tutorial. We aim to create a new language by composing our FSM with the MontiArc metamodel. To this end, we will use Melange, which lets you create a language by assemblying several sublanguages. To continue, please import the project from the [following archive file](3.0/3.0.zip).
 
-To do that, we will us melange that let you create a language in assemblying several sublanguage.
+The project *ur1.diverse.xmontiarc.xdsml.withautomaton* contains the Melange model defining our composed language in 
 
-For this task, we prepare the composition. Please import the project from the [following archive file](3.0/3.0.zip).
+- *src/ur1/diverse/xmontiarc/xdsml/withautomaton/xmonticorewithautomon.melange*
 
-Please open */ur1.diverse.xmontiarc.xdsml.withautomaton/src/ur1/diverse/xmontiarc/xdsml/withautomaton/xmonticorewithautomon.melange*, you will see that we can create a new language which is a composition of xmonticore and the FSM in merging StateMachine with  AutomatonComponentBehavior.  
+The quintessential excerpt of this model is given below. It shows that we extend XMontiArc via inheritance (l. 1) and merge the concept fsm.StateMachine to xmontiarc.AutomatonComponentBehavior. This ultimately composes both metamodels.
 
 ```java
 language XMontiArcWithAutomaton inherits XMontiArc{
@@ -285,4 +269,4 @@ language XMontiArcWithAutomaton inherits XMontiArc{
 }
 ```
 
-It remains to create Glue clode for the sematics. Lets do that together.
+It remains to create glue clode for the sematics. Lets do that together!
