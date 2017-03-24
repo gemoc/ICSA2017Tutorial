@@ -26,7 +26,7 @@ During this tutorial, the participants will develop a simplified version of the 
 - The slides for the tutorials are available on [github](https://github.com/GEMOC/ICSA2017Tutorial/tree/master/slides).
 - The solution is available [here]().
 - Most of the documentations on GEMOC approches are available [here](http://GEMOC.org/GEMOC-studio/publish/guide/html_single/Guide.html).
-- Documentation of MontiArc's [structural](http://www.se-rwth.de/publications/MontiArc-Architectural-Modeling-of-Interactive-Distributed-and-Cyber-Physical-Systems.pdf) and [behavioral](http://www.se-rwth.de/publications/Architecture-and-Behavior-Modeling-of-Cyber-Physical-Systems-with-MontiArcAutomaton.pdf) features is available as well.
+- Overview slides on MontiArc and XMontiArc are [available on github](https://github.com/GEMOC/ICSA2017Tutorial/tree/master/slides/MontiArc.pptx). Documentation of MontiArc's [structural](http://www.se-rwth.de/publications/MontiArc-Architectural-Modeling-of-Interactive-Distributed-and-Cyber-Physical-Systems.pdf) and [behavioral](http://www.se-rwth.de/publications/Architecture-and-Behavior-Modeling-of-Cyber-Physical-Systems-with-MontiArcAutomaton.pdf) features is available as well.
 
 
 You can refer to the documentation at any time.
