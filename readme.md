@@ -258,11 +258,34 @@ Please refer to the [Sirius documentation](https://www.eclipse.org/sirius/doc/sp
 
 ## Step 4: Composing languages
 
-This step is the most elaborate part of the tutorial. We aim to create a new language by composing our FSM with the MontiArc metamodel. To this end, we will use Melange, which lets you create a language by composing several sublanguages. To continue, please import the project from the [following archive file](3.0/3.0.zip).
+This step is the most elaborate part of the tutorial. We aim to create a new language by composing our FSM with the XMontiArc metamodel. To this end, we will use Melange, which lets you create a language by composing several sublanguages. To continue, please import the projects from the [following archive file](3.0/3.0.zip) and check out the projects
 
-The project *ur1.diverse.xmontiarc.xdsml.withautomaton* contains the Melange model defining our composed language in 
+- *ur1.diverse.automata.model* TODO: Do we still need this?
+- *ur1.diverse.xmontiarc.model* 
+- *ur1.diverse.xmontiarc.runtime* 
+- *ur1.diverse.xmontiarc.k3dsa*
+- ur1.diverse.xmontiarc.xdsml
 
-- *src/ur1/diverse/xmontiarc/xdsml/withautomaton/xmonticorewithautomon.melange*
+from [xmontiarc github](https://github.com/awortmann/xmontiarc) (TODO: add projects to the archive).
+
+After importing the projects you'll find the new projects in your workspace
+
+1. ur1.diverse.xmontiarc.model Is the static part of XMontiArc's metamodel.
+   1. Please select the ur1.diverse.xmontiarc.model/xmontiarc.genmodel and run *generate all*. This produces the tree.based editors and testing projects.
+2. ur1.diverse.xmontiarc.k3dsa Comprises the dynamic parts of XMontiArc's metamodel.
+3. ur1.diverse.xmontiarc.xdsml Combines the static and the dynamic parts of XMontiArc's metamodel to produce an executable MontiArc ADL.
+   1. Please select the src/ur1/diverse/xmontiarc/xdsml/xmontiarc.melange, right click, melange, and run *generate all*. This produces the tree.based editors and testing projects for the combined executable DSL.
+   2. If the META-INF/MANIFEST.MF has errors afterwards, use the eclipse auto formatter (usually on ctrl+shift+f) to fix these (the second line is too long). Save the manifest afterwards.
+4. ur1.diverse.xmontiarc.runtime Contains modeling elements required at XMontiArc run time only.
+   1. Please select the ur1.diverse.xmontiarc.runtime.model/runtime.genmodel and run *generate all*. This produces the tree.based editors and testing projects. 
+
+TODO: Explain the other projects
+
+1. ur1.diverse.xmontiarc.xdsml.withautomaton Merges XMontiArc with the FSM language. To this end, it contains the Melange model defining our composed language in src/ur1/diverse/xmontiarc/xdsml/withautomaton/xmonticorewithautomon.melange.
+2. ur1.diverse.xmontiarcwithautomaton.xdsml.xmontiarc Contains the static metamodel of XMontiArc for this tutorial. You'll find it in models/XMontiArc.ecore.
+3. ​
+
+
 
 The quintessential excerpt of this model is given below. It shows that we extend XMontiArc via inheritance (l. 1) and merge the concept fsm.StateMachine to xmontiarc.AutomatonComponentBehavior. This ultimately composes both metamodels.
 
