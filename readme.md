@@ -33,11 +33,9 @@ During this tutorial, the participants will develop a simplified version of the 
 You can refer to the documentation at any time.
 
 ## Step 1: (Slides only)
-- Language Engineering with GEMOC
-- MontiArc Introduction
+- Language Engineering with GEMOC (TODO: provide slides)
+- [MontiArc Introduction](https://github.com/GEMOC/ICSA2017Tutorial/tree/master/slides/MontiArc.pptx). 
 
-
-TODO: provide slides
 
 ## Step 2: Building a simple finite state machine language for specifying your component behavior.
 
