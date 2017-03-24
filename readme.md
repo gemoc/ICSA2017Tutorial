@@ -26,7 +26,8 @@ During this tutorial, the participants will develop a simplified version of the 
 - The slides for the tutorials are available on [github](https://github.com/GEMOC/ICSA2017Tutorial/tree/master/slides).
 - The solution is available [here]().
 - Most of the documentations on GEMOC approches are available [here](http://GEMOC.org/GEMOC-studio/publish/guide/html_single/Guide.html).
-- Overview slides on MontiArc and XMontiArc are [available on github](https://github.com/GEMOC/ICSA2017Tutorial/tree/master/slides/MontiArc.pptx). Documentation of MontiArc's [structural](http://www.se-rwth.de/publications/MontiArc-Architectural-Modeling-of-Interactive-Distributed-and-Cyber-Physical-Systems.pdf) and [behavioral](http://www.se-rwth.de/publications/Architecture-and-Behavior-Modeling-of-Cyber-Physical-Systems-with-MontiArcAutomaton.pdf) features is available as well.
+- Overview slides on MontiArc and XMontiArc are [available on github](https://github.com/GEMOC/ICSA2017Tutorial/tree/master/slides/MontiArc.pptx). 
+- Documentation of MontiArc's [structural](http://www.se-rwth.de/publications/MontiArc-Architectural-Modeling-of-Interactive-Distributed-and-Cyber-Physical-Systems.pdf) and [behavioral](http://www.se-rwth.de/publications/Architecture-and-Behavior-Modeling-of-Cyber-Physical-Systems-with-MontiArcAutomaton.pdf) features is available as well.
 
 
 You can refer to the documentation at any time.
@@ -107,11 +108,12 @@ Just open your FSM metamodel in the language workbench.
 
 ### 2.4 Adding OCL constraints
 
-In our language, you can define your static semantics (i.e., well-formedness rules) using OCL. Let us try to define that a state cannot have two outgoing transitions without a guard. To this effect, open the metamodel with the *OCLInEcore editor* via right clicking it and selecting that editor. Here, you can create an `invariant` for the concept `State`that restricts its outgoing transitions.
+In our language, you can define your static semantics (i.e., well-formedness rules) using OCL. Let us try to define that a state cannot have two outgoing transitions without a guard. To this effect, open the metamodel with the *OCLinEcore editor* via right clicking it and selecting that editor. Here, you can create an `invariant` for the concept `State`that restricts its outgoing transitions.
 
-TODO: Link OCL tutorial or point to OCL in FSM
++ The official OCL documentation is [available online](http://download.eclipse.org/ocl/doc/5.0.0/ocl.pdf) as well as there is a [set of slides on it](https://de.slideshare.net/EdWillink/enrich-your-models-with-ocl).
++ A tutorial on the OCLinEcore editor is available from the [eclipse wiki](https://wiki.eclipse.org/OCL/OCLinEcore) and a getting started guide is available from the [eclipse help website](http://help.eclipse.org/neon/index.jsp?topic=%2Forg.eclipse.ocl.doc%2Fhelp%2FGettingStarted.html).
 
-After creating the invariant, start the modeling workbench again and open the **BitShifting** model again. Rightclick on it and select validate. Now eclipse marks all states as erroneous as none uses a guarded transition.
+After creating the *invariant*, start the modeling workbench again and open the **BitShifting** model again. Right click on it and select validate. Now eclipse marks all states as erroneous as none uses a guarded transition.
 
 
 ### 2.5 Completing the dynamic semantics
