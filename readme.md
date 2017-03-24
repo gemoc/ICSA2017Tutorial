@@ -33,7 +33,7 @@ You can refer to the documentation at any time.
 
 ## Step 1: (Slides only)
 - Language Engineering with GEMOC
-- Monti Arc Introduction
+- MontiArc Introduction
 
 
 TODO: provide slides
