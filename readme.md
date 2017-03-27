@@ -4,7 +4,7 @@
 * [Preliminaries](#preliminaries)
 * [Step 1: (Slides only)](#step-1-slides-only)
 * [Step 2: Building a simple finite state machine language for specifying your component behavior](#step-2-building-a-simple-finite-state-machine-language-for-specifying-your-component-behavior)
-   * [2.1 Starting from FSM Sequential example that exists in GEMOC Studio](#21-starting-from-fsm-sequential-example-that-exists-in-GEMOC-studio)
+   * [2.1 Starting from FSM Sequential example that exists in GEMOC Studio](#21-starting-from-fsm-sequential-example-that-exists-in-gemoc-studio)
    * [2.2 Playing with the FMS language.](#22-playing-with-the-fsm-language)
    * [2.3 Adding new concepts in your language](#23-adding-new-concepts-in-your-language)
    * [2.4 Adding OCL constraints](#24-adding-ocl-constraints)
