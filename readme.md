@@ -24,7 +24,10 @@ During this tutorial, the participants will develop a simplified version of the 
 ## Program
 
 - 14:00 - 14:15 Welcome session: Scope and aim of the tutorial
-- 14:15 - 14:45 Presentations: GEMOC Initiative, GEMO Studio, and MontiArc
+- 14:15 - 14:45 Presentations: 
+  - GEMOC Initiative (Andreas)
+  - GEMOC Studio (Didier)
+  - MontiArc (Andreas)
 - 14:30 - 15:30 Hands on part I: Steps 2.1 - 2.4
 - 15:30 - 16:00 Coffee Break
 - 16:00 - 17:00 Hands on part II: Steps 2.5 - 2.6
