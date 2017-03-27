@@ -102,7 +102,7 @@ Just open your FSM metamodel in the language workbench.
 ![](figs/reload.png)
 ![](figs/generateall.png)
 
-
+The result of this step is available from the [archive for step 2.3](https://github.com/gemoc/ICSA2017Tutorial/blob/master/2.4/2.4.zip).
 
 ### 2.4 Adding OCL constraints
 
