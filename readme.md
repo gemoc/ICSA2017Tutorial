@@ -1,7 +1,8 @@
 # ICSA Tutorial
 
 * [Scope](#scope)
-* [Preliminaries](#preliminaries)
+* [Program](#program)
+* [Materials](#materials)
 * [Step 1: (Slides only)](#step-1-slides-only)
 * [Step 2: Building a simple finite state machine language for specifying your component behavior](#step-2-building-a-simple-finite-state-machine-language-for-specifying-your-component-behavior)
    * [2.1 Starting from FSM Sequential example that exists in GEMOC Studio](#21-starting-from-fsm-sequential-example-that-exists-in-gemoc-studio)
@@ -14,18 +15,27 @@
 * [Step 4: Composing languages](#step-4-composing-languages)
 
 
-This tutorial provides a practical approach for developing and integrating various Domain-Specific (modeling) Languages (DSLs) used in the development of modern complex software-intensive systems, with the main objective to support abstraction and separation of concerns. The tutorial leverages on the tooling provided by the GEMOC studio to present the various facilities offered by the Eclipse platform (incl., EMF/Ecore, Xtext, Sirius) and introduces the advanced features to extend a DSL with a well-defined execution semantics, possibly including formal concurrency constraints and coordination patterns. From such a specification, we demonstrate the ability of the studio to automatically support model execution, graphical animation, omniscient debugging, concurrency analysis and concurrent execution of heterogeneous models. The tutorial is composed of both lectures and hands-on sessions. Hands-on sessions allow participants to experiment on a concrete use case of an architecture description language used to coordinate heterogeneous behavioral and structural components.
+This tutorial provides a practical approach for developing and integrating various Domain-Specific (modeling) Languages (DSLs) used in the development of modern complex software-intensive systems, with the main objective to support abstraction and separation of concerns. This tutorial leverages the tooling provided by the GEMOC studio to present the various facilities offered by the Eclipse platform (incl., EMF/Ecore, Sirius) and introduces the advanced features to extend a DSL with a well-defined execution semantics. From such a specification, we demonstrate the ability of the studio to automatically support model execution, graphical animation, omniscient debugging, concurrency analysis and concurrent execution of heterogeneous models. The tutorial is composed of both lectures and hands-on sessions. Hands-on sessions allow participants to experiment on a concrete use case of an architecture description language used to coordinate heterogeneous behavioral and structural components.
 
 ## Scope
 
 During this tutorial, the participants will develop a simplified version of the [MontiArc component & connector ADL](http://www.se-rwth.de/topics/Software-Architecture.php). The ADL is tailored for designing component-based distributed interactive systems that reliy on state-based models to describe component behavior. You will use the GEMOC Studio to develop a simplified version of MontiArc, including  syntax and semantics, and deploy it in the modeling workbench to edit, execute, animate and debug conforming models. In the modeling workbench, the participants will design a software architecture based on predefined components. Based on such a design, participants will be able to concurrently execute the various components according to the execution semantics (message passing) of MontiArc, to graphically animate the architecture, and to debug the system behavior.
 
-## Slides
+## Program
 
-- Please download the latest [GEMOC Studio](http://gemoc.org/studio.html) and provide a [Java 1.8 JDK](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html).
+- 14:00 - 14:15 Welcome session: Scope and aim of the tutorial
+- 14:15 - 14:45 Presentations: GEMOC Initiative, GEMO Studio, and MontiArc
+- 14:30 - 15:30 Hands on part I: Steps 2.1 - 2.4
+- 15:30 - 16:00 Coffee Break
+- 16:00 - 17:00 Hands on part II: Steps 2.5 - 2.6
+- 17:00 - 17:30 Conclusion: Discussion and wrap up
+
+## Materials
+
+- The latest [GEMOC Studio](http://gemoc.org/studio.html) and provide a [Java 1.8 JDK](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html).
 - The slides for the tutorials are available on [github](https://github.com/GEMOC/ICSA2017Tutorial/tree/master/slides).
 - The solution is available [here]().
-- Most of the documentations on GEMOC approches are available [here](http://GEMOC.org/GEMOC-studio/publish/guide/html_single/Guide.html).
+- Most of the documentation on GEMOC approches are available [here](http://GEMOC.org/GEMOC-studio/publish/guide/html_single/Guide.html).
 - Overview slides on MontiArc and XMontiArc are [available on github](https://github.com/GEMOC/ICSA2017Tutorial/tree/master/slides/MontiArc.pptx). 
 - Documentation of MontiArc's [structural](http://www.se-rwth.de/publications/MontiArc-Architectural-Modeling-of-Interactive-Distributed-and-Cyber-Physical-Systems.pdf) and [behavioral](http://www.se-rwth.de/publications/Architecture-and-Behavior-Modeling-of-Cyber-Physical-Systems-with-MontiArcAutomaton.pdf) features is available as well.
 
