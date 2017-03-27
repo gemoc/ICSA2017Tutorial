@@ -5,8 +5,8 @@
 * [Step 1: (Slides only)](#step-1-slides-only)
 * [Step 2: Building a simple finite state machine language for specifying your component behavior](#step-2-building-a-simple-finite-state-machine-language-for-specifying-your-component-behavior)
    * [2.1 Starting from FSM Sequential example that exists in GEMOC Studio](#21-starting-from-fsm-sequential-example-that-exists-in-gemoc-studio)
-   * [2.2 Playing with the FMS language.](#22-playing-with-the-fsm-language)
-   * [2.3 Adding new concepts in your language](#23-adding-new-concepts-in-your-language)
+   * [2.2 Playing with the FSM language](#22-playing-with-the-fsm-language)
+   * [2.3 Adding new concepts to your language](#23-adding-new-concepts-to-your-language)
    * [2.4 Adding OCL constraints](#24-adding-ocl-constraints)
    * [2.5 Completing the dynamic semantics](#25-completing-the-dynamic-semantics)
    * [2.6 Testing the execution of the model with its new semantics](#26-testing-the-execution-of-the-model-with-its-new-semantics)
@@ -59,7 +59,7 @@ This produces the general structure of a DSL project.
 - org.GEMOC.sample.legacyfsm.xsfsm.xsfsm Generated executable FSM metamodel resulting from the org.GEMOC.sample.legacyfsm.xsfsm language specification melange file  
 
 
-### 2.2 Playing with this language
+### 2.2 Playing with the FSM language
 
 1. Start a modelling workbench
    ![](figs/runmodellinglanguage.png)
@@ -81,7 +81,7 @@ You then can play with the debug model by stepping through it and observing the 
 ​:warning: You can now close the modelling workbench
 
 
-### 2.3 Adding new concepts in your language
+### 2.3 Adding new concepts to your language
 
 Just open your FSM metamodel in the language workbench.
 
