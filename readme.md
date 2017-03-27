@@ -118,15 +118,13 @@ You can look up the solution in org.gemoc.sample.legacyfsm.fsm.model/model/fsm.e
 
 ### 2.5 Completing the dynamic semantics
 
-For temporal constraints, we provide an implementation of the FSM dynamic semantics. We suggest, to restart from the FSM version in the [archive for step 2.5](https://github.com/gemoc/ICSA2017Tutorial/tree/master/2.5). Prior to that, delete all projects from your workspace.
+For temporal constraints, we provide an implementation of the FSM dynamic semantics. We suggest, to restart from the FSM version in the [archive for step 2.5](https://github.com/gemoc/ICSA2017Tutorial/blob/master/2.5/2.5-task.zip). Prior to that, delete all projects from your workspace.
 
 The operational semantics of FSM are defined in the following Xtend file, which employs Kermeta and the [Interpreter Design Pattern](https://en.wikipedia.org/wiki/Interpreter_pattern) to describe the dynamic behavior of FM models: 
 
 - org.gemoc.sample.legacyfsm.fsm.k3dsa/src/org/gemoc/sample/legacyfsm/fsm/k3dsa/tfsmAspects.xtend, 
 
 We left two methods unimplemented with TODO. Try to implement these two methods.
-
-TODO: decide upon which methods to leave underspecified
 
 ​:warning: Execution Functions
 
@@ -135,6 +133,8 @@ The Execution Functions define how the Execution Data evolve during the executio
 ​:warning: Entry Points
 
 The GEMOC sequential engines uses methods annotated with **@Main** as entry points to model execution. This annotation must be placed on operations applicable to the root model element.
+
+The solution of this task is available from the [respective archive](https://github.com/gemoc/ICSA2017Tutorial/blob/master/2.5/2.5-solution.zip).
 
 ### 2.6 Testing the execution of the model with its new semantics
 
@@ -154,10 +154,6 @@ Let's debug this model!
 2. You can then debug your language
 
 ![](figs/executingfsmextended.png)
-
-
-
-
 
 ## Step 3: Integrating FSM into a component metamodel
 
