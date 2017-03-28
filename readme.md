@@ -11,7 +11,7 @@ This tutorial provides a practical approach for developing and integrating vario
 
 ## Scope
 
-During this tutorial, the participants will develop a simplified version of the [MontiArc component & connector ADL](http://www.se-rwth.de/topics/Software-Architecture.php). The ADL is tailored for designing component-based distributed interactive systems that reliy on state-based models to describe component behavior. You will use the GEMOC Studio to develop a simplified version of MontiArc, including  syntax and semantics, and deploy it in the modeling workbench to edit, execute, animate and debug conforming models. In the modeling workbench, the participants will design a software architecture based on predefined components. Based on such a design, participants will be able to concurrently execute the various components according to the execution semantics (message passing) of MontiArc, to graphically animate the architecture, and to debug the system behavior.
+During this tutorial, the participants will extend a given finite state machine DSL in terms of syntax and semantics and integrate it into a simplified version of the [MontiArc component & connector ADL](http://www.se-rwth.de/topics/Software-Architecture.php) using the GEMOC Studio language workbench. The ADL is tailored for designing component-based distributed interactive systems that reliy on state-based models to describe component behavior. In the modeling workbench, the participants will design integrated models. Based on such a design, participants will be able to concurrently execute the various components according to the execution semantics (message passing) of MontiArc, to graphically animate the architecture, and to debug the system behavior.
 
 
 
@@ -77,6 +77,8 @@ This produces the general structure of a DSL project.
 1. Start a modelling workbench
    ![](figs/runmodellinglanguage.png)
 
+   ​
+
 2. Get the example for (GEMOC model for FSM Sequential)
 
 ![](figs/NewExampleModelling.png)
@@ -115,7 +117,7 @@ Just open your FSM metamodel in the language workbench.
 ![](figs/reload.png)
 ![](figs/generateall.png)
 
-The result of this step is available from the [archive for step 2.3](https://github.com/gemoc/ICSA2017Tutorial/blob/master/2.4/2.4.zip).
+The result of this step is available from the [archive for step 2.2-ecore](https://github.com/gemoc/ICSA2017Tutorial/blob/master/2.2/2.2-ecore.zip).
 
 #### Adding OCL constraints
 
@@ -124,16 +126,23 @@ In our language, you can define your static semantics (i.e., well-formedness rul
 + The official OCL documentation is [available online](http://download.eclipse.org/ocl/doc/5.0.0/ocl.pdf) as well as there is a comprehensive [set of slides on it](https://de.slideshare.net/EdWillink/enrich-your-models-with-ocl).
 + A tutorial on the OCLinEcore editor is available from the [eclipse wiki](https://wiki.eclipse.org/OCL/OCLinEcore) and a getting started guide is available from the [eclipse help website](http://help.eclipse.org/neon/index.jsp?topic=%2Forg.eclipse.ocl.doc%2Fhelp%2FGettingStarted.html).
 
+##### Example: Invariant to check uniqueness of names
+
+```OCL
+invariant uniqueStateNames: 
+	self.states->forAll(s1, s2| s1 <> s2 implies s1.name <> s2.name);
+```
+
 After creating the *invariant* for the *State* concept, start the modeling workbench again and open the **BitShifting** model again. Right click on it and select validate. Now eclipse marks all states as erroneous as none uses a guarded transition.
 
-You can look up the solution in org.gemoc.sample.legacyfsm.fsm.model/model/fsm.ecore of the [archive for step 2.4](https://github.com/gemoc/ICSA2017Tutorial/blob/master/2.4/2.4.zip).
+You can look up the solution in org.gemoc.sample.legacyfsm.fsm.model/model/fsm.ecore of the [archive for step 2.2-ocl](https://github.com/gemoc/ICSA2017Tutorial/blob/master/code/2.2-ocl.zip).
 
 
 
 
 ### 2.3 Completing the dynamic semantics
 
-For temporal constraints, we provide an implementation of the FSM dynamic semantics. We suggest, to restart from the FSM version in the [archive for step 2.5](https://github.com/gemoc/ICSA2017Tutorial/blob/master/2.5/2.5-task.zip). Prior to that, delete all projects from your workspace.
+For temporal constraints, we provide an implementation of the FSM dynamic semantics. We suggest, to restart from the FSM version in the [archive for step 2.3](https://github.com/gemoc/ICSA2017Tutorial/blob/master/code/2.3-task.zip). Prior to that, delete all projects from your workspace.
 
 The operational semantics of FSM are defined in the following Xtend file, which employs Kermeta and the [Interpreter Design Pattern](https://en.wikipedia.org/wiki/Interpreter_pattern) to describe the dynamic behavior of FM models: 
 
@@ -149,7 +158,7 @@ The Execution Functions define how the Execution Data evolve during the executio
 
 The GEMOC sequential engines uses methods annotated with **@Main** as entry points to model execution. This annotation must be placed on operations applicable to the root model element.
 
-The solution of this task is available from the [respective archive](https://github.com/gemoc/ICSA2017Tutorial/blob/master/2.5/2.5-solution.zip).
+The solution of this task is available from the [step 2.3 archive](https://github.com/gemoc/ICSA2017Tutorial/blob/master/code/2.3-solution.zip).
 
 #### Testing the execution of the model with its new semantics
 
@@ -172,7 +181,7 @@ Let's debug this model!
 
 
 
-### 2.5: Defining concrete syntax with Sirius
+### 2.4: Defining concrete syntax with Sirius
 
 For temporal restrictions, we provide to you the meta model, the odesign, and the initial semantics. In this step, we propose to show you how we could use the [Sirius](https://www.eclipse.org/sirius/doc/specifier/diagrams/Diagrams.html) framework to specify the graphical representation of a language. To show this, we aim to draw unidirectional connectors between ports using Sirius. This includes:
 
@@ -269,11 +278,11 @@ You can see in the next figures, the different configuration for these elements.
 Please refer to the [Sirius documentation](https://www.eclipse.org/sirius/doc/specifier/diagrams/Diagrams.html) for learning and you can configure in details your editor.
 
 
-### 2.6 Composing languages
+### 2.5 Composing languages
 
-This step is the most elaborate part of the tutorial. We aim to create a new language by composing our FSM with the XMontiArc metamodel. To this end, we will use Melange, which lets you create a language by composing several sublanguages. To continue, please import the following projects into your workspace (you can also achieve this by deleting all projects from your workspace and importing from the [icsa2017 branch of the xmontiarc github repository](https://github.com/awortmann/xmontiarc/tree/icsa2017tutorial)):
+This step is the most elaborate part of the tutorial. We aim to create a new language by composing our FSM with the XMontiArc metamodel. To this end, we will use Melange, which lets you create a language by composing several sublanguages. To continue, please ensure you have  the following projects in your workspace. Please note that you can also achieve this by deleting all projects from your workspace and importing all projects from the [icsa2017 branch of the xmontiarc github repository](https://github.com/awortmann/xmontiarc/tree/icsa2017tutorial).
 
-1. The XFSM language projects from the [step 2.5 archive](https://github.com/gemoc/ICSA2017Tutorial/blob/master/2.5/2.5-solution.zip)
+1. The XFSM language projects (either your solutions or as provided with the [step 2.3 archive](https://github.com/gemoc/ICSA2017Tutorial/blob/master/2.5/2.3-solution.zip))
    * org.gemoc.sample.legacyfsm.fsm.design
    * org.gemoc.sample.legacyfsm.fsm.k3dsa
    * org.gemoc.sample.legacyfsm.fsm.model
