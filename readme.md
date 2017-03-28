@@ -299,7 +299,7 @@ This step is the most elaborate part of the tutorial. We aim to create a new lan
 
 The final project structure is as depicted below:
 
-![](figs/projects.png)
+![](figs/projects.png )
 
 
 
