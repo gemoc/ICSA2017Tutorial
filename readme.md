@@ -269,40 +269,64 @@ Please refer to the [Sirius documentation](https://www.eclipse.org/sirius/doc/sp
 
 ## Step 4: Composing languages
 
-This step is the most elaborate part of the tutorial. We aim to create a new language by composing our FSM with the XMontiArc metamodel. To this end, we will use Melange, which lets you create a language by composing several sublanguages. To continue, please import the projects from the [following archive file](3.0/3.0.zip) and check out the projects
+This step is the most elaborate part of the tutorial. We aim to create a new language by composing our FSM with the XMontiArc metamodel. To this end, we will use Melange, which lets you create a language by composing several sublanguages. To continue, please import the following projects into your workspace (you can also achieve this by deleting all projects from your workspace and importing from the [icsa2017 branch of the xmontiarc github repository](https://github.com/awortmann/xmontiarc/tree/icsa2017tutorial)):
 
-- *ur1.diverse.automata.model* TODO: Do we still need this?
-- *ur1.diverse.xmontiarc.model* 
-- *ur1.diverse.xmontiarc.runtime* 
-- *ur1.diverse.xmontiarc.k3dsa*
-- ur1.diverse.xmontiarc.xdsml
+1. The XFSM language projects from the [step 2.5 archive](https://github.com/gemoc/ICSA2017Tutorial/blob/master/2.5/2.5-solution.zip)
+   * org.gemoc.sample.legacyfsm.fsm.design
+   * org.gemoc.sample.legacyfsm.fsm.k3dsa
+   * org.gemoc.sample.legacyfsm.fsm.model
+   * org.gemoc.sample.legacyfsm.fsm.model.edit
+   * org.gemoc.sample.legacyfsm.fsm.model.editor
+   * org.gemoc.sample.legacyfsm.xsfsm
+   * org.gemoc.sample.legacyfsm.xsfsm.design
+   * org.gemoc.sample.legacyfsm.xsfsm.trace
+   * org.gemoc.sample.legacyfsm.xsfsm.xsfsm
+     ​
+2. From the [xMontiArc github repository](https://github.com/awortmann/xmontiarc), please import at least
+   * ur1.diverse.xmontiarc.model
+     * Run "generate all" on its genmodel to produce the projects ur1.diverse.xmontiarc.model.edit, ur1.diverse.xmontiarc.model.editor, and ur1.diverse.xmontiarc.model.tests
+   * ur1.diverse.xmontiarc.k3dsa
+   * ur1.diverse.xmontiarc.xdsml
+     * Run "generate all" on its melange file to produce the project ur1.diverse.xmontiarc.xdsml.xmontiarc
+     * Run "generate all" on the genmodel of project ur1.diverse.xmontiarc.xdsml.xmontiarc to produce the projects ur1.diverse.xmontiarc.xdsml.xmontiarc.edit, ur1.diverse.xmontiarc.xdsml.xmontiarc.editor, and ur1.diverse.xmontiarc.xdsml.xmontiarc.tests
+       ​
+3. From the [step 3.0 archive](https://github.com/gemoc/ICSA2017Tutorial/blob/master/3.0/3.0.zip), please import all projects, i.e., 
+   * ur1.diverse.xmontiarc.xdsml.withautomaton
+   * ur1.diverse.xmontiarcwithautomaton.xdsml.xsfsm
+   * ur1.diverse.xmontiarcwithautomaton.xdsml.xmontiarc
+   * ur1.diverse.xmontiarcwithautomaton.xdsml.xmontiarcwithautomaton
+     * Run "generate all" on its melange file to produce the projects ur1.diverse.xmontiarcwithautomaton.xdsml.xmontiarcwithautomaton.edit, ur1.diverse.xmontiarcwithautomaton.xdsml.xmontiarcwithautomaton.editor, and ur1.diverse.xmontiarcwithautomaton.xdsml.xmontiarcwithautomaton.tests
 
-from [xmontiarc github](https://github.com/awortmann/xmontiarc) (TODO: add projects to the archive).
+The quintessential artifact for integrating FSM and MontiArc is the melange model of ur1.diverse.xmontiarc.xdsml.withautomaton, which defines the two *external* languages (i.e., behaviorless languages that are considered legacy and to be reused as provided) FSM (ll. 5-8) and MontiArc (ll. 14-17). On top of these languages, it defines the executable languages XSFSM (ll. 10-12) and XMontiArc (ll. 19-24) by weaving the provided aspects into the legacy langages. Ultimately, it defines the XMontiArcWithAutomaton language (ll. 26-28) that merges the *StateMachine* concept of XSFSM into XMontiArc.
 
-After importing the projects you'll find the new projects in your workspace
+```Java
+package ur1.diverse.xmontiarcwithautomaton.xdsml
 
-1. ur1.diverse.xmontiarc.model Is the static part of XMontiArc's metamodel.
-   1. Please select the ur1.diverse.xmontiarc.model/xmontiarc.genmodel and run *generate all*. This produces the tree.based editors and testing projects.
-2. ur1.diverse.xmontiarc.k3dsa Comprises the dynamic parts of XMontiArc's metamodel.
-3. ur1.diverse.xmontiarc.xdsml Combines the static and the dynamic parts of XMontiArc's metamodel to produce an executable MontiArc ADL.
-   1. Please select the src/ur1/diverse/xmontiarc/xdsml/xmontiarc.melange, right click, melange, and run *generate all*. This produces the tree.based editors and testing projects for the combined executable DSL.
-   2. If the META-INF/MANIFEST.MF has errors afterwards, use the eclipse auto formatter (usually on ctrl+shift+f) to fix these (the second line is too long). Save the manifest afterwards.
-4. ur1.diverse.xmontiarc.runtime Contains modeling elements required at XMontiArc run time only.
-   1. Please select the ur1.diverse.xmontiarc.runtime.model/runtime.genmodel and run *generate all*. This produces the tree.based editors and testing projects. 
+import org.gemoc.sample.legacyfsm.fsm.k3dsa.*
 
-TODO: Explain the other projects
+external language FSM { 
+    syntax "platform:/resource/org.gemoc.sample.legacyfsm.fsm.model/model/fsm.ecore"
+}
 
-1. ur1.diverse.xmontiarc.xdsml.withautomaton Merges XMontiArc with the FSM language. To this end, it contains the Melange model defining our composed language in src/ur1/diverse/xmontiarc/xdsml/withautomaton/xmonticorewithautomon.melange.
-2. ur1.diverse.xmontiarcwithautomaton.xdsml.xmontiarc Contains the static metamodel of XMontiArc for this tutorial. You'll find it in models/XMontiArc.ecore.
-3. ​
+language XSFSM inherits FSM {
+	with org.gemoc.sample.legacyfsm.fsm.k3dsa.*
+}
 
+external language MontiArc { 
+    syntax "platform:/resource/ur1.diverse.xmontiarc.model/ur1.diverse.xmontiarc.model/xmontiarc.ecore" 
+    withGenmodel "platform:/resource/ur1.diverse.xmontiarc.model/ur1.diverse.xmontiarc.model/xmontiarc.genmodel" 
+} 
 
+language XMontiArc inherits MontiArc {  
+	with ur1.diverse.xmontiarc.k3dsa.xmontiarc.aspects.PortAspect
+	with ur1.diverse.xmontiarc.k3dsa.xmontiarc.aspects.SubcomponentAspect
+	with ur1.diverse.xmontiarc.k3dsa.xmontiarc.aspects.ComponentTypeAspect
+	with ur1.diverse.xmontiarc.k3dsa.xmontiarc.aspects.ConnectorAspect
+}
 
-The quintessential excerpt of this model is given below. It shows that we extend XMontiArc via inheritance (l. 1) and merge the concept fsm.StateMachine to xmontiarc.AutomatonComponentBehavior. This ultimately composes both metamodels.
-
-```java
 language XMontiArcWithAutomaton inherits XMontiArc{
-	merge XSFSM renaming {"fsm" to "xmontiarc" {"StateMachine" to "AutomatonComponentBehavior" }}
+	merge XSFSM renaming 
+    	{"fsm" to "xmontiarc" {"StateMachine" to "AutomatonComponentBehavior" }}
 }
 ```
 
