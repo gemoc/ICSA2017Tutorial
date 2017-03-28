@@ -297,6 +297,12 @@ This step is the most elaborate part of the tutorial. We aim to create a new lan
    * ur1.diverse.xmontiarcwithautomaton.xdsml.xmontiarcwithautomaton
      * Run "generate all" on its melange file to produce the projects ur1.diverse.xmontiarcwithautomaton.xdsml.xmontiarcwithautomaton.edit, ur1.diverse.xmontiarcwithautomaton.xdsml.xmontiarcwithautomaton.editor, and ur1.diverse.xmontiarcwithautomaton.xdsml.xmontiarcwithautomaton.tests
 
+The final project structure is as depicted below:
+
+![](figs/projects.png)
+
+
+
 The quintessential artifact for integrating FSM and MontiArc is the melange model of ur1.diverse.xmontiarc.xdsml.withautomaton, which defines the two *external* languages (i.e., behaviorless languages that are considered legacy and to be reused as provided) FSM (ll. 5-8) and MontiArc (ll. 14-17). On top of these languages, it defines the executable languages XSFSM (ll. 10-12) and XMontiArc (ll. 19-24) by weaving the provided aspects into the legacy langages. Ultimately, it defines the XMontiArcWithAutomaton language (ll. 26-28) that merges the *StateMachine* concept of XSFSM into XMontiArc.
 
 ```Java
