@@ -183,28 +183,22 @@ Let's debug this model!
 
 ### 2.4: Defining concrete syntax with Sirius
 
-For temporal restrictions, we provide to you the meta model, the odesign, and the initial semantics. In this step, we propose to show you how we could use the [Sirius](https://www.eclipse.org/sirius/doc/specifier/diagrams/Diagrams.html) framework to specify the graphical representation of a language. To show this, we aim to draw unidirectional connectors between ports using Sirius. This includes:
+In this step, you will define the grapical concrete syntax for a specific modeling element of the MontiArc language using the [Sirius](https://www.eclipse.org/sirius/doc/specifier/diagrams/Diagrams.html) framework. For temporal restrictions, we provide to you the meta model, the odesign, and the initial semantics, which are available from the [icsa2017 branch of the xmontiarc github repository](https://github.com/awortmann/xmontiarc/tree/icsa2017tutorial) (TODO: Which projects to import? In how many workspaces to work?) To show this, we aim to draw unidirectional connectors between ports using Sirius. This includes
 
-1. Defining what you have to draw when for each `IntermediateConnector` in the model.
-2. Defining what you have to draw and set when you add a new `IntermediateConnector` to the diagram.
+1. defining what you have to draw for each`IntermediateConnector` in the model and
+2. defining what you have to draw and set when you add a new `IntermediateConnector` to the diagram.
 
-Let us import an example model (from project *Test*) to understand the current diagram specification in the modelling workbench.
-
-TODO: Where do they get test from?
-
-TODO: Rename test to ICSA2017Example
-
-In this project, open the file */Test/bumperbot/BumperBot.aird* and in the project explorer, open the BumperBot diagram. See below:
+Let us import an example model from the project [ICSA2017Example](https://github.com/awortmann/xmontiarc/tree/icsa2017tutorial/ICSA2017Example) to understand the current diagram specification in the modelling workbench. In this project, open the file */bumperbot/BumperBot.aird* and in the project explorer, open the BumperBot diagram. See below:
 
 ![](figs/BumperBot.png)
 
 
-In the modelling workbench, let us also import the project *ur1.diverse.xmontiarc.design*. The good thing is that an odesign project is interpreted. As a result, you can modify the odesign diagram specification and just reload the diagram to see the impact.
+In the modelling workbench, let us also import the project *ur1.diverse.xmontiarc.design*, which is the Sirius editor for MontiArc. The good thing is that the odesign models of Sirius projects are interpreted, hence you can modify the odesign diagram specification and just reload the diagram to see the impact.
 
 
-Sirius is organized to query the model and create representation from the results of the queries. To draw the connector, we have to find each couple of port between which the connector must be drawn.
+Sirius is organized to query the model and create representation from the results of the queries. To draw the connector, we have to find each couple of ports between which the connector must be drawn.
 
-Let us create an element based edge. On the default Viewpoint, create a new Element based Edge.  You can customize the style. Next you have to specify the query. In our case, all the `IntermediateConnector` have a source and a target and we map the border of the source and the border of the target. Finding the source and the target can be done using Java and AQL. We propose to use Java.
+Let us create an element based edge: On the default Viewpoint, create a new Element based Edge.  You can customize the style. Next you have to specify the query. In our case, all the `IntermediateConnector` instances have a source and a target and we map the border of the source and the border of the target. Finding the source and the target can be done using Java and AQL. We propose to use Java.
 
 ![](figs/odesignTask1.png)
 
