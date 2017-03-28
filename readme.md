@@ -3,39 +3,32 @@
 * [Scope](#scope)
 * [Program](#program)
 * [Materials](#materials)
-* [Step 1: (Slides only)](#step-1-slides-only)
-* [Step 2: Building a simple finite state machine language for specifying your component behavior](#step-2-building-a-simple-finite-state-machine-language-for-specifying-your-component-behavior)
-   * [2.1 Starting from FSM Sequential example that exists in GEMOC Studio](#21-starting-from-fsm-sequential-example-that-exists-in-gemoc-studio)
-   * [2.2 Playing with the FSM language](#22-playing-with-the-fsm-language)
-   * [2.3 Adding new concepts to your language](#23-adding-new-concepts-to-your-language)
-   * [2.4 Adding OCL constraints](#24-adding-ocl-constraints)
-   * [2.5 Completing the dynamic semantics](#25-completing-the-dynamic-semantics)
-   * [2.6 Testing the execution of the model with its new semantics](#26-testing-the-execution-of-the-model-with-its-new-semantics)
-* [Step 3: Integrating FSM into a component metamodel](#step-3-integrating-fsm-into-a-component-metamodel)
-* [Step 4: Composing languages](#step-4-composing-languages)
 
 
 This tutorial provides a practical approach for developing and integrating various Domain-Specific (modeling) Languages (DSLs) used in the development of modern complex software-intensive systems, with the main objective to support abstraction and separation of concerns. This tutorial leverages the tooling provided by the GEMOC studio to present the various facilities offered by the Eclipse platform (incl., EMF/Ecore, Sirius) and introduces the advanced features to extend a DSL with a well-defined execution semantics. From such a specification, we demonstrate the ability of the studio to automatically support model execution, graphical animation, omniscient debugging, concurrency analysis and concurrent execution of heterogeneous models. The tutorial is composed of both lectures and hands-on sessions. Hands-on sessions allow participants to experiment on a concrete use case of an architecture description language used to coordinate heterogeneous behavioral and structural components.
+
+
 
 ## Scope
 
 During this tutorial, the participants will develop a simplified version of the [MontiArc component & connector ADL](http://www.se-rwth.de/topics/Software-Architecture.php). The ADL is tailored for designing component-based distributed interactive systems that reliy on state-based models to describe component behavior. You will use the GEMOC Studio to develop a simplified version of MontiArc, including  syntax and semantics, and deploy it in the modeling workbench to edit, execute, animate and debug conforming models. In the modeling workbench, the participants will design a software architecture based on predefined components. Based on such a design, participants will be able to concurrently execute the various components according to the execution semantics (message passing) of MontiArc, to graphically animate the architecture, and to debug the system behavior.
 
+
+
 ## Program
 
-- 14:00	Presentation: Opening
-- 14:15	Presentation: GEMOC Initiative and Studio
-- 14:45	Presentation: Model Execution
-- 15:00	Hands-On: Setup and Model Execution
-- 15:10	Presentation: Metamodeling
-- 15:30	Coffee Break
-- 16:00	Presentation: Concrete Syntax
-- 16:15	Hands-On: Create Graphical Representation and Actions
-- 16:35	Presentation: MontiArc and Language Composition
-- 16:50	Hands-On: Composing FSM and MontiArc
-- 17:15	Summary and Discussion
-- Materials
+- [Part 1. General introduction](#part-1-general-introduction)
+- [Part 2. Building a simple finite state machine language for specifying your component behavior](#part-2-building-a-simple-finite-state-machine-language-for-specifying-your-component-behavior)
+  - [2.1 Starting from FSM Sequential example that exists in GEMOC Studio](#21-starting-from-fsm-sequential-example-that-exists-in-gemoc-studio)
+  - [2.2 Adding new concepts to your language](#22-adding-new-concepts-to-your-language)
+  - [2.3 Completing the dynamic semantics](#23-completing-the-dynamic-semantics)
+  - [2.4: Defining Concrete Syntax with Sirius](#24-defining-concrete-syntax-with-sirius)
+  - [2.5: Composing languages](#25-composing-languages)
+- [Part 3. Wrap-up and discussion](#part-3-wrap-up-and-discussion)
 
+
+
+## Materials
 
 - The latest [GEMOC Studio](http://gemoc.org/studio.html) and provide a [Java 1.8 JDK](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html).
 - The slides for the tutorials are available on [github](https://github.com/GEMOC/ICSA2017Tutorial/tree/master/slides).
@@ -47,12 +40,17 @@ During this tutorial, the participants will develop a simplified version of the 
 
 You can refer to the documentation at any time.
 
-## Step 1: (Slides only)
+
+
+## Part 1. General introduction
+
 - Language Engineering with GEMOC (TODO: provide slides)
-- [MontiArc Introduction](https://github.com/GEMOC/ICSA2017Tutorial/tree/master/slides/MontiArc.pptx). 
+- [MontiArc Introduction](https://github.com/GEMOC/ICSA2017Tutorial/tree/master/slides/MontiArc.pptx)
 
 
-## Step 2: Building a simple finite state machine language for specifying your component behavior.
+
+
+## Part 2. Language engineering
 
 ### 2.1 Starting from FSM Sequential example that exists in GEMOC Studio
 
@@ -74,7 +72,7 @@ This produces the general structure of a DSL project.
 - org.GEMOC.sample.legacyfsm.xsfsm.xsfsm Generated executable FSM metamodel resulting from the org.GEMOC.sample.legacyfsm.xsfsm language specification melange file  
 
 
-### 2.2 Playing with the FSM language
+#### Playing with the language
 
 1. Start a modelling workbench
    ![](figs/runmodellinglanguage.png)
@@ -96,7 +94,7 @@ You then can play with the debug model by stepping through it and observing the 
 ​:warning: You can now close the modelling workbench
 
 
-### 2.3 Adding new concepts to your language
+### 2.2 Adding new concepts to your language
 
 Just open your FSM metamodel in the language workbench.
 
@@ -119,7 +117,7 @@ Just open your FSM metamodel in the language workbench.
 
 The result of this step is available from the [archive for step 2.3](https://github.com/gemoc/ICSA2017Tutorial/blob/master/2.4/2.4.zip).
 
-### 2.4 Adding OCL constraints
+#### Adding OCL constraints
 
 In our language, you can define your static semantics (i.e., well-formedness rules) using OCL. Let us try to define that a state cannot have two outgoing transitions without a guard. To this effect, open the metamodel with the *OCLinEcore editor* via right clicking it and selecting that editor. Here, you can create an `invariant` for the concept `State`that restricts its outgoing transitions.
 
@@ -131,7 +129,9 @@ After creating the *invariant* for the *State* concept, start the modeling workb
 You can look up the solution in org.gemoc.sample.legacyfsm.fsm.model/model/fsm.ecore of the [archive for step 2.4](https://github.com/gemoc/ICSA2017Tutorial/blob/master/2.4/2.4.zip).
 
 
-### 2.5 Completing the dynamic semantics
+
+
+### 2.3 Completing the dynamic semantics
 
 For temporal constraints, we provide an implementation of the FSM dynamic semantics. We suggest, to restart from the FSM version in the [archive for step 2.5](https://github.com/gemoc/ICSA2017Tutorial/blob/master/2.5/2.5-task.zip). Prior to that, delete all projects from your workspace.
 
@@ -143,7 +143,7 @@ We left two methods unimplemented with TODO. Try to implement these two methods.
 
 ​:warning: Execution Functions
 
-The Execution Functions define how the Execution Data evolve during the execution of the model. Execution Functions can be implemented by defining the body of a method. These methods must be annotated with the **@Step** annotation. Whenever a method with an @Step annotation returns, the changes in the model will be applied (via a transaction) to the resource. This means that the changes will be visible from an animator. K3 supports nested @Step annotation calls so that changes in the model will be applied when entering and leaving methods having this annotations.
+The Execution Functions define how the Execution Data evolve during the execution of the model. Execution Functions can be implemented by defining the body of a method. These methods must be annotated with the **@Part** annotation. Whenever a method with an @Part annotation returns, the changes in the model will be applied (via a transaction) to the resource. This means that the changes will be visible from an animator. K3 supports nested @Part annotation calls so that changes in the model will be applied when entering and leaving methods having this annotations.
 
 ​:warning: Entry Points
 
@@ -151,7 +151,7 @@ The GEMOC sequential engines uses methods annotated with **@Main** as entry poin
 
 The solution of this task is available from the [respective archive](https://github.com/gemoc/ICSA2017Tutorial/blob/master/2.5/2.5-solution.zip).
 
-### 2.6 Testing the execution of the model with its new semantics
+#### Testing the execution of the model with its new semantics
 
 Let's run the modelling workbench!
 
@@ -170,9 +170,9 @@ Let's debug this model!
 
 ![](figs/executingfsmextended.png)
 
-## Step 3: Integrating FSM into a component metamodel
 
-// TODO: the title is wrong. Here we add graphical editing capabilities
+
+### 2.5: Defining concrete syntax with Sirius
 
 For temporal restrictions, we provide to you the meta model, the odesign, and the initial semantics. In this step, we propose to show you how we could use the [Sirius](https://www.eclipse.org/sirius/doc/specifier/diagrams/Diagrams.html) framework to specify the graphical representation of a language. To show this, we aim to draw unidirectional connectors between ports using Sirius. This includes:
 
@@ -269,7 +269,7 @@ You can see in the next figures, the different configuration for these elements.
 Please refer to the [Sirius documentation](https://www.eclipse.org/sirius/doc/specifier/diagrams/Diagrams.html) for learning and you can configure in details your editor.
 
 
-## Step 4: Composing languages
+### 2.6 Composing languages
 
 This step is the most elaborate part of the tutorial. We aim to create a new language by composing our FSM with the XMontiArc metamodel. To this end, we will use Melange, which lets you create a language by composing several sublanguages. To continue, please import the following projects into your workspace (you can also achieve this by deleting all projects from your workspace and importing from the [icsa2017 branch of the xmontiarc github repository](https://github.com/awortmann/xmontiarc/tree/icsa2017tutorial)):
 
@@ -339,3 +339,9 @@ language XMontiArcWithAutomaton inherits XMontiArc{
 ```
 
 It remains to create glue code for the semantics. Lets do that together!
+
+TODO
+
+## Part 3. Wrap-up and discussion
+
+TODO
