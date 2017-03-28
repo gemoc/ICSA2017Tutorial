@@ -22,8 +22,8 @@ During this tutorial, the participants will extend a given finite state machine 
   - [2.1 Running the FSM example](#21-running-the-fsm-example)
   - [2.2 Adding new concepts to your language](#22-adding-new-concepts-to-your-language)
   - [2.3 Completing the dynamic semantics](#23-completing-the-dynamic-semantics)
-  - [2.4: Defining Concrete Syntax with Sirius](#24-defining-concrete-syntax-with-sirius)
-  - [2.5: Composing languages](#25-composing-languages)
+  - [2.4 Defining concrete syntax with Sirius](#24-defining-concrete-syntax-with-sirius)
+  - [2.5 Composing languages](#25-composing-languages)
 - [Part 3. Wrap-up and discussion](#part-3-wrap-up-and-discussion)
 
 
@@ -157,6 +157,14 @@ The Execution Functions define how the Execution Data evolve during the executio
 ​:warning: Entry Points
 
 The GEMOC sequential engines uses methods annotated with **@Main** as entry points to model execution. This annotation must be placed on operations applicable to the root model element.
+
+After finishing, run "generate all" on the Melange model of project org.gemoc.sample.legacyfsm.xsfsm, which generates a new language implementation.
+
+![](figs/melange-generate-all.png)
+
+Note how Melange has woven the methods defined in the aspects into the XSFSM metamodel defined in XSFSM.melange of org.gemoc.sample.legacyfsm.xsfsm.
+
+![](figs/generated-ecore.png)
 
 The solution of this task is available from the [step 2.3 archive](https://github.com/gemoc/ICSA2017Tutorial/blob/master/code/2.3-solution.zip).
 
