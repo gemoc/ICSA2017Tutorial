@@ -19,7 +19,7 @@ During this tutorial, the participants will develop a simplified version of the 
 
 - [Part 1. General introduction](#part-1-general-introduction)
 - [Part 2. Building a simple finite state machine language for specifying your component behavior](#part-2-building-a-simple-finite-state-machine-language-for-specifying-your-component-behavior)
-  - [2.1 Starting from FSM Sequential example that exists in GEMOC Studio](#21-starting-from-fsm-sequential-example-that-exists-in-gemoc-studio)
+  - [2.1 Running the FSM example](#21-running-the-fsm-example)
   - [2.2 Adding new concepts to your language](#22-adding-new-concepts-to-your-language)
   - [2.3 Completing the dynamic semantics](#23-completing-the-dynamic-semantics)
   - [2.4: Defining Concrete Syntax with Sirius](#24-defining-concrete-syntax-with-sirius)
@@ -52,7 +52,7 @@ You can refer to the documentation at any time.
 
 ## Part 2. Language engineering
 
-### 2.1 Starting from FSM Sequential example that exists in GEMOC Studio
+### 2.1 Running the FSM example
 
 - Open your GEMOC Studio
 - Go to a new workspace.
