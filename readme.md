@@ -23,17 +23,19 @@ During this tutorial, the participants will develop a simplified version of the 
 
 ## Program
 
-- 14:00 - 14:15 Welcome session: Scope and aim of the tutorial
-- 14:15 - 14:45 Presentations: 
-  - GEMOC Initiative (Andreas)
-  - GEMOC Studio (Didier)
-  - MontiArc (Andreas)
-- 14:30 - 15:30 Hands on part I: Steps 2.1 - 2.4
-- 15:30 - 16:00 Coffee Break
-- 16:00 - 17:00 Hands on part II: Steps 2.5 - 2.6
-- 17:00 - 17:30 Conclusion: Discussion and wrap up
+- 14:00	Presentation: Opening
+- 14:15	Presentation: GEMOC Initiative and Studio
+- 14:45	Presentation: Model Execution
+- 15:00	Hands-On: Setup and Model Execution
+- 15:10	Presentation: Metamodeling
+- 15:30	Coffee Break
+- 16:00	Presentation: Concrete Syntax
+- 16:15	Hands-On: Create Graphical Representation and Actions
+- 16:35	Presentation: MontiArc and Language Composition
+- 16:50	Hands-On: Composing FSM and MontiArc
+- 17:15	Summary and Discussion
+- Materials
 
-## Materials
 
 - The latest [GEMOC Studio](http://gemoc.org/studio.html) and provide a [Java 1.8 JDK](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html).
 - The slides for the tutorials are available on [github](https://github.com/GEMOC/ICSA2017Tutorial/tree/master/slides).
