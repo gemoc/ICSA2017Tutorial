@@ -15,6 +15,13 @@ During this tutorial, the participants will extend a given finite state machine 
 
 
 
+## Legend
+
+* ⚠️ Read carefully, tricky details follow,
+* ​:no_entry: Breaking changes. You should download a new verison of the language under development for temopral reasons. You may proceed with you local changes, but we might not be able to support its evolution tue to the short time frame of the tutorial. 
+
+
+
 ## Program
 
 - [Part 1. General introduction](#part-1-general-introduction)
@@ -31,10 +38,8 @@ During this tutorial, the participants will extend a given finite state machine 
 ## Materials
 
 - The latest [GEMOC Studio](http://gemoc.org/studio.html) and provide a [Java 1.8 JDK](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html).
-- The slides for the tutorials are available on [github](https://github.com/GEMOC/ICSA2017Tutorial/tree/master/slides).
-- The solution is available [here]().
+- The slides for the tutorials are available on [here](https://github.com/gemoc/ICSA2017Tutorial/blob/master/slides/tutorial-slides.pptx).
 - Most of the documentation on GEMOC approches are available [here](http://GEMOC.org/GEMOC-studio/publish/guide/html_single/Guide.html).
-- Overview slides on MontiArc and XMontiArc are [available on github](https://github.com/GEMOC/ICSA2017Tutorial/tree/master/slides/MontiArc.pptx). 
 - Documentation of MontiArc's [structural](http://www.se-rwth.de/publications/MontiArc-Architectural-Modeling-of-Interactive-Distributed-and-Cyber-Physical-Systems.pdf) and [behavioral](http://www.se-rwth.de/publications/Architecture-and-Behavior-Modeling-of-Cyber-Physical-Systems-with-MontiArcAutomaton.pdf) features is available as well.
 
 
@@ -44,13 +49,15 @@ You can refer to the documentation at any time.
 
 ## Part 1. General introduction
 
-- Language Engineering with GEMOC (TODO: provide slides)
-- [MontiArc Introduction](https://github.com/GEMOC/ICSA2017Tutorial/tree/master/slides/MontiArc.pptx)
-
+This part introduces the structure and goals of the tutorial. Moverover it covers an introduction to software language engineering, GEMOC Studio and the GEMOC initiative. The slides are available [here](https://github.com/gemoc/ICSA2017Tutorial/blob/master/slides/tutorial-slides.pptx).
 
 
 
 ## Part 2. Language engineering
+
+In this part, you will - due to temporal restrictions - extend the metamodel and semantics of a language for finite state machines (FSM) that ultimately will be integrated in the MontiArc component & connector ADL. In the first step, you will load the projects implementing the language into the language workbench, start the modeling workbench, and execute/debug an FSM. Afterwards, you will extend the metamodel of the FSM language with three new concepts related to FSM variables and their usage. Then you will add behavior of these new concepts to the language. After that, you switch to the MontiArc language and add new concrete (graphical) syntax to it, before you integrate FSM into MontiArc, combine theri behavior, and execute the result.
+
+
 
 ### 2.1 Running the FSM example
 
@@ -96,9 +103,11 @@ You then can play with the debug model by stepping through it and observing the 
 ​:warning: You can now close the modelling workbench
 
 
+
+
 ### 2.2 Adding new concepts to your language
 
-Just open your FSM metamodel in the language workbench.
+Just open your FSM metamodel (fsm.ecore) in the language workbench.
 
 1. Add the concept of `Variable` that has a name to the FSM. Add three subclasses : a `StringVariable`, `BooleanVariable`, and a `NumberVariable`as depicted below:
 
@@ -117,9 +126,9 @@ Just open your FSM metamodel in the language workbench.
 ![](figs/reload.png)
 ![](figs/generateall.png)
 
-The result of this step is available from the [archive for step 2.2-ecore](https://github.com/gemoc/ICSA2017Tutorial/blob/master/2.2/2.2-ecore.zip).
-
 #### Adding OCL constraints
+
+⛔ The result of the previous step is available from the [archive for step 2.2-ecore](https://github.com/gemoc/ICSA2017Tutorial/blob/master/2.2/2.2-ecore.zip). Please download it if you encountered problems in addint the new concepts to the FSM metamodel.
 
 In our language, you can define your static semantics (i.e., well-formedness rules) using OCL. Let us try to define that a state cannot have two outgoing transitions without a guard. To this effect, open the metamodel with the *OCLinEcore editor* via right clicking it and selecting that editor. Here, you can create an `invariant` for the concept `State`that restricts its outgoing transitions.
 
@@ -142,19 +151,19 @@ You can look up the solution in org.gemoc.sample.legacyfsm.fsm.model/model/fsm.e
 
 ### 2.3 Completing the dynamic semantics
 
-For temporal constraints, we provide an implementation of the FSM dynamic semantics. We suggest, to restart from the FSM version in the [archive for step 2.3](https://github.com/gemoc/ICSA2017Tutorial/blob/master/code/2.3-task.zip). Prior to that, delete all projects from your workspace.
+⛔ For temporal constraints, we provide an implementation of the FSM dynamic semantics. We suggest, to restart from the FSM version in the [archive for step 2.3](https://github.com/gemoc/ICSA2017Tutorial/blob/master/code/2.3-task.zip). Prior to that, delete all projects from your workspace. 
 
 The operational semantics of FSM are defined in the following Xtend file, which employs Kermeta and the [Interpreter Design Pattern](https://en.wikipedia.org/wiki/Interpreter_pattern) to describe the dynamic behavior of FM models: 
 
 - org.gemoc.sample.legacyfsm.fsm.k3dsa/src/org/gemoc/sample/legacyfsm/fsm/k3dsa/tfsmAspects.xtend, 
 
-We left two methods unimplemented with TODO. Try to implement these two methods.
+We left two methods unimplemented with "TODO". Try to implement these two methods.
 
-​:warning: Execution Functions
+**Execution Functions**
 
 The Execution Functions define how the Execution Data evolve during the execution of the model. Execution Functions can be implemented by defining the body of a method. These methods must be annotated with the **@Part** annotation. Whenever a method with an @Part annotation returns, the changes in the model will be applied (via a transaction) to the resource. This means that the changes will be visible from an animator. K3 supports nested @Part annotation calls so that changes in the model will be applied when entering and leaving methods having this annotations.
 
-​:warning: Entry Points
+**Entry Points**
 
 The GEMOC sequential engines uses methods annotated with **@Main** as entry points to model execution. This annotation must be placed on operations applicable to the root model element.
 
@@ -166,11 +175,11 @@ Note how Melange has woven the methods defined in the aspects into the XSFSM met
 
 ![](figs/generated-ecore.png)
 
-The solution of this task is available from the [step 2.3 archive](https://github.com/gemoc/ICSA2017Tutorial/blob/master/code/2.3-solution.zip).
+
 
 #### Testing the execution of the model with its new semantics
 
-Let's run the modelling workbench!
+⛔ The solution of the previous step is available from the [step 2.3 archive](https://github.com/gemoc/ICSA2017Tutorial/blob/master/code/2.3-solution.zip). Please download it and let's run the modelling workbench on top of these projects.
 
 Create a FSM model with two steps and one transition. Create a variable `a` with `1` as an initial step. Create a guard associated to the transition that checks whether `a == 1`.  Create an action that assigns `2` to the variable `a`.
 
@@ -282,39 +291,17 @@ Please refer to the [Sirius documentation](https://www.eclipse.org/sirius/doc/sp
 
 ### 2.5 Composing languages
 
-This step is the most elaborate part of the tutorial. We aim to create a new language by composing our FSM with the XMontiArc metamodel. To this end, we will use Melange, which lets you create a language by composing several sublanguages. To continue, please ensure you have  the following projects in your workspace. Please note that you can also achieve this by deleting all projects from your workspace and importing all projects from the [icsa2017 branch of the xmontiarc github repository](https://github.com/awortmann/xmontiarc/tree/icsa2017tutorial).
+⛔ This step is the most elaborate part of the tutorial. We aim to create a new language by composing our FSM with the XMontiArc metamodel. To this end, we will use Melange, which lets you create a language by composing several sublanguages.  We provide an improved version of the FSM language as well as the XMontiArc language to you. Please note that this is a **breaking change**. To continue, please ensure you have  the following projects in your workspace, which are available from the [icsa2017 branch of the xmontiarc github repository](https://github.com/awortmann/xmontiarc/tree/icsa2017tutorial).
 
-1. The XFSM language projects (either your solutions or as provided with the [step 2.3 archive](https://github.com/gemoc/ICSA2017Tutorial/blob/master/2.5/2.3-solution.zip))
-   * org.gemoc.sample.legacyfsm.fsm.design
-   * org.gemoc.sample.legacyfsm.fsm.k3dsa
-   * org.gemoc.sample.legacyfsm.fsm.model
-   * org.gemoc.sample.legacyfsm.fsm.model.edit
-   * org.gemoc.sample.legacyfsm.fsm.model.editor
-   * org.gemoc.sample.legacyfsm.xsfsm
-   * org.gemoc.sample.legacyfsm.xsfsm.design
-   * org.gemoc.sample.legacyfsm.xsfsm.trace
-   * org.gemoc.sample.legacyfsm.xsfsm.xsfsm
-     ​
-2. From the [xMontiArc github repository](https://github.com/awortmann/xmontiarc), please import at least
-   * ur1.diverse.xmontiarc.model
-     * Run "generate all" on its genmodel to produce the projects ur1.diverse.xmontiarc.model.edit, ur1.diverse.xmontiarc.model.editor, and ur1.diverse.xmontiarc.model.tests
-   * ur1.diverse.xmontiarc.k3dsa
-   * ur1.diverse.xmontiarc.xdsml
-     * Run "generate all" on its melange file to produce the project ur1.diverse.xmontiarc.xdsml.xmontiarc
-     * Run "generate all" on the genmodel of project ur1.diverse.xmontiarc.xdsml.xmontiarc to produce the projects ur1.diverse.xmontiarc.xdsml.xmontiarc.edit, ur1.diverse.xmontiarc.xdsml.xmontiarc.editor, and ur1.diverse.xmontiarc.xdsml.xmontiarc.tests
-       ​
-3. From the [step 3.0 archive](https://github.com/gemoc/ICSA2017Tutorial/blob/master/3.0/3.0.zip), please import all projects, i.e., 
-   * ur1.diverse.xmontiarc.xdsml.withautomaton
-   * ur1.diverse.xmontiarcwithautomaton.xdsml.xsfsm
-   * ur1.diverse.xmontiarcwithautomaton.xdsml.xmontiarc
-   * ur1.diverse.xmontiarcwithautomaton.xdsml.xmontiarcwithautomaton
-     * Run "generate all" on its melange file to produce the projects ur1.diverse.xmontiarcwithautomaton.xdsml.xmontiarcwithautomaton.edit, ur1.diverse.xmontiarcwithautomaton.xdsml.xmontiarcwithautomaton.editor, and ur1.diverse.xmontiarcwithautomaton.xdsml.xmontiarcwithautomaton.tests
++ TODO: Which projects are required and what are they used for?
 
-The final project structure is as depicted below:
+The final project structure is as depicted below: TODO: update
 
 ![](figs/projects.png )
 
 
+
+TODO: Update project names and Melange model in the following
 
 The quintessential artifact for integrating FSM and MontiArc is the melange model of ur1.diverse.xmontiarc.xdsml.withautomaton, which defines the two *external* languages (i.e., behaviorless languages that are considered legacy and to be reused as provided) FSM (ll. 5-8) and MontiArc (ll. 14-17). On top of these languages, it defines the executable languages XSFSM (ll. 10-12) and XMontiArc (ll. 19-24) by weaving the provided aspects into the legacy langages. Ultimately, it defines the XMontiArcWithAutomaton language (ll. 26-28) that merges the *StateMachine* concept of XSFSM into XMontiArc.
 
@@ -351,8 +338,10 @@ language XMontiArcWithAutomaton inherits XMontiArc{
 
 It remains to create glue code for the semantics. Lets do that together!
 
-TODO
+To create the glue between port automata (our improved version of FSM) and XMontiArc, we must ensure that messages passed to components via incoming ports are 'forwarded' to the component's embedded automaton (if any).  To this effect, we'll write the values of incoming ports to automaton variables of the same name. This automaton then performs a single step in which it may fire up to a single transition. Afterwards, the updated automaton variables are propagated to the ports again and send by the containing component.
+
+We therefore must specify corresponding behavior in the… TODO
 
 ## Part 3. Wrap-up and discussion
 
-TODO
+See slides.
