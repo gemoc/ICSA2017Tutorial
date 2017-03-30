@@ -133,7 +133,7 @@ Just open your FSM metamodel (in project org.gemoc.sample.legacyfsm.fsm.model) i
 
 #### Adding OCL constraints
 
-⛔ The result of the previous step is available from the [archive for step 2.2-ecore](https://github.com/gemoc/ICSA2017Tutorial/blob/master/2.2/2.2-ecore.zip). Please download it if you encountered problems in adding the new concepts to the FSM metamodel.
+⛔ The result of the previous step is available from the [folder 2.2a](https://github.com/gemoc/ICSA2017Tutorial/tree/master/code/2.2a). Please download it if you encountered problems in adding the new concepts to the FSM metamodel.
 
 In our language, you can define your static semantics (i.e., well-formedness rules) using OCL. Let us try to define that a state cannot have two outgoing transitions without a guard. To this effect, open the metamodel with the *OCLinEcore editor* via right clicking it and selecting that editor. Here, you can create an `invariant` for the concept `State`that restricts its outgoing transitions.
 
@@ -149,7 +149,7 @@ invariant uniqueStateNames:
 
 After creating the *invariant* for the *State* concept, start the modeling workbench again and open the **BitShifting** model again. Right click on it and select validate. Now eclipse marks all states as erroneous as none uses a guarded transition.
 
-You can look up the solution in org.gemoc.sample.legacyfsm.fsm.model/model/fsm.ecore of the [archive for step 2.2-ocl](https://github.com/gemoc/ICSA2017Tutorial/blob/master/code/2.2-ocl.zip).
+You can look up the solution in org.gemoc.sample.legacyfsm.fsm.model/model/fsm.ecore of the [folder 2.2b](https://github.com/gemoc/ICSA2017Tutorial/tree/master/code/2.2b).
 
 
 
