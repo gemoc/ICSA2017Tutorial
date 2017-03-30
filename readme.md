@@ -18,7 +18,7 @@ During this tutorial, the participants will extend a given finite state machine 
 ## Legend
 
 * ⚠️ Read carefully, tricky details follow,
-* ​:no_entry: Breaking changes. You should download a new verison of the language under development for temopral reasons. You may proceed with you local changes, but we might not be able to support its evolution tue to the short time frame of the tutorial. 
+* ​:no_entry: Breaking changes. You should download a new version of the language under development for temopral reasons. You may proceed with you local changes, but we might not be able to support its evolution tue to the short time frame of the tutorial. 
 
 
 
@@ -37,7 +37,7 @@ During this tutorial, the participants will extend a given finite state machine 
 
 ## Materials
 
-- The latest [GEMOC Studio](http://gemoc.org/studio.html) and provide a [Java 1.8 JDK](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html).
+- The latest [GEMOC Studio](http://gemoc.org/studio.html) and provide a [Java 1.8 JDK](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) and clone the [tutorial's repository](https://github.com/gemoc/ICSA2017Tutorial.git) or use the virtualbox VM TODO
 - The slides for the tutorials are available on [here](https://github.com/gemoc/ICSA2017Tutorial/blob/master/slides/tutorial-slides.pptx).
 - Most of the documentation on GEMOC approches are available [here](http://GEMOC.org/GEMOC-studio/publish/guide/html_single/Guide.html).
 - Documentation of MontiArc's [structural](http://www.se-rwth.de/publications/MontiArc-Architectural-Modeling-of-Interactive-Distributed-and-Cyber-Physical-Systems.pdf) and [behavioral](http://www.se-rwth.de/publications/Architecture-and-Behavior-Modeling-of-Cyber-Physical-Systems-with-MontiArcAutomaton.pdf) features is available as well.
@@ -67,28 +67,34 @@ In this part, you will - due to temporal restrictions - extend the metamodel and
 
 ![](figs/NewExample.png)
 
-This produces the general structure of a DSL project.
-- org.GEMOC.sample.legacyfsm.fsm.model Contains the metamodel of your language 
-- org.GEMOC.sample.legacyfsm.fsm.model.edit Contains the metamodel helper classes of your metamodel mainly Observer and Visitor Pattern  
-- org.GEMOC.sample.legacyfsm.fsm.model.editor Generate a generic tree based editor for your FSM Model 
-- org.GEMOC.sample.legacyfsm.fsm Contains the DSL description melange file  for your FSM language 
-- org.GEMOC.sample.legacyfsm.fsm.design Contains graphical representation desciption for you FSM model Sirius based  
-- org.GEMOC.sample.legacyfsm.xsfsm Contains the DSL description melange file  for your FSM language 
-- org.GEMOC.sample.legacyfsm.xsfsm.design Contains graphical representation extension for you FSM model Sirius Animator  
-- org.GEMOC.sample.legacyfsm.xsfsm.trace Contains the generated project for efficient executable trace management 
-- org.GEMOC.sample.legacyfsm.xsfsm.xsfsm Generated executable FSM metamodel resulting from the org.GEMOC.sample.legacyfsm.xsfsm language specification melange file  
+This produces the general structure of a (x)DSL project, which comprises the projects for your static language (projects org.gemoc.sample.legacyfsm.fsm.*) 
+
+-  org.gemoc.sample.legacyfsm.fsm.model Contains the metamodel of your language 
+- org.gemoc.sample.legacyfsm.fsm.model.edit Contains the metamodel helper classes of your metamodel mainly Observer and Visitor Pattern  
+- org.gemoc.sample.legacyfsm.fsm.model.editor Generate a generic tree based editor for your FSM Model 
+- org.gemoc.sample.legacyfsm.fsm Contains the DSL description melange file for your FSM language 
+- org.gemoc.sample.legacyfsm.fsm.design Contains a graphical representation desciption for you FSM model Sirius based  
+
+
+and their executable counterparts (projects org.gemoc.sample.legacyfsm.xsfsm.*)
+
+- org.gemoc.sample.legacyfsm.xsfsm Contains the DSL description melange file for your XSFSM language 
+- org.gemoc.sample.legacyfsm.xsfsm.design Contains graphical representation extension for you XSFSM model Sirius Animator  
+- org.gemoc.sample.legacyfsm.xsfsm.trace Contains the generated project for efficient executable trace management 
+- org.gemoc.sample.legacyfsm.xsfsm.xsfsm Generated executable FSM metamodel resulting from the org.gemoc.sample.legacyfsm.xsfsm language specification melange file
 
 
 #### Playing with the language
 
 1. Start a modelling workbench
+
    ![](figs/runmodellinglanguage.png)
 
    ​
 
 2. Get the example for (GEMOC model for FSM Sequential)
 
-![](figs/NewExampleModelling.png)
+   ![](figs/NewExampleModelling.png)
 
 - Open the bitshifting.aird file: there you can see and edit the FSM model.
 
@@ -107,28 +113,27 @@ You then can play with the debug model by stepping through it and observing the 
 
 ### 2.2 Adding new concepts to your language
 
-Just open your FSM metamodel (fsm.ecore) in the language workbench.
+Just open your FSM metamodel (in project org.gemoc.sample.legacyfsm.fsm.model) in the language workbench either using the graphical editor via fsm.aird or using the tree-based editor via fs.ecore. 
 
-1. Add the concept of `Variable` that has a name to the FSM. Add three subclasses : a `StringVariable`, `BooleanVariable`, and a `NumberVariable`as depicted below:
+![editors](/Users/andreas/Desktop/editors.png)
+
+1. Add the concept of `Variable` that has a name to the FSM. Add the subclasses : a `StringVariable`, `BooleanVariable`, and a `NumberVariable`as depicted below:
 
 ![](figs/Variable.png)
 
-2. Add theconcept of Guard to the Transition. Add eight subclasses : a `StringGuard`, a `BooleanGuard`and an abstract `NumberGuard`, a `EqualNumberGuard`, a LessThanNumberGuard`,a GreaterThanNumberGuard, a GreaterOrEqualThanNumberGuard`, and a `LessOrEqualThanNumberGuard` .
+2. Add the concepts of Guards and Actions to the Transition as depcited below
 
-![](figs/guard.png)
+![](figs/transitions.png)
 
-3. Add the concept of `Action` to the Transition. Add three subclasses : a `StringAction`, a `BooleanAction`, and a `NumberAction`.
-
-![](figs/Actions.png)
-
-​:warning:​ At the end of this task, you must regenerate the Java code for your metamodel. Right click on the *fsm.genmodel* in the same folder as the metamodel and select reload. Next open it and in the tree editor, right click and select *regenerate all*.
+​:warning: At the end of this task, you must regenerate the Java code for your metamodel. Right click on the *fsm.genmodel* in the same folder as the metamodel and select reload. Next open it and in the tree editor, right click and select *generate all*.
 
 ![](figs/reload.png)
+
 ![](figs/generateall.png)
 
 #### Adding OCL constraints
 
-⛔ The result of the previous step is available from the [archive for step 2.2-ecore](https://github.com/gemoc/ICSA2017Tutorial/blob/master/2.2/2.2-ecore.zip). Please download it if you encountered problems in addint the new concepts to the FSM metamodel.
+⛔ The result of the previous step is available from the [archive for step 2.2-ecore](https://github.com/gemoc/ICSA2017Tutorial/blob/master/2.2/2.2-ecore.zip). Please download it if you encountered problems in adding the new concepts to the FSM metamodel.
 
 In our language, you can define your static semantics (i.e., well-formedness rules) using OCL. Let us try to define that a state cannot have two outgoing transitions without a guard. To this effect, open the metamodel with the *OCLinEcore editor* via right clicking it and selecting that editor. Here, you can create an `invariant` for the concept `State`that restricts its outgoing transitions.
 
