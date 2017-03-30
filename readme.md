@@ -133,7 +133,7 @@ Just open your FSM metamodel (in project org.gemoc.sample.legacyfsm.fsm.model) i
 
 #### Adding OCL constraints
 
-⛔ The result of the previous step is available from the [folder 2.2a](https://github.com/gemoc/ICSA2017Tutorial/tree/master/code/2.2a). Please download it if you encountered problems in adding the new concepts to the FSM metamodel.
+⛔ The result of the previous step is available from the [folder 2.2](https://github.com/gemoc/ICSA2017Tutorial/tree/master/code/2.2). Please download it if you encountered problems in adding the new concepts to the FSM metamodel.
 
 In our language, you can define your static semantics (i.e., well-formedness rules) using OCL. Let us try to define that a state cannot have two outgoing transitions without a guard. To this effect, open the metamodel with the *OCLinEcore editor* via right clicking it and selecting that editor. Here, you can create an `invariant` for the concept `State`that restricts its outgoing transitions.
 
@@ -149,14 +149,12 @@ invariant uniqueStateNames:
 
 After creating the *invariant* for the *State* concept, start the modeling workbench again and open the **BitShifting** model again. Right click on it and select validate. Now eclipse marks all states as erroneous as none uses a guarded transition.
 
-You can look up the solution in org.gemoc.sample.legacyfsm.fsm.model/model/fsm.ecore of the [folder 2.2b](https://github.com/gemoc/ICSA2017Tutorial/tree/master/code/2.2b).
-
 
 
 
 ### 2.3 Completing the dynamic semantics
 
-⛔ For temporal constraints, we provide an implementation of the FSM dynamic semantics. We suggest, to restart from the FSM version in the [archive for step 2.3](https://github.com/gemoc/ICSA2017Tutorial/blob/master/code/2.3-task.zip). Prior to that, delete all projects from your workspace. 
+⛔ For temporal constraints, we provide an implementation of the FSM dynamic semantics. We suggest, to restart from the FSM version in the [folder 2.3](https://github.com/gemoc/ICSA2017Tutorial/tree/master/code/2.3). Prior to that, delete all projects from your workspace. 
 
 The operational semantics of FSM are defined in the following Xtend file, which employs Kermeta and the [Interpreter Design Pattern](https://en.wikipedia.org/wiki/Interpreter_pattern) to describe the dynamic behavior of FM models: 
 
@@ -184,7 +182,7 @@ Note how Melange has woven the methods defined in the aspects into the XSFSM met
 
 #### Testing the execution of the model with its new semantics
 
-⛔ The solution of the previous step is available from the [step 2.3 archive](https://github.com/gemoc/ICSA2017Tutorial/blob/master/code/2.3-solution.zip). Please download it and let's run the modelling workbench on top of these projects.
+⛔ The solution of the previous step is available from the [folder 2.4](https://github.com/gemoc/ICSA2017Tutorial/tree/master/code/2.4). Please download it and let's run the modelling workbench on top of these projects.
 
 Create a FSM model with two steps and one transition. Create a variable `a` with `1` as an initial step. Create a guard associated to the transition that checks whether `a == 1`.  Create an action that assigns `2` to the variable `a`.
 
