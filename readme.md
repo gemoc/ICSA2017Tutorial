@@ -11,7 +11,7 @@ This tutorial provides a practical approach for developing and integrating vario
 
 ## Scope
 
-During this tutorial, the participants will extend a given finite state machine DSL in terms of syntax and semantics and integrate it into a simplified version of the [MontiArc component & connector ADL](http://www.se-rwth.de/topics/Software-Architecture.php) using the GEMOC Studio language workbench. The ADL is tailored for designing component-based distributed interactive systems that reliy on state-based models to describe component behavior. In the modeling workbench, the participants will design integrated models. Based on such a design, participants will be able to concurrently execute the various components according to the execution semantics (message passing) of MontiArc, to graphically animate the architecture, and to debug the system behavior.
+During this tutorial, the participants will extend a given finite state machine DSL in terms of syntax and semantics and integrate it into a simplified version of the [MontiArc component & connector ADL](http://www.se-rwth.de/topics/Software-Architecture.php) using the GEMOC Studio language workbench. The ADL is tailored for designing component-based distributed interactive systems that rely on state-based models to describe component behavior. In the modeling workbench, the participants will design integrated models. Based on such a design, participants will be able to concurrently execute the various components according to the execution semantics (message passing) of MontiArc, to graphically animate the architecture, and to debug the system behavior.
 
 
 
@@ -53,7 +53,7 @@ This part introduces the structure and goals of the tutorial. Moverover it cover
 
 ## Part 2. Language engineering
 
-In this part, you will - due to temporal restrictions - extend the metamodel and semantics of a language for finite state machines (FSM) that ultimately will be integrated in the MontiArc component & connector ADL. In the first step, you will load the projects implementing the language into the language workbench, start the modeling workbench, and execute/debug an FSM. Afterwards, you will extend the metamodel of the FSM language with three new concepts related to FSM variables and their usage. Then you will add behavior of these new concepts to the language. After that, you switch to the MontiArc language and add new concrete (graphical) syntax to it, before you integrate FSM into MontiArc, combine theri behavior, and execute the result.
+In this part, you will - due to temporal restrictions - extend the metamodel and semantics of a language for finite state machines (FSM) that ultimately will be integrated in the MontiArc component & connector ADL. In the first step, you will load the projects implementing the language into the language workbench, start the modeling workbench, and execute/debug an FSM. Afterwards, you will extend the metamodel of the FSM language with three new concepts related to FSM variables and their usage. Then you will add behavior of these new concepts to the language. After that, you switch to the MontiArc language and add new concrete (graphical) syntax to it, before you integrate FSM into MontiArc, combine their behavior, and execute the result.
 
 
 
@@ -84,7 +84,7 @@ and their executable counterparts (projects org.gemoc.sample.legacyfsm.xsfsm.*)
 
 #### Playing with the language
 
-1. Start a modelling workbench
+1. Start a modeling workbench
 
    ![](figs/21-run-modelling-language.png)
 
@@ -104,7 +104,7 @@ You then can play with the debug model by stepping through it and observing the 
 
 ![](figs/21-run-example.png)
 
-​:warning: You can now close the modelling workbench
+​:warning: You can now close the modeling workbench
 
 
 
@@ -123,7 +123,7 @@ Just open your FSM metamodel (in project org.gemoc.sample.legacyfsm.fsm.model) i
 
 ![](figs/22-transitions.png)
 
-​:warning: At the end of this task, you must regenerate the Java code for your metamodel. Right click on the *fsm.genmodel* in the same folder as the metamodel and select reload. Next open it and in the tree editor, right click and select *generate all*.
+​:warning: At the end of this task, you must regenerate the Java code for your metamodel. Right click on the *fsm.genmodel* in the same folder as the metamodel and select reload. Next, open it and in the tree editor, right click and select *generate all*.
 
 ![](figs/22-reload-genmodel.png)
 
@@ -152,17 +152,17 @@ After creating the *invariant* for the *State* concept, start the modeling workb
 
 ### 2.3 Completing the dynamic semantics
 
-⛔ For temporal constraints, we provide an implementation of the FSM dynamic semantics. We suggest, to restart from the FSM version in the [folder 2.3](https://github.com/gemoc/ICSA2017Tutorial/tree/master/code/2.3). Prior to that, delete all projects from your workspace. 
+⛔ For temporal constraints, we provide an implementation of the FSM dynamic semantics. We suggest, to restart from the FSM version in the [folder 2.3](https://github.com/gemoc/ICSA2017Tutorial/tree/master/code/2.3). Prior to that, delete all projects from your workspace (or switch to another workspace). 
 
-The operational semantics of FSM are defined in the file tfsmAspects.xtend of project org.gemoc.sample.legacyfsm.fsm.k3dsa. This file which employs Kermeta and the [Interpreter Design Pattern](https://en.wikipedia.org/wiki/Interpreter_pattern) to describe the dynamic behavior of FM models and its contents is woven into the metamodel of your executable DSL (i.e., XSFSM, not FSM!). In this file, you have aspects for all classes of your metamodel. Some of these aspects use annotations to define execution functions or entry points. 
+The operational semantics of FSM are defined in the file tfsmAspects.xtend of project org.gemoc.sample.legacyfsm.fsm.k3dsa. This file which employs [Kermeta](http://www.kermeta.org) and the [Interpreter Design Pattern](https://en.wikipedia.org/wiki/Interpreter_pattern) to describe the dynamic behavior of FM models and its contents is woven into the metamodel of your executable DSL (i.e., XSFSM, not FSM!). In this file, you have aspects for all classes of your metamodel. Some of these aspects use annotations to define execution functions or entry points. 
 
 **Execution Functions**
 
-The Execution Functions define how the Execution Data evolve during the execution of the model. Execution Functions can be implemented by defining the body of a method. These methods must be annotated with the **@Part** annotation. Whenever a method with an @Part annotation returns, the changes in the model will be applied (via a transaction) to the resource. This means that the changes will be visible from an animator. K3 supports nested @Part annotation calls so that changes in the model will be applied when entering and leaving methods having these annotations.
+The Execution Functions define how the Execution Data evolve during the execution of the model. Execution Functions can be implemented by defining the body of a method. These methods must be annotated with the **@Step** annotation. Whenever a method with an @Step annotation returns, the changes in the model will be applied (via a transaction) to the resource. This means that the changes will be visible from an animator. K3 supports nested @Step annotation calls so that changes in the model will be applied when entering and leaving methods having these annotations.
 
 **Entry Points**
 
-The GEMOC sequential engines uses methods annotated with **@Main** as entry points to model execution. This annotation must be placed on operations applicable to the root model element.
+The GEMOC sequential engines uses methods annotated with **@Main** as entry points to model execution. This annotation must be placed on operations applicable to model elements considered as the model starting point (Often the root model element).
 
 We left two methods unimplemented with "TODO". Try to implement these two methods.
 
@@ -170,7 +170,7 @@ After finishing, run "generate all" on the Melange model of project org.gemoc.sa
 
 ![](figs/23-melange-generate-all.png)
 
-Note how Melange has woven the methods defined in the aspects into the XSFSM metamodel defined in XSFSM.melange of org.gemoc.sample.legacyfsm.xsfsm.
+Note how Melange has woven the methods defined in the aspects into the XSFSM metamodel defined in XSFSM.melange of *org.gemoc.sample.legacyfsm.xsfsm*.
 
 ![](figs/23-generated-ecore.png)
 
@@ -178,13 +178,13 @@ Note how Melange has woven the methods defined in the aspects into the XSFSM met
 
 #### Testing the execution of the model with its new semantics
 
-⛔ The solution of the previous step is available from the folder [2.4-sirius-start](https://github.com/gemoc/ICSA2017Tutorial/tree/master/code/2.4-sirius-start). Please download it and let's run the modelling workbench on top of these projects.
+⛔ The solution of the previous step is available from the folder [2.4-sirius-start](https://github.com/gemoc/ICSA2017Tutorial/tree/master/code/2.4-sirius-start). Please download it and let's run the modeling workbench on top of these projects.
 
 Create a FSM model with two steps and one transition. Create a variable `a` with `1` as an initial step. Create a guard associated to the transition that checks whether `a == 1`.  Create an action that assigns `2` to the variable `a`.
 
 ![](figs/23-extended-model.png)
 
-Let's debug this model!
+Let's debug/animate this model!
 
 1. Create the debug configuration
 
@@ -201,13 +201,13 @@ Let's debug this model!
 
 In this step, you will define the graphical concrete syntax for a specific modeling element of the MontiArc language using the [Sirius](https://www.eclipse.org/sirius/doc/specifier/diagrams/Diagrams.html) framework. 
 
-⛔ For temporal restrictions, we have prepared the state of FSM so far in the folder [2.4-sirius-start](https://github.com/gemoc/ICSA2017Tutorial/tree/master/code/2.4-sirius-start). Please remove your projects from the workspace and import the projects from this folder.  
+⛔ For temporal restrictions, we have prepared the state of FSM so far in the folder [2.4-sirius-start](https://github.com/gemoc/ICSA2017Tutorial/tree/master/code/2.4-sirius-start). Please remove your projects from the workspace (or switch to another workspace) and import the projects from this folder.  
 
 As you have added variables, guard, and actions to the metamodel, these should be rendered also. The following figures shows the intended result in action. Transitions display guards and actions, the FSM has a container displaying the current variables values, and the currently touched elements are highlighted during execution.
 
 ![](figs/24-debugging.png)
 
-In description/XSFSM.odesign of project org.gemoc.sample.legacyfsm.xsfsm.design, you'll find the Sirius designer model that renders the concrete graphical syntax of your language in the modelling workbench. This designer model is connected to you metamodel as depicted below:
+In *description/XSFSM.odesign* of project *org.gemoc.sample.legacyfsm.xsfsm.design*, you'll find the Sirius designer model that renders the concrete graphical syntax of your language in the modeling workbench. This designer model is connected to you metamodel as depicted below:
 
 ![](figs/24-metamodel.png)
 
@@ -216,7 +216,7 @@ This designer model comprises three views: a default view that renders the struc
 - For rendering guards and actions, please adjust the labels of transitions accordingly. To this effect, investigate how the properties of "Event Transition" are mapped to methods of the class `XFSMServices` and adjust the employed methods accordingly.
 - For the variables, we want to display their current values. To this end, create a container for variables in the animation view that can contain variables which are represented by labels as depicted by the next three figures.
 
-Please refer to the [Sirius documentation](https://www.eclipse.org/sirius/doc/specifier/diagrams/Diagrams.html) for learning and you can configure in details your editor.
+Please refer to the [Sirius documentation](https://www.eclipse.org/sirius/doc/specifier/diagrams/Diagrams.html) for learning how you can configure in details your editor.
 
 ![](figs/24-sirius-editors.png)
 
@@ -240,7 +240,7 @@ Let us import an example model from the project [ICSA2017Example](https://github
 
 From here, you can run the launch configuration */launch/HeatingController.launch*, as a **debug configuration** and start debugging your model. From the variables view (top right), you can adjust the current temperature to observe different FSM behavior. 
 
-⛔ The solution of the previous step is available from the [solution folder](https://github.com/gemoc/ICSA2017Tutorial/tree/master/code/solution), if you had any problems with recreating the new syntax elements, please download it, clear your language workbench workspace and import these projects. Then run the modelling workbench on top of these projects.
+⛔ The solution of the previous step is available from the [solution folder](https://github.com/gemoc/ICSA2017Tutorial/tree/master/code/solution), if you had any problems with recreating the new syntax elements, please download it, clear your language workbench workspace and import these projects. Then run the modeling workbench on top of these projects.
 
 
 
