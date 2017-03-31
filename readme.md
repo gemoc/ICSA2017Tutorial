@@ -156,11 +156,7 @@ After creating the *invariant* for the *State* concept, start the modeling workb
 
 ⛔ For temporal constraints, we provide an implementation of the FSM dynamic semantics. We suggest, to restart from the FSM version in the [folder 2.3](https://github.com/gemoc/ICSA2017Tutorial/tree/master/code/2.3). Prior to that, delete all projects from your workspace. 
 
-The operational semantics of FSM are defined in the following Xtend file, which employs Kermeta and the [Interpreter Design Pattern](https://en.wikipedia.org/wiki/Interpreter_pattern) to describe the dynamic behavior of FM models: 
-
-- org.gemoc.sample.legacyfsm.fsm.k3dsa/src/org/gemoc/sample/legacyfsm/fsm/k3dsa/tfsmAspects.xtend, 
-
-We left two methods unimplemented with "TODO". Try to implement these two methods.
+The operational semantics of FSM are defined in the file tfsmAspects.xtend of project org.gemoc.sample.legacyfsm.fsm.k3dsa. This file which employs Kermeta and the [Interpreter Design Pattern](https://en.wikipedia.org/wiki/Interpreter_pattern) to describe the dynamic behavior of FM models and its contents is woven into the metamodel of your executable DSL (i.e., XSFSM, not FSM!). In this file, you have aspects for all classes of your metamodel. Few of thse aspects use annotations to define execution functions or entry points. 
 
 **Execution Functions**
 
@@ -169,6 +165,8 @@ The Execution Functions define how the Execution Data evolve during the executio
 **Entry Points**
 
 The GEMOC sequential engines uses methods annotated with **@Main** as entry points to model execution. This annotation must be placed on operations applicable to the root model element.
+
+We left two methods unimplemented with "TODO". Try to implement these two methods.
 
 After finishing, run "generate all" on the Melange model of project org.gemoc.sample.legacyfsm.xsfsm, which generates a new language implementation.
 
@@ -182,7 +180,7 @@ Note how Melange has woven the methods defined in the aspects into the XSFSM met
 
 #### Testing the execution of the model with its new semantics
 
-⛔ The solution of the previous step is available from the [folder 2.4](https://github.com/gemoc/ICSA2017Tutorial/tree/master/code/2.4). Please download it and let's run the modelling workbench on top of these projects.
+⛔ The solution of the previous step is available from the folder [2.4-sirius-start](https://github.com/gemoc/ICSA2017Tutorial/tree/master/code/2.4-sirius-start). Please download it and let's run the modelling workbench on top of these projects.
 
 Create a FSM model with two steps and one transition. Create a variable `a` with `1` as an initial step. Create a guard associated to the transition that checks whether `a == 1`.  Create an action that assigns `2` to the variable `a`.
 
@@ -203,7 +201,9 @@ Let's debug this model!
 
 ### 2.4: Defining concrete syntax with Sirius
 
-In this step, you will define the grapical concrete syntax for a specific modeling element of the MontiArc language using the [Sirius](https://www.eclipse.org/sirius/doc/specifier/diagrams/Diagrams.html) framework. For temporal restrictions, we have prepared the state of FSM so far in the folder [2.4-sirius-start](https://github.com/gemoc/ICSA2017Tutorial/tree/master/code/2.4-sirius-start). Please remove your projects from the workspace and import the proejcts from this folder.  
+In this step, you will define the grapical concrete syntax for a specific modeling element of the MontiArc language using the [Sirius](https://www.eclipse.org/sirius/doc/specifier/diagrams/Diagrams.html) framework. 
+
+⛔ For temporal restrictions, we have prepared the state of FSM so far in the folder [2.4-sirius-start](https://github.com/gemoc/ICSA2017Tutorial/tree/master/code/2.4-sirius-start). Please remove your projects from the workspace and import the proejcts from this folder.  
 
 As you have added variables, guard, and actions to the metamodel, these should be rendered also. The following figures shows the intended result in action. Transitions display guards and actions, the FSM has a container displaying the current variables values, and the currently touched elements are highlighted during execution.
 
