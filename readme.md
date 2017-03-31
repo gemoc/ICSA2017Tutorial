@@ -203,10 +203,44 @@ Let's debug this model!
 
 ### 2.4: Defining concrete syntax with Sirius
 
-In this step, you will define the grapical concrete syntax for a specific modeling element of the MontiArc language using the [Sirius](https://www.eclipse.org/sirius/doc/specifier/diagrams/Diagrams.html) framework. For temporal restrictions, the state of FSM so far in the [2.4 folder](https://github.com/gemoc/ICSA2017Tutorial/tree/master/code/2.4). Please remove your projects from the workspace and import the proejcts from this folder. In description/XSFSM.odesign of project org.gemoc.sample.legacyfsm.xsfsm.design, you'll find the Sirius designer model that renders the conrete graphical syntax of your language in the modelign workbench .
+In this step, you will define the grapical concrete syntax for a specific modeling element of the MontiArc language using the [Sirius](https://www.eclipse.org/sirius/doc/specifier/diagrams/Diagrams.html) framework. For temporal restrictions, we have prepared the state of FSM so far in the folder [2.4-sirius-start](https://github.com/gemoc/ICSA2017Tutorial/tree/master/code/2.4-sirius-start). Please remove your projects from the workspace and import the proejcts from this folder.  
 
-1. defining what you have to draw for each`IntermediateConnector` in the model and
-2. defining what you have to draw and set when you add a new `IntermediateConnector` to the diagram.
+As you have added variables, guard, and actions to the metamodel, these should be rendered also. The following figures shows the intended result in action. Transitions display guards and actions, the FSM has a container displaying the current variables values, and the currently touched elements are highlighted during execution.
+
+![](figs/24-debugging.png)
+
+In description/XSFSM.odesign of project org.gemoc.sample.legacyfsm.xsfsm.design, you'll find the Sirius designer model that renders the conrete graphical syntax of your language in the modelling workbench. This designer model is connected to you metamodel as depicted below:
+
+![](figs/24-metamodel.png)
+
+This designer model comprises three views: a default view that renders the structural parts of your models, a debug view that overlays the structural parts with information from the debugging process (such as variable values), and an animator view that enables adding domain-specific animations.
+
+- For rendering guards and actions, please adjust the labels of transitions accordingly. To this effect, investigate how the properties of "Event Transition" are mapped to methods of the class `XFSMServices`and adjust the employed methods accordingly.
+- For the variables, we want to display their current values. To this end, create a container for variables in the animation view that can contain variables which are represented by labels as depicted by the next three figures.
+
+![](figs/24-sirius-editors.png)
+
+The container for variables with its properties:
+
+![](figs/24-variable-container.png)
+
+The node for variables with its properties:
+
+![](figs/24-variables.png)
+
+The label rendering inforamtion of variables with its properties:
+
+![](figs/24-black-square.png)
+
+The label receives its text from the registered services. Depending on the view, the services render either the variables' initial values (default view) or their current values (debugging view). Please have a look at the classes `FSMServices` and `XFSMServices` and investigate how this is achieved.
+
+
+
+
+
+
+
+XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 
 Let us import an example model from the project [ICSA2017Example](https://github.com/awortmann/xmontiarc/tree/icsa2017tutorial/ICSA2017Example) to understand the current diagram specification in the modelling workbench. In this project, open the file */bumperbot/BumperBot.aird* and in the project explorer, open the BumperBot diagram. See below:
 
