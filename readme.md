@@ -65,7 +65,7 @@ In this part, you will - due to temporal restrictions - extend the metamodel and
 - Go to a new workspace.
 - Go to File -> new -> Example -> Select GEMOC FSM Language (Sequential)
 
-![](figs/NewExample.png)
+![](figs/21-new-example.png)
 
 This produces the general structure of a (x)DSL project, which comprises the projects for your static language (projects org.gemoc.sample.legacyfsm.fsm.*) 
 
@@ -88,13 +88,13 @@ and their executable counterparts (projects org.gemoc.sample.legacyfsm.xsfsm.*)
 
 1. Start a modelling workbench
 
-   ![](figs/runmodellinglanguage.png)
+   ![](figs/21-run-modelling-language.png)
 
    ​
 
 2. Get the example for (GEMOC model for FSM Sequential)
 
-   ![](figs/NewExampleModelling.png)
+   ![](figs/21-create-example.png)
 
 - Open the bitshifting.aird file: there you can see and edit the FSM model.
 
@@ -104,7 +104,7 @@ Next: Run this model. To this effect, open the *run* dialog:
 
 You then can play with the debug model by stepping through it and observing the state transitions.
 
-![](figs/xfsmdemo.png)
+![](figs/21-run-example.png)
 
 ​:warning: You can now close the modelling workbench
 
@@ -115,21 +115,21 @@ You then can play with the debug model by stepping through it and observing the 
 
 Just open your FSM metamodel (in project org.gemoc.sample.legacyfsm.fsm.model) in the language workbench either using the graphical editor via fsm.aird or using the tree-based editor via fs.ecore. 
 
-![editors](/Users/andreas/Desktop/editors.png)
+![editors](figs/22-editors.png)
 
 1. Add the concept of `Variable` that has a name to the FSM. Add the subclasses : a `StringVariable`, `BooleanVariable`, and a `NumberVariable`as depicted below:
 
-![](figs/Variable.png)
+![](figs/22-variable.png)
 
 2. Add the concepts of Guards and Actions to the Transition as depicted below
 
-![](figs/transitions.png)
+![](figs/22-transitions.png)
 
 ​:warning: At the end of this task, you must regenerate the Java code for your metamodel. Right click on the *fsm.genmodel* in the same folder as the metamodel and select reload. Next open it and in the tree editor, right click and select *generate all*.
 
-![](figs/reload.png)
+![](figs/22-reload-genmodel.png)
 
-![](figs/generateall.png)
+![](figs/22-generate-all.png)
 
 #### Adding OCL constraints
 
@@ -170,11 +170,11 @@ We left two methods unimplemented with "TODO". Try to implement these two method
 
 After finishing, run "generate all" on the Melange model of project org.gemoc.sample.legacyfsm.xsfsm, which generates a new language implementation.
 
-![](figs/melange-generate-all.png)
+![](figs/23-melange-generate-all.png)
 
 Note how Melange has woven the methods defined in the aspects into the XSFSM metamodel defined in XSFSM.melange of org.gemoc.sample.legacyfsm.xsfsm.
 
-![](figs/generated-ecore.png)
+![](figs/23-generated-ecore.png)
 
 
 
@@ -184,18 +184,18 @@ Note how Melange has woven the methods defined in the aspects into the XSFSM met
 
 Create a FSM model with two steps and one transition. Create a variable `a` with `1` as an initial step. Create a guard associated to the transition that checks whether `a == 1`.  Create an action that assigns `2` to the variable `a`.
 
-![](figs/extendedmodel.png)
+![](figs/23-extended-model.png)
 
 Let's debug this model!
 
 1. Create the debug configuration
 
 
-![](figs/debugconfiguration.png)
+![](figs/23-debug-configuration.png)
 
 2. You can then debug your language
 
-![](figs/executingfsmextended.png)
+![](figs/23-executing-xsfsm.png)
 
 
 
@@ -245,46 +245,6 @@ From here, you can run the launch configuration */launch/HeatingController.launc
 ⛔ The solution of the previous step is available from the [solution folder](https://github.com/gemoc/ICSA2017Tutorial/tree/master/code/solution), ich you had any problems with recrating the new syntax elements, please download it, clear your language workbench workspace and import these projects. Then run the modelling workbench on top of these projects.
 
 
-### 2.5 Composing languages demo
-
-The quintessential artifact for integrating FSM and MontiArc is the melange model of ur1.diverse.xmontiarc.xdsml.withautomaton, which defines the two *external* languages (i.e., behaviorless languages that are considered legacy and to be reused as provided) FSM (ll. 5-8) and MontiArc (ll. 14-17). On top of these languages, it defines the executable languages XSFSM (ll. 10-12) and XMontiArc (ll. 19-24) by weaving the provided aspects into the legacy langages. Ultimately, it defines the XMontiArcWithAutomaton language (ll. 26-28) that merges the *StateMachine* concept of XSFSM into XMontiArc.
-
-```Java
-package ur1.diverse.xmontiarcwithautomaton.xdsml
-
-import org.gemoc.sample.legacyfsm.fsm.k3dsa.*
-
-external language FSM { 
-    syntax "platform:/resource/org.gemoc.sample.legacyfsm.fsm.model/model/fsm.ecore"
-}
-
-language XSFSM inherits FSM {
-	with org.gemoc.sample.legacyfsm.fsm.k3dsa.*
-}
-
-external language MontiArc { 
-    syntax "platform:/resource/ur1.diverse.xmontiarc.model/ur1.diverse.xmontiarc.model/xmontiarc.ecore" 
-    withGenmodel "platform:/resource/ur1.diverse.xmontiarc.model/ur1.diverse.xmontiarc.model/xmontiarc.genmodel" 
-} 
-
-language XMontiArc inherits MontiArc {  
-	with ur1.diverse.xmontiarc.k3dsa.xmontiarc.aspects.PortAspect
-	with ur1.diverse.xmontiarc.k3dsa.xmontiarc.aspects.SubcomponentAspect
-	with ur1.diverse.xmontiarc.k3dsa.xmontiarc.aspects.ComponentTypeAspect
-	with ur1.diverse.xmontiarc.k3dsa.xmontiarc.aspects.ConnectorAspect
-}
-
-language XMontiArcWithAutomaton inherits XMontiArc{
-	merge XSFSM renaming 
-    	{"fsm" to "xmontiarc" {"StateMachine" to "AutomatonComponentBehavior" }}
-}
-```
-
-It remains to create glue code for the semantics. Lets do that together!
-
-To create the glue between port automata (our improved version of FSM) and XMontiArc, we must ensure that messages passed to components via incoming ports are 'forwarded' to the component's embedded automaton (if any).  To this effect, we'll write the values of incoming ports to automaton variables of the same name. This automaton then performs a single step in which it may fire up to a single transition. Afterwards, the updated automaton variables are propagated to the ports again and send by the containing component.
-
-We therefore must specify corresponding behavior in the… TODO
 
 ## Part 3. Wrap-up and discussion
 
