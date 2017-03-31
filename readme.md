@@ -67,19 +67,19 @@ In this part, you will - due to temporal restrictions - extend the metamodel and
 
 This produces the general structure of a (x)DSL project, which comprises the projects for your static language (projects org.gemoc.sample.legacyfsm.fsm.*) 
 
--  org.gemoc.sample.legacyfsm.fsm.model Contains the metamodel of your language 
--  org.gemoc.sample.legacyfsm.fsm.model.edit Contains the metamodel helper classes of your metamodel mainly Observer and Visitor Pattern  
--  org.gemoc.sample.legacyfsm.fsm.model.editor Generate a generic tree based editor for your FSM Model 
--  org.gemoc.sample.legacyfsm.fsm Contains the DSL description Melange model for your FSM language 
--  org.gemoc.sample.legacyfsm.fsm.design Contains a graphical representation description for you FSM model Sirius based  
+-  *org.gemoc.sample.legacyfsm.fsm.model* Contains the metamodel of your language 
+-  *org.gemoc.sample.legacyfsm.fsm.model.edit* Contains the edition helper classes of your metamodel (reused by many  textual, tree, or graphical editors and Eclipse outline)  
+-  *org.gemoc.sample.legacyfsm.fsm.model.editor* Generate a generic tree based editor for your FSM Model 
+-  *org.gemoc.sample.legacyfsm.fsm* Contains the DSL description Melange model for your FSM language 
+-  *org.gemoc.sample.legacyfsm.fsm.design* Contains a graphical representation description for you FSM model Sirius based  
 
 
 and their executable counterparts (projects org.gemoc.sample.legacyfsm.xsfsm.*)
 
-- org.gemoc.sample.legacyfsm.xsfsm Contains the DSL description Melange model for your XSFSM language 
-- org.gemoc.sample.legacyfsm.xsfsm.design Contains graphical representation extension for you XSFSM model Sirius Animator  
-- org.gemoc.sample.legacyfsm.xsfsm.trace Contains the generated project for efficient executable trace management 
-- org.gemoc.sample.legacyfsm.xsfsm.xsfsm Generated executable FSM metamodel resulting from the org.gemoc.sample.legacyfsm.xsfsm language specification melange file
+- *org.gemoc.sample.legacyfsm.xsfsm* Contains the DSL description Melange model for your XSFSM language 
+- *org.gemoc.sample.legacyfsm.xsfsm.design* Contains graphical representation extension for you XSFSM model Sirius Animator  
+- *org.gemoc.sample.legacyfsm.xsfsm.trace* Contains the generated project for efficient executable trace management 
+- *org.gemoc.sample.legacyfsm.xsfsm.xsfsm* Generated executable FSM metamodel resulting from the *org.gemoc.sample.legacyfsm.xsfsm* language specification melange file
 
 
 #### Playing with the language
@@ -94,7 +94,7 @@ and their executable counterparts (projects org.gemoc.sample.legacyfsm.xsfsm.*)
 
    ![](figs/21-create-example.png)
 
-- Open the bitshifting.aird file: there you can see and edit the FSM model.
+- Open the *bitshifting.aird* file: there you can see and edit the FSM model.
 
 Next: Run this model. To this effect, open the *run* dialog:
 
@@ -111,7 +111,7 @@ You then can play with the debug model by stepping through it and observing the 
 
 ### 2.2 Adding new concepts to your language
 
-Just open your FSM metamodel (in project org.gemoc.sample.legacyfsm.fsm.model) in the language workbench either using the graphical editor via fsm.aird or using the tree-based editor via fsm.ecore. 
+Just open your FSM metamodel (in project *org.gemoc.sample.legacyfsm.fsm.model*) in the language workbench either using the graphical editor via fsm.aird or using the tree-based editor via fsm.ecore. 
 
 ![editors](figs/22-editors.png)
 
@@ -154,7 +154,7 @@ After creating the *invariant* for the *State* concept, start the modeling workb
 
 :no_entry: For temporal constraints, we provide an implementation of the FSM dynamic semantics. We suggest, to restart from the FSM version in the [folder 2.3](https://github.com/gemoc/ICSA2017Tutorial/tree/master/code/2.3). Prior to that, delete all projects from your workspace (or switch to another workspace). 
 
-The operational semantics of FSM are defined in the file tfsmAspects.xtend of project org.gemoc.sample.legacyfsm.fsm.k3dsa. This file which employs [Kermeta](http://www.kermeta.org) and the [Interpreter Design Pattern](https://en.wikipedia.org/wiki/Interpreter_pattern) to describe the dynamic behavior of FM models and its contents is woven into the metamodel of your executable DSL (i.e., XSFSM, not FSM!). In this file, you have aspects for all classes of your metamodel. Some of these aspects use annotations to define execution functions or entry points. 
+The operational semantics of FSM are defined in the file tfsmAspects.xtend of project org.gemoc.sample.legacyfsm.fsm.k3dsa. This file which employs [Kermeta 3 (K3)](http://www.kermeta.org) and the [Interpreter Design Pattern](https://en.wikipedia.org/wiki/Interpreter_pattern) to describe the dynamic behavior of FM models and its contents is woven into the metamodel of your executable DSL (i.e., XSFSM, not FSM!). In this file, you have aspects for all classes of your metamodel. Some of these aspects use annotations to define execution functions or entry points. 
 
 **Execution Functions**
 
