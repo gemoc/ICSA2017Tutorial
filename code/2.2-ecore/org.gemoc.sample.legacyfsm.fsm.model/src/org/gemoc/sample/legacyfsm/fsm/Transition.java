@@ -14,8 +14,6 @@ package org.gemoc.sample.legacyfsm.fsm;
  * <ul>
  *   <li>{@link org.gemoc.sample.legacyfsm.fsm.Transition#getSource <em>Source</em>}</li>
  *   <li>{@link org.gemoc.sample.legacyfsm.fsm.Transition#getTarget <em>Target</em>}</li>
- *   <li>{@link org.gemoc.sample.legacyfsm.fsm.Transition#getGuard <em>Guard</em>}</li>
- *   <li>{@link org.gemoc.sample.legacyfsm.fsm.Transition#getAction <em>Action</em>}</li>
  * </ul>
  *
  * @see org.gemoc.sample.legacyfsm.fsm.FsmPackage#getTransition()
@@ -78,57 +76,5 @@ public interface Transition extends NamedElement {
 	 * @generated
 	 */
 	void setTarget(State value);
-
-	/**
-	 * Returns the value of the '<em><b>Guard</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Guard</em>' containment reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Guard</em>' containment reference.
-	 * @see #setGuard(Guard)
-	 * @see org.gemoc.sample.legacyfsm.fsm.FsmPackage#getTransition_Guard()
-	 * @model containment="true" required="true"
-	 * @generated
-	 */
-	Guard getGuard();
-
-	/**
-	 * Sets the value of the '{@link org.gemoc.sample.legacyfsm.fsm.Transition#getGuard <em>Guard</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Guard</em>' containment reference.
-	 * @see #getGuard()
-	 * @generated
-	 */
-	void setGuard(Guard value);
-
-	/**
-	 * Returns the value of the '<em><b>Action</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Action</em>' containment reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Action</em>' containment reference.
-	 * @see #setAction(Action)
-	 * @see org.gemoc.sample.legacyfsm.fsm.FsmPackage#getTransition_Action()
-	 * @model containment="true" required="true"
-	 * @generated
-	 */
-	Action getAction();
-
-	/**
-	 * Sets the value of the '{@link org.gemoc.sample.legacyfsm.fsm.Transition#getAction <em>Action</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Action</em>' containment reference.
-	 * @see #getAction()
-	 * @generated
-	 */
-	void setAction(Action value);
 
 } // Transition

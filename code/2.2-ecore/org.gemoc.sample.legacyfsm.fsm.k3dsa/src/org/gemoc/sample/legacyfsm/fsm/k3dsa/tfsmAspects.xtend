@@ -66,14 +66,7 @@ class StateMachineAspect {
     @InitializeModel
     def public void assignInitialValues(EList<String> arguments) {
         _self.currentState = _self.initialState
-        for (Variable v : _self.variables) {
-            if (v instanceof NumberVariable) {
-                val NumberVariable ref = v as NumberVariable
-                ref.value = ref.initialValue
-            } else {
-                throw new Error("Found unsupported variable subtype")
-            }
-        }
+        // TODO
     }
 
 }

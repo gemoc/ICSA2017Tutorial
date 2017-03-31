@@ -28,75 +28,7 @@ public class FSMServices {
 	public String getLabel(Transition transition) {
 		final StringBuilder res = new StringBuilder();
 
-		res.append(transition.getName());
-		res.append(" ");	
-		if (transition.getGuard() != null) {
-			res.append("[");
-			if (transition.getGuard() instanceof EqualNumberGuard) {
-				NumberGuard ng = (EqualNumberGuard) transition.getGuard();
-				String sourceName = "N/A";
-				if (ng.getSource() != null) {
-					sourceName = ng.getSource().getName();
-				}
-				res.append(sourceName);
-				res.append(" == ");
-				res.append(ng.getValue());
-			}
-			else if (transition.getGuard() instanceof LessThanNumberGuard) {
-				NumberGuard ng = (LessThanNumberGuard) transition.getGuard();
-				String sourceName = "N/A";
-				if (ng.getSource() != null) {
-					sourceName = ng.getSource().getName();
-				}
-				res.append(sourceName);
-				res.append(" < ");
-				res.append(ng.getValue());
-			}
-			else if (transition.getGuard() instanceof GreaterThanNumberGuard) {
-				NumberGuard ng = (GreaterThanNumberGuard) transition.getGuard();
-				String sourceName = "N/A";
-				if (ng.getSource() != null) {
-					sourceName = ng.getSource().getName();
-				}
-				res.append(sourceName);
-				res.append(" > ");
-				res.append(ng.getValue());
-			}
-			res.append("]");
-		}
-		if (transition.getAction() != null) {
-			res.append(" / ");
-			if (transition.getAction() instanceof AssignValueAction) {
-				AssignValueAction ac = (AssignValueAction) transition.getAction();
-				String targetName = "N/A";
-				if (ac.getTarget() != null) {
-					targetName = ac.getTarget().getName();
-				}
-				res.append(targetName);
-				res.append(" := ");
-				res.append(ac.getValue());
-			}
-			else if (transition.getAction() instanceof IncreaseValueAction) {
-				IncreaseValueAction ac = (IncreaseValueAction) transition.getAction();
-				String targetName = "N/A";
-				if (ac.getTarget() != null) {
-					targetName = ac.getTarget().getName();
-				}
-				res.append(targetName);
-				res.append(" += ");
-				res.append(ac.getStepValue());
-			}
-			else if (transition.getAction() instanceof DecreaseValueAction) {
-				DecreaseValueAction ac = (DecreaseValueAction) transition.getAction();
-				String targetName = "N/A";
-				if (ac.getTarget() != null) {
-					targetName = ac.getTarget().getName();
-				}
-				res.append(targetName);
-				res.append(" -= ");
-				res.append(ac.getStepValue());
-			}
-		}
+		// TODO
 		
 		return res.toString();
 	}

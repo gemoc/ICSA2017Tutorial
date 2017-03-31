@@ -8,14 +8,8 @@ import java.util.List;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
-
-import org.eclipse.emf.ecore.EStructuralFeature;
-
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
-import org.eclipse.emf.edit.provider.ViewerNotification;
-
-import org.gemoc.sample.legacyfsm.fsm.FsmFactory;
 import org.gemoc.sample.legacyfsm.fsm.FsmPackage;
 import org.gemoc.sample.legacyfsm.fsm.Transition;
 
@@ -98,37 +92,6 @@ public class TransitionItemProvider extends NamedElementItemProvider {
 	}
 
 	/**
-	 * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
-	 * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
-	 * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
-		if (childrenFeatures == null) {
-			super.getChildrenFeatures(object);
-			childrenFeatures.add(FsmPackage.Literals.TRANSITION__GUARD);
-			childrenFeatures.add(FsmPackage.Literals.TRANSITION__ACTION);
-		}
-		return childrenFeatures;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	protected EStructuralFeature getChildFeature(Object object, Object child) {
-		// Check the type of the specified child object and return the proper feature to use for
-		// adding (see {@link AddCommand}) it as a child.
-
-		return super.getChildFeature(object, child);
-	}
-
-	/**
 	 * This returns Transition.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -164,13 +127,6 @@ public class TransitionItemProvider extends NamedElementItemProvider {
 	@Override
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
-
-		switch (notification.getFeatureID(Transition.class)) {
-			case FsmPackage.TRANSITION__GUARD:
-			case FsmPackage.TRANSITION__ACTION:
-				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
-				return;
-		}
 		super.notifyChanged(notification);
 	}
 
@@ -184,36 +140,6 @@ public class TransitionItemProvider extends NamedElementItemProvider {
 	@Override
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
-
-		newChildDescriptors.add
-			(createChildParameter
-				(FsmPackage.Literals.TRANSITION__GUARD,
-				 FsmFactory.eINSTANCE.createEqualNumberGuard()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(FsmPackage.Literals.TRANSITION__GUARD,
-				 FsmFactory.eINSTANCE.createLessThanNumberGuard()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(FsmPackage.Literals.TRANSITION__GUARD,
-				 FsmFactory.eINSTANCE.createGreaterThanNumberGuard()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(FsmPackage.Literals.TRANSITION__ACTION,
-				 FsmFactory.eINSTANCE.createAssignValueAction()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(FsmPackage.Literals.TRANSITION__ACTION,
-				 FsmFactory.eINSTANCE.createIncreaseValueAction()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(FsmPackage.Literals.TRANSITION__ACTION,
-				 FsmFactory.eINSTANCE.createDecreaseValueAction()));
 	}
 
 }

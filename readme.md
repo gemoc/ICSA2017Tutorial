@@ -133,7 +133,7 @@ Just open your FSM metamodel (in project org.gemoc.sample.legacyfsm.fsm.model) i
 
 #### Adding OCL constraints
 
-⛔ The result of the previous step is available from the [folder 2.2](https://github.com/gemoc/ICSA2017Tutorial/tree/master/code/2.2). Please download it if you encountered problems in adding the new concepts to the FSM metamodel.
+⛔ The result of the previous step is available from the [folder 2.2-ocl](https://github.com/gemoc/ICSA2017Tutorial/tree/master/code/2.2-ocl). Please download it if you encountered problems in adding the new concepts to the FSM metamodel.
 
 In our language, you can define your static semantics (i.e., well-formedness rules) using OCL. Let us try to define that a state cannot have two outgoing transitions without a guard. To this effect, open the metamodel with the *OCLinEcore editor* via right clicking it and selecting that editor. Here, you can create an `invariant` for the concept `State`that restricts its outgoing transitions.
 

@@ -16,7 +16,6 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link org.gemoc.sample.legacyfsm.fsm.StateMachine#getOwnedStates <em>Owned States</em>}</li>
  *   <li>{@link org.gemoc.sample.legacyfsm.fsm.StateMachine#getInitialState <em>Initial State</em>}</li>
  *   <li>{@link org.gemoc.sample.legacyfsm.fsm.StateMachine#getOwnedTransitions <em>Owned Transitions</em>}</li>
- *   <li>{@link org.gemoc.sample.legacyfsm.fsm.StateMachine#getVariables <em>Variables</em>}</li>
  * </ul>
  *
  * @see org.gemoc.sample.legacyfsm.fsm.FsmPackage#getStateMachine()
@@ -83,21 +82,5 @@ public interface StateMachine extends NamedElement {
 	 * @generated
 	 */
 	EList<Transition> getOwnedTransitions();
-
-	/**
-	 * Returns the value of the '<em><b>Variables</b></em>' containment reference list.
-	 * The list contents are of type {@link org.gemoc.sample.legacyfsm.fsm.Variable}.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Variables</em>' containment reference list isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Variables</em>' containment reference list.
-	 * @see org.gemoc.sample.legacyfsm.fsm.FsmPackage#getStateMachine_Variables()
-	 * @model containment="true"
-	 * @generated
-	 */
-	EList<Variable> getVariables();
 
 } // StateMachine

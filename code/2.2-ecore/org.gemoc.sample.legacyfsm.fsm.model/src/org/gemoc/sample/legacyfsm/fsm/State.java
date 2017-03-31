@@ -19,8 +19,7 @@ import org.eclipse.emf.common.util.EList;
  * </ul>
  *
  * @see org.gemoc.sample.legacyfsm.fsm.FsmPackage#getState()
- * @model annotation="http://www.eclipse.org/emf/2002/Ecore constraints='TutorialSect24'"
- *        annotation="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot TutorialSect24='Tuple {\n\tmessage : String = \'State has non-deterministic outgoing transitions\',\n\tstatus : Boolean = \n            self.outgoingTransitions->forAll(t1, t2 | (t1 <> t2 and t1.guard=null) implies t2.guard <> null)\n}.status'"
+ * @model
  * @generated
  */
 public interface State extends NamedElement {

@@ -49,69 +49,6 @@ public interface FsmFactory extends EFactory {
 	Transition createTransition();
 
 	/**
-	 * Returns a new object of class '<em>Number Variable</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Number Variable</em>'.
-	 * @generated
-	 */
-	NumberVariable createNumberVariable();
-
-	/**
-	 * Returns a new object of class '<em>Equal Number Guard</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Equal Number Guard</em>'.
-	 * @generated
-	 */
-	EqualNumberGuard createEqualNumberGuard();
-
-	/**
-	 * Returns a new object of class '<em>Assign Value Action</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Assign Value Action</em>'.
-	 * @generated
-	 */
-	AssignValueAction createAssignValueAction();
-
-	/**
-	 * Returns a new object of class '<em>Less Than Number Guard</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Less Than Number Guard</em>'.
-	 * @generated
-	 */
-	LessThanNumberGuard createLessThanNumberGuard();
-
-	/**
-	 * Returns a new object of class '<em>Greater Than Number Guard</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Greater Than Number Guard</em>'.
-	 * @generated
-	 */
-	GreaterThanNumberGuard createGreaterThanNumberGuard();
-
-	/**
-	 * Returns a new object of class '<em>Increase Value Action</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Increase Value Action</em>'.
-	 * @generated
-	 */
-	IncreaseValueAction createIncreaseValueAction();
-
-	/**
-	 * Returns a new object of class '<em>Decrease Value Action</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Decrease Value Action</em>'.
-	 * @generated
-	 */
-	DecreaseValueAction createDecreaseValueAction();
-
-	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

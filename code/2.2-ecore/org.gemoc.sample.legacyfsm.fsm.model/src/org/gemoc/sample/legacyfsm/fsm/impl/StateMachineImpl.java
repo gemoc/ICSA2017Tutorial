@@ -22,7 +22,6 @@ import org.gemoc.sample.legacyfsm.fsm.FsmPackage;
 import org.gemoc.sample.legacyfsm.fsm.State;
 import org.gemoc.sample.legacyfsm.fsm.StateMachine;
 import org.gemoc.sample.legacyfsm.fsm.Transition;
-import org.gemoc.sample.legacyfsm.fsm.Variable;
 
 /**
  * <!-- begin-user-doc -->
@@ -35,7 +34,6 @@ import org.gemoc.sample.legacyfsm.fsm.Variable;
  *   <li>{@link org.gemoc.sample.legacyfsm.fsm.impl.StateMachineImpl#getOwnedStates <em>Owned States</em>}</li>
  *   <li>{@link org.gemoc.sample.legacyfsm.fsm.impl.StateMachineImpl#getInitialState <em>Initial State</em>}</li>
  *   <li>{@link org.gemoc.sample.legacyfsm.fsm.impl.StateMachineImpl#getOwnedTransitions <em>Owned Transitions</em>}</li>
- *   <li>{@link org.gemoc.sample.legacyfsm.fsm.impl.StateMachineImpl#getVariables <em>Variables</em>}</li>
  * </ul>
  *
  * @generated
@@ -70,16 +68,6 @@ public class StateMachineImpl extends NamedElementImpl implements StateMachine {
 	 * @ordered
 	 */
 	protected EList<Transition> ownedTransitions;
-
-	/**
-	 * The cached value of the '{@link #getVariables() <em>Variables</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getVariables()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<Variable> variables;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -167,18 +155,6 @@ public class StateMachineImpl extends NamedElementImpl implements StateMachine {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<Variable> getVariables() {
-		if (variables == null) {
-			variables = new EObjectContainmentEList<Variable>(Variable.class, this, FsmPackage.STATE_MACHINE__VARIABLES);
-		}
-		return variables;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	@SuppressWarnings("unchecked")
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
@@ -201,8 +177,6 @@ public class StateMachineImpl extends NamedElementImpl implements StateMachine {
 				return ((InternalEList<?>)getOwnedStates()).basicRemove(otherEnd, msgs);
 			case FsmPackage.STATE_MACHINE__OWNED_TRANSITIONS:
 				return ((InternalEList<?>)getOwnedTransitions()).basicRemove(otherEnd, msgs);
-			case FsmPackage.STATE_MACHINE__VARIABLES:
-				return ((InternalEList<?>)getVariables()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -222,8 +196,6 @@ public class StateMachineImpl extends NamedElementImpl implements StateMachine {
 				return basicGetInitialState();
 			case FsmPackage.STATE_MACHINE__OWNED_TRANSITIONS:
 				return getOwnedTransitions();
-			case FsmPackage.STATE_MACHINE__VARIABLES:
-				return getVariables();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -248,10 +220,6 @@ public class StateMachineImpl extends NamedElementImpl implements StateMachine {
 				getOwnedTransitions().clear();
 				getOwnedTransitions().addAll((Collection<? extends Transition>)newValue);
 				return;
-			case FsmPackage.STATE_MACHINE__VARIABLES:
-				getVariables().clear();
-				getVariables().addAll((Collection<? extends Variable>)newValue);
-				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -273,9 +241,6 @@ public class StateMachineImpl extends NamedElementImpl implements StateMachine {
 			case FsmPackage.STATE_MACHINE__OWNED_TRANSITIONS:
 				getOwnedTransitions().clear();
 				return;
-			case FsmPackage.STATE_MACHINE__VARIABLES:
-				getVariables().clear();
-				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -294,8 +259,6 @@ public class StateMachineImpl extends NamedElementImpl implements StateMachine {
 				return initialState != null;
 			case FsmPackage.STATE_MACHINE__OWNED_TRANSITIONS:
 				return ownedTransitions != null && !ownedTransitions.isEmpty();
-			case FsmPackage.STATE_MACHINE__VARIABLES:
-				return variables != null && !variables.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

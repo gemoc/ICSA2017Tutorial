@@ -10,9 +10,7 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
-import org.gemoc.sample.legacyfsm.fsm.Action;
 import org.gemoc.sample.legacyfsm.fsm.FsmPackage;
-import org.gemoc.sample.legacyfsm.fsm.Guard;
 import org.gemoc.sample.legacyfsm.fsm.State;
 import org.gemoc.sample.legacyfsm.fsm.Transition;
 
@@ -26,8 +24,6 @@ import org.gemoc.sample.legacyfsm.fsm.Transition;
  * <ul>
  *   <li>{@link org.gemoc.sample.legacyfsm.fsm.impl.TransitionImpl#getSource <em>Source</em>}</li>
  *   <li>{@link org.gemoc.sample.legacyfsm.fsm.impl.TransitionImpl#getTarget <em>Target</em>}</li>
- *   <li>{@link org.gemoc.sample.legacyfsm.fsm.impl.TransitionImpl#getGuard <em>Guard</em>}</li>
- *   <li>{@link org.gemoc.sample.legacyfsm.fsm.impl.TransitionImpl#getAction <em>Action</em>}</li>
  * </ul>
  *
  * @generated
@@ -52,26 +48,6 @@ public class TransitionImpl extends NamedElementImpl implements Transition {
 	 * @ordered
 	 */
 	protected State target;
-
-	/**
-	 * The cached value of the '{@link #getGuard() <em>Guard</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getGuard()
-	 * @generated
-	 * @ordered
-	 */
-	protected Guard guard;
-
-	/**
-	 * The cached value of the '{@link #getAction() <em>Action</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getAction()
-	 * @generated
-	 * @ordered
-	 */
-	protected Action action;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -217,92 +193,6 @@ public class TransitionImpl extends NamedElementImpl implements Transition {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Guard getGuard() {
-		return guard;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain basicSetGuard(Guard newGuard, NotificationChain msgs) {
-		Guard oldGuard = guard;
-		guard = newGuard;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FsmPackage.TRANSITION__GUARD, oldGuard, newGuard);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
-		return msgs;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setGuard(Guard newGuard) {
-		if (newGuard != guard) {
-			NotificationChain msgs = null;
-			if (guard != null)
-				msgs = ((InternalEObject)guard).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FsmPackage.TRANSITION__GUARD, null, msgs);
-			if (newGuard != null)
-				msgs = ((InternalEObject)newGuard).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FsmPackage.TRANSITION__GUARD, null, msgs);
-			msgs = basicSetGuard(newGuard, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, FsmPackage.TRANSITION__GUARD, newGuard, newGuard));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Action getAction() {
-		return action;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain basicSetAction(Action newAction, NotificationChain msgs) {
-		Action oldAction = action;
-		action = newAction;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FsmPackage.TRANSITION__ACTION, oldAction, newAction);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
-		return msgs;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setAction(Action newAction) {
-		if (newAction != action) {
-			NotificationChain msgs = null;
-			if (action != null)
-				msgs = ((InternalEObject)action).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FsmPackage.TRANSITION__ACTION, null, msgs);
-			if (newAction != null)
-				msgs = ((InternalEObject)newAction).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FsmPackage.TRANSITION__ACTION, null, msgs);
-			msgs = basicSetAction(newAction, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, FsmPackage.TRANSITION__ACTION, newAction, newAction));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -330,10 +220,6 @@ public class TransitionImpl extends NamedElementImpl implements Transition {
 				return basicSetSource(null, msgs);
 			case FsmPackage.TRANSITION__TARGET:
 				return basicSetTarget(null, msgs);
-			case FsmPackage.TRANSITION__GUARD:
-				return basicSetGuard(null, msgs);
-			case FsmPackage.TRANSITION__ACTION:
-				return basicSetAction(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -352,10 +238,6 @@ public class TransitionImpl extends NamedElementImpl implements Transition {
 			case FsmPackage.TRANSITION__TARGET:
 				if (resolve) return getTarget();
 				return basicGetTarget();
-			case FsmPackage.TRANSITION__GUARD:
-				return getGuard();
-			case FsmPackage.TRANSITION__ACTION:
-				return getAction();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -373,12 +255,6 @@ public class TransitionImpl extends NamedElementImpl implements Transition {
 				return;
 			case FsmPackage.TRANSITION__TARGET:
 				setTarget((State)newValue);
-				return;
-			case FsmPackage.TRANSITION__GUARD:
-				setGuard((Guard)newValue);
-				return;
-			case FsmPackage.TRANSITION__ACTION:
-				setAction((Action)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -398,12 +274,6 @@ public class TransitionImpl extends NamedElementImpl implements Transition {
 			case FsmPackage.TRANSITION__TARGET:
 				setTarget((State)null);
 				return;
-			case FsmPackage.TRANSITION__GUARD:
-				setGuard((Guard)null);
-				return;
-			case FsmPackage.TRANSITION__ACTION:
-				setAction((Action)null);
-				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -420,10 +290,6 @@ public class TransitionImpl extends NamedElementImpl implements Transition {
 				return source != null;
 			case FsmPackage.TRANSITION__TARGET:
 				return target != null;
-			case FsmPackage.TRANSITION__GUARD:
-				return guard != null;
-			case FsmPackage.TRANSITION__ACTION:
-				return action != null;
 		}
 		return super.eIsSet(featureID);
 	}

@@ -59,13 +59,6 @@ public class FsmFactoryImpl extends EFactoryImpl implements FsmFactory {
 			case FsmPackage.STATE_MACHINE: return createStateMachine();
 			case FsmPackage.STATE: return createState();
 			case FsmPackage.TRANSITION: return createTransition();
-			case FsmPackage.NUMBER_VARIABLE: return createNumberVariable();
-			case FsmPackage.EQUAL_NUMBER_GUARD: return createEqualNumberGuard();
-			case FsmPackage.ASSIGN_VALUE_ACTION: return createAssignValueAction();
-			case FsmPackage.LESS_THAN_NUMBER_GUARD: return createLessThanNumberGuard();
-			case FsmPackage.GREATER_THAN_NUMBER_GUARD: return createGreaterThanNumberGuard();
-			case FsmPackage.INCREASE_VALUE_ACTION: return createIncreaseValueAction();
-			case FsmPackage.DECREASE_VALUE_ACTION: return createDecreaseValueAction();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -99,76 +92,6 @@ public class FsmFactoryImpl extends EFactoryImpl implements FsmFactory {
 	public Transition createTransition() {
 		TransitionImpl transition = new TransitionImpl();
 		return transition;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NumberVariable createNumberVariable() {
-		NumberVariableImpl numberVariable = new NumberVariableImpl();
-		return numberVariable;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EqualNumberGuard createEqualNumberGuard() {
-		EqualNumberGuardImpl equalNumberGuard = new EqualNumberGuardImpl();
-		return equalNumberGuard;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public AssignValueAction createAssignValueAction() {
-		AssignValueActionImpl assignValueAction = new AssignValueActionImpl();
-		return assignValueAction;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public LessThanNumberGuard createLessThanNumberGuard() {
-		LessThanNumberGuardImpl lessThanNumberGuard = new LessThanNumberGuardImpl();
-		return lessThanNumberGuard;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public GreaterThanNumberGuard createGreaterThanNumberGuard() {
-		GreaterThanNumberGuardImpl greaterThanNumberGuard = new GreaterThanNumberGuardImpl();
-		return greaterThanNumberGuard;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public IncreaseValueAction createIncreaseValueAction() {
-		IncreaseValueActionImpl increaseValueAction = new IncreaseValueActionImpl();
-		return increaseValueAction;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public DecreaseValueAction createDecreaseValueAction() {
-		DecreaseValueActionImpl decreaseValueAction = new DecreaseValueActionImpl();
-		return decreaseValueAction;
 	}
 
 	/**

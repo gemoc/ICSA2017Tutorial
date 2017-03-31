@@ -88,7 +88,6 @@ public class StateMachineItemProvider extends NamedElementItemProvider {
 			super.getChildrenFeatures(object);
 			childrenFeatures.add(FsmPackage.Literals.STATE_MACHINE__OWNED_STATES);
 			childrenFeatures.add(FsmPackage.Literals.STATE_MACHINE__OWNED_TRANSITIONS);
-			childrenFeatures.add(FsmPackage.Literals.STATE_MACHINE__VARIABLES);
 		}
 		return childrenFeatures;
 	}
@@ -146,7 +145,6 @@ public class StateMachineItemProvider extends NamedElementItemProvider {
 		switch (notification.getFeatureID(StateMachine.class)) {
 			case FsmPackage.STATE_MACHINE__OWNED_STATES:
 			case FsmPackage.STATE_MACHINE__OWNED_TRANSITIONS:
-			case FsmPackage.STATE_MACHINE__VARIABLES:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
@@ -173,11 +171,6 @@ public class StateMachineItemProvider extends NamedElementItemProvider {
 			(createChildParameter
 				(FsmPackage.Literals.STATE_MACHINE__OWNED_TRANSITIONS,
 				 FsmFactory.eINSTANCE.createTransition()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(FsmPackage.Literals.STATE_MACHINE__VARIABLES,
-				 FsmFactory.eINSTANCE.createNumberVariable()));
 	}
 
 }
