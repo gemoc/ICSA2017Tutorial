@@ -218,6 +218,8 @@ This designer model comprises three views: a default view that renders the struc
 - For rendering guards and actions, please adjust the labels of transitions accordingly. To this effect, investigate how the properties of "Event Transition" are mapped to methods of the class `XFSMServices`and adjust the employed methods accordingly.
 - For the variables, we want to display their current values. To this end, create a container for variables in the animation view that can contain variables which are represented by labels as depicted by the next three figures.
 
+Please refer to the [Sirius documentation](https://www.eclipse.org/sirius/doc/specifier/diagrams/Diagrams.html) for learning and you can configure in details your editor.
+
 ![](figs/24-sirius-editors.png)
 
 The container for variables with its properties:
@@ -234,111 +236,16 @@ The label rendering inforamtion of variables with its properties:
 
 The label receives its text from the registered services. Depending on the view, the services render either the variables' initial values (default view) or their current values (debugging view). Please have a look at the classes `FSMServices` and `XFSMServices` and investigate how this is achieved.
 
+Let us import an example model from the project [ICSA2017Example](https://github.com/awortmann/xmontiarc/tree/icsa2017tutorial/ICSA2017-FSM-Example) to udebug a model with your new representation. In this project, open the file */models/HeatingController.aird* and in the project explorer, open the HeatingController diagram. See below:
+
+![](figs/24-modeling-workbench.png)
+
+From here, you can run the launch configuration */launch/HeatingController.launch*, as a **debug configuration** and start debugging your model. From the variables view (top right), you can adjust the current temperature to observe different FSM behavior. 
+
+⛔ The solution of the previous step is available from the [solution folder](https://github.com/gemoc/ICSA2017Tutorial/tree/master/code/solution), ich you had any problems with recrating the new syntax elements, please download it, clear your language workbench workspace and import these projects. Then run the modelling workbench on top of these projects.
 
 
-
-
-
-
-XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-
-Let us import an example model from the project [ICSA2017Example](https://github.com/awortmann/xmontiarc/tree/icsa2017tutorial/ICSA2017Example) to understand the current diagram specification in the modelling workbench. In this project, open the file */bumperbot/BumperBot.aird* and in the project explorer, open the BumperBot diagram. See below:
-
-![](figs/BumperBot.png)
-
-
-In the modelling workbench, let us also import the project *ur1.diverse.xmontiarc.design*, which is the Sirius editor for MontiArc. The good thing is that the odesign models of Sirius projects are interpreted, hence you can modify the odesign diagram specification and just reload the diagram to see the impact.
-
-
-Sirius is organized to query the model and create representation from the results of the queries. To draw the connector, we have to find each couple of ports between which the connector must be drawn.
-
-Let us create an element based edge: On the default Viewpoint, create a new Element based Edge.  You can customize the style. Next you have to specify the query. In our case, all the `IntermediateConnector` instances have a source and a target and we map the border of the source and the border of the target. Finding the source and the target can be done using Java and AQL. We propose to use Java.
-
-![](figs/odesignTask1.png)
-
-Next, we have to create the action to do when we draw a new `IntermediateConnector` between port. To this end, in section *Edge Section Connector* in the odesign, create a new Edge Creation.
-
-![](figs/edgeCreation.png)
-
-This node gives you five subelements. Four that define the `source` and the `target` model elements pointed by your edge, the `source view`and the `target view` pointed by your edge. Also, it defines the action to execute when creating this edge. Basically, we will change the execution context for this action, create two variable and call an external Java action already define. The source code of this action is the following.
-
-
-```Java
-package ur1.diverse.xmontiarc.design;
-
-import java.io.IOException;
-import java.util.Collection;
-import java.util.Map;
-
-import org.eclipse.emf.ecore.EObject;
-import org.eclipse.sirius.business.api.action.AbstractExternalJavaAction;
-import org.eclipse.sirius.tools.api.ui.IExternalJavaAction;
-
-import ur1.diverse.xmontiarc.xdsml.xmontiarc.xmontiarc.ComponentType;
-import ur1.diverse.xmontiarc.xdsml.xmontiarc.xmontiarc.IncomingPort;
-import ur1.diverse.xmontiarc.xdsml.xmontiarc.xmontiarc.IntermediateConnector;
-import ur1.diverse.xmontiarc.xdsml.xmontiarc.xmontiarc.OutgoingPort;
-import ur1.diverse.xmontiarc.xdsml.xmontiarc.xmontiarc.Subcomponent;
-import ur1.diverse.xmontiarc.xdsml.xmontiarc.xmontiarc.XmontiarcFactory;
-
-public class CreateIntermediateConnectorAction extends AbstractExternalJavaAction implements IExternalJavaAction {
-
-	@Override
-	public boolean canExecute(Collection<? extends EObject> arg0) {
-		return true; // we can always add IntermediateConnector instances
-	}
-
-	@Override
-	public void execute(Collection<? extends EObject> args, Map<String, Object> options) {
-        // Load information from arguments
-		OutgoingPort subcomponentOut = (OutgoingPort) options.get("source");
-		IncomingPort subcomponentIn = (IncomingPort) options.get("target");
-		Subcomponent sourceSubcomponent = (Subcomponent) options.get("sourceSubcomponent");
-        // Identify containing component type
-		ComponentType type = sourceSubcomponent.getParent();
-        // New connector
-		IntermediateConnector con = XmontiarcFactory.eINSTANCE.createIntermediateConnector();
-		con.setSource(subcomponentOut);
-		con.setTarget(subcomponentIn);
-        // Add connector to component type 
-		type.getConnectors().add(con);
-		try {
-			type.eResource().save(null); // Save model
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		System.out.println("Connectors '" + type.getConnectors() + "'.");
-	}
-
-}
-```
-
-You can see in the next figures, the different configuration for these elements.
-
-![](figs/changeContext.png)
-
-![](figs/setsource.png)
-
-![](figs/settarget.png)
-
-![](figs/callExternalJavaAction.png)
-
-Please refer to the [Sirius documentation](https://www.eclipse.org/sirius/doc/specifier/diagrams/Diagrams.html) for learning and you can configure in details your editor.
-
-
-### 2.5 Composing languages
-
-⛔ This step is the most elaborate part of the tutorial. We aim to create a new language by composing our FSM with the XMontiArc metamodel. To this end, we will use Melange, which lets you create a language by composing several sublanguages.  We provide an improved version of the FSM language as well as the XMontiArc language to you. Please note that this is a **breaking change**. To continue, please ensure you have  the following projects in your workspace, which are available from the [icsa2017 branch of the xmontiarc github repository](https://github.com/awortmann/xmontiarc/tree/icsa2017tutorial).
-
-+ TODO: Which projects are required and what are they used for?
-
-The final project structure is as depicted below: TODO: update
-
-![](figs/projects.png )
-
-
-
-TODO: Update project names and Melange model in the following
+### 2.5 Composing languages demo
 
 The quintessential artifact for integrating FSM and MontiArc is the melange model of ur1.diverse.xmontiarc.xdsml.withautomaton, which defines the two *external* languages (i.e., behaviorless languages that are considered legacy and to be reused as provided) FSM (ll. 5-8) and MontiArc (ll. 14-17). On top of these languages, it defines the executable languages XSFSM (ll. 10-12) and XMontiArc (ll. 19-24) by weaving the provided aspects into the legacy langages. Ultimately, it defines the XMontiArcWithAutomaton language (ll. 26-28) that merges the *StateMachine* concept of XSFSM into XMontiArc.
 
