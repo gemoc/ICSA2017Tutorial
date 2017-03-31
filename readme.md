@@ -70,10 +70,10 @@ In this part, you will - due to temporal restrictions - extend the metamodel and
 This produces the general structure of a (x)DSL project, which comprises the projects for your static language (projects org.gemoc.sample.legacyfsm.fsm.*) 
 
 -  org.gemoc.sample.legacyfsm.fsm.model Contains the metamodel of your language 
-- org.gemoc.sample.legacyfsm.fsm.model.edit Contains the metamodel helper classes of your metamodel mainly Observer and Visitor Pattern  
-- org.gemoc.sample.legacyfsm.fsm.model.editor Generate a generic tree based editor for your FSM Model 
-- org.gemoc.sample.legacyfsm.fsm Contains the DSL description melange file for your FSM language 
-- org.gemoc.sample.legacyfsm.fsm.design Contains a graphical representation desciption for you FSM model Sirius based  
+-  org.gemoc.sample.legacyfsm.fsm.model.edit Contains the metamodel helper classes of your metamodel mainly Observer and Visitor Pattern  
+-  org.gemoc.sample.legacyfsm.fsm.model.editor Generate a generic tree based editor for your FSM Model 
+-  org.gemoc.sample.legacyfsm.fsm Contains the DSL description melange file for your FSM language 
+-  org.gemoc.sample.legacyfsm.fsm.design Contains a graphical representation desciption for you FSM model Sirius based  
 
 
 and their executable counterparts (projects org.gemoc.sample.legacyfsm.xsfsm.*)
@@ -121,7 +121,7 @@ Just open your FSM metamodel (in project org.gemoc.sample.legacyfsm.fsm.model) i
 
 ![](figs/Variable.png)
 
-2. Add the concepts of Guards and Actions to the Transition as depcited below
+2. Add the concepts of Guards and Actions to the Transition as depicted below
 
 ![](figs/transitions.png)
 
@@ -203,7 +203,7 @@ Let's debug this model!
 
 ### 2.4: Defining concrete syntax with Sirius
 
-In this step, you will define the grapical concrete syntax for a specific modeling element of the MontiArc language using the [Sirius](https://www.eclipse.org/sirius/doc/specifier/diagrams/Diagrams.html) framework. For temporal restrictions, we provide to you the meta model, the odesign, and the initial semantics, which are available from the [icsa2017 branch of the xmontiarc github repository](https://github.com/awortmann/xmontiarc/tree/icsa2017tutorial) (TODO: Which projects to import? In how many workspaces to work?) To show this, we aim to draw unidirectional connectors between ports using Sirius. This includes
+In this step, you will define the grapical concrete syntax for a specific modeling element of the MontiArc language using the [Sirius](https://www.eclipse.org/sirius/doc/specifier/diagrams/Diagrams.html) framework. For temporal restrictions, the state of FSM so far in the [2.4 folder](https://github.com/gemoc/ICSA2017Tutorial/tree/master/code/2.4). Please remove your projects from the workspace and import the proejcts from this folder. In description/XSFSM.odesign of project org.gemoc.sample.legacyfsm.xsfsm.design, you'll find the Sirius designer model that renders the conrete graphical syntax of your language in the modelign workbench .
 
 1. defining what you have to draw for each`IntermediateConnector` in the model and
 2. defining what you have to draw and set when you add a new `IntermediateConnector` to the diagram.

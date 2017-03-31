@@ -16,7 +16,7 @@ import org.gemoc.sample.legacyfsm.xsfsm.xsfsm.fsm.Guard;
  * @model
  * @generated
  */
-public interface Fsm_Guard_Holds extends SpecificStep, SmallStep, Fsm_StateMachine_Step_AbstractSubStep {
+public interface Fsm_Guard_Holds extends Fsm_StateMachine_Step_AbstractSubStep, SpecificStep, SmallStep {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

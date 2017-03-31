@@ -101,14 +101,14 @@ public class FSMServices {
 		return res.toString();
 	}
 	
-	public String printVariable(Variable var) {
+	public String printVariableState(Variable var) {
 		final StringBuilder res = new StringBuilder();
 
 		res.append("var: ");
 		res.append(var.getName());
 		if (var instanceof NumberVariable) {
 			res.append(" = ");
-			res.append(((NumberVariable)var).getInitialValue());
+			res.append(((NumberVariable) var).getInitialValue());
 		}
 		return res.toString();
 	}

@@ -68,16 +68,8 @@ public class StatesAdapterFactory extends AdapterFactoryImpl {
 	protected StatesSwitch<Adapter> modelSwitch =
 		new StatesSwitch<Adapter>() {
 			@Override
-			public Adapter caseNumberVariable_value_Value(NumberVariable_value_Value object) {
-				return createNumberVariable_value_ValueAdapter();
-			}
-			@Override
 			public Adapter caseState(State object) {
 				return createStateAdapter();
-			}
-			@Override
-			public Adapter caseStateMachine_currentState_Value(StateMachine_currentState_Value object) {
-				return createStateMachine_currentState_ValueAdapter();
 			}
 			@Override
 			public Adapter caseValue(Value object) {
@@ -104,20 +96,6 @@ public class StatesAdapterFactory extends AdapterFactoryImpl {
 
 
 	/**
-	 * Creates a new adapter for an object of class '{@link fsmTrace.States.NumberVariable_value_Value <em>Number Variable value Value</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see fsmTrace.States.NumberVariable_value_Value
-	 * @generated
-	 */
-	public Adapter createNumberVariable_value_ValueAdapter() {
-		return null;
-	}
-
-	/**
 	 * Creates a new adapter for an object of class '{@link fsmTrace.States.State <em>State</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
@@ -128,20 +106,6 @@ public class StatesAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createStateAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link fsmTrace.States.StateMachine_currentState_Value <em>State Machine current State Value</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see fsmTrace.States.StateMachine_currentState_Value
-	 * @generated
-	 */
-	public Adapter createStateMachine_currentState_ValueAdapter() {
 		return null;
 	}
 

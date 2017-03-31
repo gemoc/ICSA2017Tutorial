@@ -11,8 +11,6 @@ import fr.inria.diverse.trace.commons.model.trace.impl.StepImpl;
 import fsmTrace.States.State;
 import fsmTrace.States.StatesPackage;
 
-import fsmTrace.States.fsm.TracedTransition;
-
 import fsmTrace.Steps.Fsm_Transition_Fire;
 import fsmTrace.Steps.Fsm_Transition_Fire_AbstractSubStep;
 import fsmTrace.Steps.StepsPackage;
@@ -31,6 +29,8 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
+
+import org.gemoc.sample.legacyfsm.xsfsm.xsfsm.fsm.Transition;
 
 /**
  * <!-- begin-user-doc -->
@@ -234,8 +234,8 @@ public class Fsm_Transition_FireImpl extends StepImpl implements Fsm_Transition_
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public TracedTransition getCaller() {
-		return (fsmTrace.States.fsm.TracedTransition) this.getMseoccurrence().getMse().getCaller();
+	public Transition getCaller() {
+		return (org.gemoc.sample.legacyfsm.xsfsm.xsfsm.fsm.Transition) this.getMseoccurrence().getMse().getCaller();
 	}
 
 	/**

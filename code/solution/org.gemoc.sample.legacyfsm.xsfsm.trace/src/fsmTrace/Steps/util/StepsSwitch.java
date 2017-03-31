@@ -74,8 +74,8 @@ public class StepsSwitch<T> extends Switch<T> {
 			case StepsPackage.FSM_ASSIGN_VALUE_ACTION_EXECUTE: {
 				Fsm_AssignValueAction_Execute fsm_AssignValueAction_Execute = (Fsm_AssignValueAction_Execute)theEObject;
 				T result = caseFsm_AssignValueAction_Execute(fsm_AssignValueAction_Execute);
-				if (result == null) result = caseSmallStep(fsm_AssignValueAction_Execute);
 				if (result == null) result = caseFsm_Transition_Fire_AbstractSubStep(fsm_AssignValueAction_Execute);
+				if (result == null) result = caseSmallStep(fsm_AssignValueAction_Execute);
 				if (result == null) result = caseSpecificStep(fsm_AssignValueAction_Execute);
 				if (result == null) result = caseStep(fsm_AssignValueAction_Execute);
 				if (result == null) result = defaultCase(theEObject);
@@ -84,8 +84,8 @@ public class StepsSwitch<T> extends Switch<T> {
 			case StepsPackage.FSM_DECREASE_VALUE_ACTION_EXECUTE: {
 				Fsm_DecreaseValueAction_Execute fsm_DecreaseValueAction_Execute = (Fsm_DecreaseValueAction_Execute)theEObject;
 				T result = caseFsm_DecreaseValueAction_Execute(fsm_DecreaseValueAction_Execute);
-				if (result == null) result = caseSmallStep(fsm_DecreaseValueAction_Execute);
 				if (result == null) result = caseFsm_Transition_Fire_AbstractSubStep(fsm_DecreaseValueAction_Execute);
+				if (result == null) result = caseSmallStep(fsm_DecreaseValueAction_Execute);
 				if (result == null) result = caseSpecificStep(fsm_DecreaseValueAction_Execute);
 				if (result == null) result = caseStep(fsm_DecreaseValueAction_Execute);
 				if (result == null) result = defaultCase(theEObject);
@@ -114,8 +114,8 @@ public class StepsSwitch<T> extends Switch<T> {
 			case StepsPackage.FSM_GUARD_HOLDS: {
 				Fsm_Guard_Holds fsm_Guard_Holds = (Fsm_Guard_Holds)theEObject;
 				T result = caseFsm_Guard_Holds(fsm_Guard_Holds);
-				if (result == null) result = caseSmallStep(fsm_Guard_Holds);
 				if (result == null) result = caseFsm_StateMachine_Step_AbstractSubStep(fsm_Guard_Holds);
+				if (result == null) result = caseSmallStep(fsm_Guard_Holds);
 				if (result == null) result = caseSpecificStep(fsm_Guard_Holds);
 				if (result == null) result = caseStep(fsm_Guard_Holds);
 				if (result == null) result = defaultCase(theEObject);
@@ -124,8 +124,8 @@ public class StepsSwitch<T> extends Switch<T> {
 			case StepsPackage.FSM_INCREASE_VALUE_ACTION_EXECUTE: {
 				Fsm_IncreaseValueAction_Execute fsm_IncreaseValueAction_Execute = (Fsm_IncreaseValueAction_Execute)theEObject;
 				T result = caseFsm_IncreaseValueAction_Execute(fsm_IncreaseValueAction_Execute);
-				if (result == null) result = caseSmallStep(fsm_IncreaseValueAction_Execute);
 				if (result == null) result = caseFsm_Transition_Fire_AbstractSubStep(fsm_IncreaseValueAction_Execute);
+				if (result == null) result = caseSmallStep(fsm_IncreaseValueAction_Execute);
 				if (result == null) result = caseSpecificStep(fsm_IncreaseValueAction_Execute);
 				if (result == null) result = caseStep(fsm_IncreaseValueAction_Execute);
 				if (result == null) result = defaultCase(theEObject);

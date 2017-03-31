@@ -1,17 +1,17 @@
 package org.gemoc.sample.legacyfsm.xsfsm.design.services;
 
 import org.eclipse.emf.ecore.EObject;
-import org.gemoc.sample.legacyfsm.fsm.AssignValueAction;
-import org.gemoc.sample.legacyfsm.fsm.DecreaseValueAction;
-import org.gemoc.sample.legacyfsm.fsm.EqualNumberGuard;
-import org.gemoc.sample.legacyfsm.fsm.GreaterThanNumberGuard;
-import org.gemoc.sample.legacyfsm.fsm.IncreaseValueAction;
-import org.gemoc.sample.legacyfsm.fsm.LessThanNumberGuard;
-import org.gemoc.sample.legacyfsm.fsm.NumberGuard;
-import org.gemoc.sample.legacyfsm.fsm.NumberVariable;
-import org.gemoc.sample.legacyfsm.fsm.Variable;
+import org.gemoc.sample.legacyfsm.xsfsm.xsfsm.fsm.AssignValueAction;
+import org.gemoc.sample.legacyfsm.xsfsm.xsfsm.fsm.DecreaseValueAction;
+import org.gemoc.sample.legacyfsm.xsfsm.xsfsm.fsm.EqualNumberGuard;
+import org.gemoc.sample.legacyfsm.xsfsm.xsfsm.fsm.GreaterThanNumberGuard;
+import org.gemoc.sample.legacyfsm.xsfsm.xsfsm.fsm.IncreaseValueAction;
+import org.gemoc.sample.legacyfsm.xsfsm.xsfsm.fsm.LessThanNumberGuard;
+import org.gemoc.sample.legacyfsm.xsfsm.xsfsm.fsm.NumberGuard;
+import org.gemoc.sample.legacyfsm.xsfsm.xsfsm.fsm.NumberVariable;
 import org.gemoc.sample.legacyfsm.xsfsm.xsfsm.fsm.State;
 import org.gemoc.sample.legacyfsm.xsfsm.xsfsm.fsm.Transition;
+import org.gemoc.sample.legacyfsm.xsfsm.xsfsm.fsm.Variable;
 
 /** FSM services.
  * 
@@ -110,7 +110,7 @@ public class XFSMServices {
 		res.append(var.getName());
 		if (var instanceof NumberVariable) {
 			res.append(" = ");
-			res.append(((NumberVariable)var).getInitialValue());
+			res.append(((NumberVariable) var).getValue());
 		}
 		return res.toString();
 	}

@@ -16,12 +16,12 @@ public class IncreaseValueActionAdapter extends EObjectAdapter<IncreaseValueActi
   }
   
   @Override
-  public long getStepValue() {
+  public int getStepValue() {
     return adaptee.getStepValue();
   }
   
   @Override
-  public void setStepValue(final long o) {
+  public void setStepValue(final int o) {
     adaptee.setStepValue(o);
   }
   
@@ -37,7 +37,7 @@ public class IncreaseValueActionAdapter extends EObjectAdapter<IncreaseValueActi
     else adaptee.setTarget(null);
   }
   
-  protected final static long STEP_VALUE_EDEFAULT = 0L;
+  protected final static int STEP_VALUE_EDEFAULT = 0;
   
   @Override
   public EClass eClass() {
@@ -50,7 +50,7 @@ public class IncreaseValueActionAdapter extends EObjectAdapter<IncreaseValueActi
     	case org.gemoc.sample.legacyfsm.fsm.FsmPackage.INCREASE_VALUE_ACTION__TARGET:
     		return getTarget();
     	case org.gemoc.sample.legacyfsm.fsm.FsmPackage.INCREASE_VALUE_ACTION__STEP_VALUE:
-    		return new java.lang.Long(getStepValue());
+    		return new java.lang.Integer(getStepValue());
     }
     
     return super.eGet(featureID, resolve, coreType);
@@ -77,7 +77,7 @@ public class IncreaseValueActionAdapter extends EObjectAdapter<IncreaseValueActi
     		 newValue);
     		return;
     	case org.gemoc.sample.legacyfsm.fsm.FsmPackage.INCREASE_VALUE_ACTION__STEP_VALUE:
-    		setStepValue(((java.lang.Long) newValue).longValue());
+    		setStepValue(((java.lang.Integer) newValue).intValue());
     		return;
     }
     

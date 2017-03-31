@@ -26,12 +26,12 @@ public class NumberGuardAdapter extends EObjectAdapter<NumberGuard> implements o
   }
   
   @Override
-  public long getValue() {
+  public int getValue() {
     return adaptee.getValue();
   }
   
   @Override
-  public void setValue(final long o) {
+  public void setValue(final int o) {
     adaptee.setValue(o);
   }
   
@@ -49,7 +49,7 @@ public class NumberGuardAdapter extends EObjectAdapter<NumberGuard> implements o
   
   protected final static boolean NOT_EDEFAULT = false;
   
-  protected final static long VALUE_EDEFAULT = -1L;
+  protected final static int VALUE_EDEFAULT = -1;
   
   @Override
   public EClass eClass() {
@@ -62,7 +62,7 @@ public class NumberGuardAdapter extends EObjectAdapter<NumberGuard> implements o
     	case org.gemoc.sample.legacyfsm.fsm.FsmPackage.NUMBER_GUARD__NOT:
     		return isNot() ? Boolean.TRUE : Boolean.FALSE;
     	case org.gemoc.sample.legacyfsm.fsm.FsmPackage.NUMBER_GUARD__VALUE:
-    		return new java.lang.Long(getValue());
+    		return new java.lang.Integer(getValue());
     	case org.gemoc.sample.legacyfsm.fsm.FsmPackage.NUMBER_GUARD__SOURCE:
     		return getSource();
     }
@@ -91,7 +91,7 @@ public class NumberGuardAdapter extends EObjectAdapter<NumberGuard> implements o
     		setNot(((java.lang.Boolean) newValue).booleanValue());
     		return;
     	case org.gemoc.sample.legacyfsm.fsm.FsmPackage.NUMBER_GUARD__VALUE:
-    		setValue(((java.lang.Long) newValue).longValue());
+    		setValue(((java.lang.Integer) newValue).intValue());
     		return;
     	case org.gemoc.sample.legacyfsm.fsm.FsmPackage.NUMBER_GUARD__SOURCE:
     		setSource(

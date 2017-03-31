@@ -36,7 +36,7 @@ public abstract class NumberGuardImpl extends GuardImpl implements NumberGuard {
 	 * @generated
 	 * @ordered
 	 */
-	protected static final long VALUE_EDEFAULT = -1L;
+	protected static final int VALUE_EDEFAULT = -1;
 
 	/**
 	 * The cached value of the '{@link #getValue() <em>Value</em>}' attribute.
@@ -46,7 +46,7 @@ public abstract class NumberGuardImpl extends GuardImpl implements NumberGuard {
 	 * @generated
 	 * @ordered
 	 */
-	protected long value = VALUE_EDEFAULT;
+	protected int value = VALUE_EDEFAULT;
 
 	/**
 	 * The cached value of the '{@link #getSource() <em>Source</em>}' reference.
@@ -82,7 +82,7 @@ public abstract class NumberGuardImpl extends GuardImpl implements NumberGuard {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public long getValue() {
+	public int getValue() {
 		return value;
 	}
 
@@ -91,8 +91,8 @@ public abstract class NumberGuardImpl extends GuardImpl implements NumberGuard {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setValue(long newValue) {
-		long oldValue = value;
+	public void setValue(int newValue) {
+		int oldValue = value;
 		value = newValue;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, FsmPackage.NUMBER_GUARD__VALUE, oldValue, value));
@@ -162,7 +162,7 @@ public abstract class NumberGuardImpl extends GuardImpl implements NumberGuard {
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case FsmPackage.NUMBER_GUARD__VALUE:
-				setValue((Long)newValue);
+				setValue((Integer)newValue);
 				return;
 			case FsmPackage.NUMBER_GUARD__SOURCE:
 				setSource((NumberVariable)newValue);

@@ -103,6 +103,52 @@ public interface StepsPackage extends EPackage {
 	int SPECIFIC_STEP_FEATURE_COUNT = TracePackage.STEP_FEATURE_COUNT + 2;
 
 	/**
+	 * The meta object id for the '{@link fsmTrace.Steps.Fsm_Transition_Fire_AbstractSubStep <em>Fsm Transition Fire Abstract Sub Step</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see fsmTrace.Steps.Fsm_Transition_Fire_AbstractSubStep
+	 * @see fsmTrace.Steps.impl.StepsPackageImpl#getFsm_Transition_Fire_AbstractSubStep()
+	 * @generated
+	 */
+	int FSM_TRANSITION_FIRE_ABSTRACT_SUB_STEP = 13;
+
+	/**
+	 * The feature id for the '<em><b>Mseoccurrence</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FSM_TRANSITION_FIRE_ABSTRACT_SUB_STEP__MSEOCCURRENCE = SPECIFIC_STEP__MSEOCCURRENCE;
+
+	/**
+	 * The feature id for the '<em><b>Ending State</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FSM_TRANSITION_FIRE_ABSTRACT_SUB_STEP__ENDING_STATE = SPECIFIC_STEP__ENDING_STATE;
+
+	/**
+	 * The feature id for the '<em><b>Starting State</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FSM_TRANSITION_FIRE_ABSTRACT_SUB_STEP__STARTING_STATE = SPECIFIC_STEP__STARTING_STATE;
+
+	/**
+	 * The number of structural features of the '<em>Fsm Transition Fire Abstract Sub Step</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FSM_TRANSITION_FIRE_ABSTRACT_SUB_STEP_FEATURE_COUNT = SPECIFIC_STEP_FEATURE_COUNT + 0;
+
+	/**
 	 * The meta object id for the '{@link fsmTrace.Steps.impl.Fsm_AssignValueAction_ExecuteImpl <em>Fsm Assign Value Action Execute</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -119,7 +165,7 @@ public interface StepsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int FSM_ASSIGN_VALUE_ACTION_EXECUTE__MSEOCCURRENCE = SPECIFIC_STEP__MSEOCCURRENCE;
+	int FSM_ASSIGN_VALUE_ACTION_EXECUTE__MSEOCCURRENCE = FSM_TRANSITION_FIRE_ABSTRACT_SUB_STEP__MSEOCCURRENCE;
 
 	/**
 	 * The feature id for the '<em><b>Ending State</b></em>' reference.
@@ -128,7 +174,7 @@ public interface StepsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int FSM_ASSIGN_VALUE_ACTION_EXECUTE__ENDING_STATE = SPECIFIC_STEP__ENDING_STATE;
+	int FSM_ASSIGN_VALUE_ACTION_EXECUTE__ENDING_STATE = FSM_TRANSITION_FIRE_ABSTRACT_SUB_STEP__ENDING_STATE;
 
 	/**
 	 * The feature id for the '<em><b>Starting State</b></em>' reference.
@@ -137,7 +183,7 @@ public interface StepsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int FSM_ASSIGN_VALUE_ACTION_EXECUTE__STARTING_STATE = SPECIFIC_STEP__STARTING_STATE;
+	int FSM_ASSIGN_VALUE_ACTION_EXECUTE__STARTING_STATE = FSM_TRANSITION_FIRE_ABSTRACT_SUB_STEP__STARTING_STATE;
 
 	/**
 	 * The number of structural features of the '<em>Fsm Assign Value Action Execute</em>' class.
@@ -146,7 +192,7 @@ public interface StepsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int FSM_ASSIGN_VALUE_ACTION_EXECUTE_FEATURE_COUNT = SPECIFIC_STEP_FEATURE_COUNT + 0;
+	int FSM_ASSIGN_VALUE_ACTION_EXECUTE_FEATURE_COUNT = FSM_TRANSITION_FIRE_ABSTRACT_SUB_STEP_FEATURE_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link fsmTrace.Steps.impl.Fsm_DecreaseValueAction_ExecuteImpl <em>Fsm Decrease Value Action Execute</em>}' class.
@@ -165,7 +211,7 @@ public interface StepsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int FSM_DECREASE_VALUE_ACTION_EXECUTE__MSEOCCURRENCE = SPECIFIC_STEP__MSEOCCURRENCE;
+	int FSM_DECREASE_VALUE_ACTION_EXECUTE__MSEOCCURRENCE = FSM_TRANSITION_FIRE_ABSTRACT_SUB_STEP__MSEOCCURRENCE;
 
 	/**
 	 * The feature id for the '<em><b>Ending State</b></em>' reference.
@@ -174,7 +220,7 @@ public interface StepsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int FSM_DECREASE_VALUE_ACTION_EXECUTE__ENDING_STATE = SPECIFIC_STEP__ENDING_STATE;
+	int FSM_DECREASE_VALUE_ACTION_EXECUTE__ENDING_STATE = FSM_TRANSITION_FIRE_ABSTRACT_SUB_STEP__ENDING_STATE;
 
 	/**
 	 * The feature id for the '<em><b>Starting State</b></em>' reference.
@@ -183,7 +229,7 @@ public interface StepsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int FSM_DECREASE_VALUE_ACTION_EXECUTE__STARTING_STATE = SPECIFIC_STEP__STARTING_STATE;
+	int FSM_DECREASE_VALUE_ACTION_EXECUTE__STARTING_STATE = FSM_TRANSITION_FIRE_ABSTRACT_SUB_STEP__STARTING_STATE;
 
 	/**
 	 * The number of structural features of the '<em>Fsm Decrease Value Action Execute</em>' class.
@@ -192,7 +238,7 @@ public interface StepsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int FSM_DECREASE_VALUE_ACTION_EXECUTE_FEATURE_COUNT = SPECIFIC_STEP_FEATURE_COUNT + 0;
+	int FSM_DECREASE_VALUE_ACTION_EXECUTE_FEATURE_COUNT = FSM_TRANSITION_FIRE_ABSTRACT_SUB_STEP_FEATURE_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link fsmTrace.Steps.Fsm_StateMachine_Step_AbstractSubStep <em>Fsm State Machine Step Abstract Sub Step</em>}' class.
@@ -349,7 +395,7 @@ public interface StepsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int FSM_GUARD_HOLDS__MSEOCCURRENCE = SPECIFIC_STEP__MSEOCCURRENCE;
+	int FSM_GUARD_HOLDS__MSEOCCURRENCE = FSM_STATE_MACHINE_STEP_ABSTRACT_SUB_STEP__MSEOCCURRENCE;
 
 	/**
 	 * The feature id for the '<em><b>Ending State</b></em>' reference.
@@ -358,7 +404,7 @@ public interface StepsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int FSM_GUARD_HOLDS__ENDING_STATE = SPECIFIC_STEP__ENDING_STATE;
+	int FSM_GUARD_HOLDS__ENDING_STATE = FSM_STATE_MACHINE_STEP_ABSTRACT_SUB_STEP__ENDING_STATE;
 
 	/**
 	 * The feature id for the '<em><b>Starting State</b></em>' reference.
@@ -367,7 +413,7 @@ public interface StepsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int FSM_GUARD_HOLDS__STARTING_STATE = SPECIFIC_STEP__STARTING_STATE;
+	int FSM_GUARD_HOLDS__STARTING_STATE = FSM_STATE_MACHINE_STEP_ABSTRACT_SUB_STEP__STARTING_STATE;
 
 	/**
 	 * The number of structural features of the '<em>Fsm Guard Holds</em>' class.
@@ -376,7 +422,7 @@ public interface StepsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int FSM_GUARD_HOLDS_FEATURE_COUNT = SPECIFIC_STEP_FEATURE_COUNT + 0;
+	int FSM_GUARD_HOLDS_FEATURE_COUNT = FSM_STATE_MACHINE_STEP_ABSTRACT_SUB_STEP_FEATURE_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link fsmTrace.Steps.impl.Fsm_IncreaseValueAction_ExecuteImpl <em>Fsm Increase Value Action Execute</em>}' class.
@@ -395,7 +441,7 @@ public interface StepsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int FSM_INCREASE_VALUE_ACTION_EXECUTE__MSEOCCURRENCE = SPECIFIC_STEP__MSEOCCURRENCE;
+	int FSM_INCREASE_VALUE_ACTION_EXECUTE__MSEOCCURRENCE = FSM_TRANSITION_FIRE_ABSTRACT_SUB_STEP__MSEOCCURRENCE;
 
 	/**
 	 * The feature id for the '<em><b>Ending State</b></em>' reference.
@@ -404,7 +450,7 @@ public interface StepsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int FSM_INCREASE_VALUE_ACTION_EXECUTE__ENDING_STATE = SPECIFIC_STEP__ENDING_STATE;
+	int FSM_INCREASE_VALUE_ACTION_EXECUTE__ENDING_STATE = FSM_TRANSITION_FIRE_ABSTRACT_SUB_STEP__ENDING_STATE;
 
 	/**
 	 * The feature id for the '<em><b>Starting State</b></em>' reference.
@@ -413,7 +459,7 @@ public interface StepsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int FSM_INCREASE_VALUE_ACTION_EXECUTE__STARTING_STATE = SPECIFIC_STEP__STARTING_STATE;
+	int FSM_INCREASE_VALUE_ACTION_EXECUTE__STARTING_STATE = FSM_TRANSITION_FIRE_ABSTRACT_SUB_STEP__STARTING_STATE;
 
 	/**
 	 * The number of structural features of the '<em>Fsm Increase Value Action Execute</em>' class.
@@ -422,7 +468,7 @@ public interface StepsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int FSM_INCREASE_VALUE_ACTION_EXECUTE_FEATURE_COUNT = SPECIFIC_STEP_FEATURE_COUNT + 0;
+	int FSM_INCREASE_VALUE_ACTION_EXECUTE_FEATURE_COUNT = FSM_TRANSITION_FIRE_ABSTRACT_SUB_STEP_FEATURE_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link fsmTrace.Steps.impl.Fsm_LessThanNumberGuard_HoldsImpl <em>Fsm Less Than Number Guard Holds</em>}' class.
@@ -717,52 +763,6 @@ public interface StepsPackage extends EPackage {
 	 * @ordered
 	 */
 	int FSM_TRANSITION_FIRE_FEATURE_COUNT = FSM_STATE_MACHINE_STEP_ABSTRACT_SUB_STEP_FEATURE_COUNT + 1;
-
-	/**
-	 * The meta object id for the '{@link fsmTrace.Steps.Fsm_Transition_Fire_AbstractSubStep <em>Fsm Transition Fire Abstract Sub Step</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see fsmTrace.Steps.Fsm_Transition_Fire_AbstractSubStep
-	 * @see fsmTrace.Steps.impl.StepsPackageImpl#getFsm_Transition_Fire_AbstractSubStep()
-	 * @generated
-	 */
-	int FSM_TRANSITION_FIRE_ABSTRACT_SUB_STEP = 13;
-
-	/**
-	 * The feature id for the '<em><b>Mseoccurrence</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int FSM_TRANSITION_FIRE_ABSTRACT_SUB_STEP__MSEOCCURRENCE = SPECIFIC_STEP__MSEOCCURRENCE;
-
-	/**
-	 * The feature id for the '<em><b>Ending State</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int FSM_TRANSITION_FIRE_ABSTRACT_SUB_STEP__ENDING_STATE = SPECIFIC_STEP__ENDING_STATE;
-
-	/**
-	 * The feature id for the '<em><b>Starting State</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int FSM_TRANSITION_FIRE_ABSTRACT_SUB_STEP__STARTING_STATE = SPECIFIC_STEP__STARTING_STATE;
-
-	/**
-	 * The number of structural features of the '<em>Fsm Transition Fire Abstract Sub Step</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int FSM_TRANSITION_FIRE_ABSTRACT_SUB_STEP_FEATURE_COUNT = SPECIFIC_STEP_FEATURE_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link fsmTrace.Steps.impl.Fsm_Transition_Fire_ImplicitStepImpl <em>Fsm Transition Fire Implicit Step</em>}' class.

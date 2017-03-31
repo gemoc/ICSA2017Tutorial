@@ -69,8 +69,9 @@ public class StateMachineAdapter extends EObjectAdapter<StateMachine> implements
   }
   
   @Override
-  public void assignInitialValues() {
-    org.gemoc.sample.legacyfsm.xsfsm.xsfsm.aspects.StateMachineAspect.assignInitialValues(adaptee);
+  public void assignInitialValues(final org.eclipse.emf.common.util.EList<java.lang.String> arguments) {
+    org.gemoc.sample.legacyfsm.xsfsm.xsfsm.aspects.StateMachineAspect.assignInitialValues(adaptee, arguments
+    );
   }
   
   @Override

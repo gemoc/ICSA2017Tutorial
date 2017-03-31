@@ -31,12 +31,12 @@ public interface NumberGuard extends Guard {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Value</em>' attribute.
-	 * @see #setValue(long)
+	 * @see #setValue(int)
 	 * @see org.gemoc.sample.legacyfsm.fsm.FsmPackage#getNumberGuard_Value()
 	 * @model default="-1" required="true"
 	 * @generated
 	 */
-	long getValue();
+	int getValue();
 
 	/**
 	 * Sets the value of the '{@link org.gemoc.sample.legacyfsm.fsm.NumberGuard#getValue <em>Value</em>}' attribute.
@@ -46,7 +46,7 @@ public interface NumberGuard extends Guard {
 	 * @see #getValue()
 	 * @generated
 	 */
-	void setValue(long value);
+	void setValue(int value);
 
 	/**
 	 * Returns the value of the '<em><b>Source</b></em>' reference.

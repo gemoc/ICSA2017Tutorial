@@ -32,7 +32,7 @@ public class DecreaseValueActionImpl extends ActionImpl implements DecreaseValue
 	 * @generated
 	 * @ordered
 	 */
-	protected static final long STEP_VALUE_EDEFAULT = 0L;
+	protected static final int STEP_VALUE_EDEFAULT = 0;
 
 	/**
 	 * The cached value of the '{@link #getStepValue() <em>Step Value</em>}' attribute.
@@ -42,7 +42,7 @@ public class DecreaseValueActionImpl extends ActionImpl implements DecreaseValue
 	 * @generated
 	 * @ordered
 	 */
-	protected long stepValue = STEP_VALUE_EDEFAULT;
+	protected int stepValue = STEP_VALUE_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -68,7 +68,7 @@ public class DecreaseValueActionImpl extends ActionImpl implements DecreaseValue
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public long getStepValue() {
+	public int getStepValue() {
 		return stepValue;
 	}
 
@@ -77,8 +77,8 @@ public class DecreaseValueActionImpl extends ActionImpl implements DecreaseValue
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setStepValue(long newStepValue) {
-		long oldStepValue = stepValue;
+	public void setStepValue(int newStepValue) {
+		int oldStepValue = stepValue;
 		stepValue = newStepValue;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, FsmPackage.DECREASE_VALUE_ACTION__STEP_VALUE, oldStepValue, stepValue));
@@ -107,7 +107,7 @@ public class DecreaseValueActionImpl extends ActionImpl implements DecreaseValue
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case FsmPackage.DECREASE_VALUE_ACTION__STEP_VALUE:
-				setStepValue((Long)newValue);
+				setStepValue((Integer)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);

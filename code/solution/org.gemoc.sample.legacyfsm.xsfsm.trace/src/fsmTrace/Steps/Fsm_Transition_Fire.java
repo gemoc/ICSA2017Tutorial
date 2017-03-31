@@ -4,7 +4,7 @@ package fsmTrace.Steps;
 
 import fr.inria.diverse.trace.commons.model.trace.SequentialStep;
 
-import fsmTrace.States.fsm.TracedTransition;
+import org.gemoc.sample.legacyfsm.xsfsm.xsfsm.fsm.Transition;
 
 /**
  * <!-- begin-user-doc -->
@@ -21,9 +21,9 @@ public interface Fsm_Transition_Fire extends Fsm_StateMachine_Step_AbstractSubSt
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model kind="operation" required="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='return (fsmTrace.States.fsm.TracedTransition) this.getMseoccurrence().getMse().getCaller();'"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='return (org.gemoc.sample.legacyfsm.xsfsm.xsfsm.fsm.Transition) this.getMseoccurrence().getMse().getCaller();'"
 	 * @generated
 	 */
-	TracedTransition getCaller();
+	Transition getCaller();
 
 } // Fsm_Transition_Fire

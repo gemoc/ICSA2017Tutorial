@@ -5,7 +5,7 @@ import org.gemoc.sample.legacyfsm.fsm.k3dsa.*
 
 external language FSM { 
 	syntax "platform:/resource/org.gemoc.sample.legacyfsm.fsm.model/model/fsm.ecore"
-	    withGenmodel "platform:/resource/org.gemoc.sample.legacyfsm.fsm.model/model/fsm.genmodel"
+//	    withGenmodel "platform:/resource/org.gemoc.sample.legacyfsm.fsm.model/model/fsm.genmodel"
 
 }
 

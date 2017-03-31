@@ -11,8 +11,6 @@ import fr.inria.diverse.trace.commons.model.trace.impl.StepImpl;
 import fsmTrace.States.State;
 import fsmTrace.States.StatesPackage;
 
-import fsmTrace.States.fsm.TracedStateMachine;
-
 import fsmTrace.Steps.Fsm_StateMachine_Step;
 import fsmTrace.Steps.Fsm_StateMachine_Step_AbstractSubStep;
 import fsmTrace.Steps.StepsPackage;
@@ -31,6 +29,8 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
+
+import org.gemoc.sample.legacyfsm.xsfsm.xsfsm.fsm.StateMachine;
 
 /**
  * <!-- begin-user-doc -->
@@ -234,8 +234,8 @@ public class Fsm_StateMachine_StepImpl extends StepImpl implements Fsm_StateMach
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public TracedStateMachine getCaller() {
-		return (fsmTrace.States.fsm.TracedStateMachine) this.getMseoccurrence().getMse().getCaller();
+	public StateMachine getCaller() {
+		return (org.gemoc.sample.legacyfsm.xsfsm.xsfsm.fsm.StateMachine) this.getMseoccurrence().getMse().getCaller();
 	}
 
 	/**

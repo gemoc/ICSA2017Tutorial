@@ -29,12 +29,12 @@ public interface DecreaseValueAction extends Action {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Step Value</em>' attribute.
-	 * @see #setStepValue(long)
+	 * @see #setStepValue(int)
 	 * @see org.gemoc.sample.legacyfsm.fsm.FsmPackage#getDecreaseValueAction_StepValue()
 	 * @model required="true"
 	 * @generated
 	 */
-	long getStepValue();
+	int getStepValue();
 
 	/**
 	 * Sets the value of the '{@link org.gemoc.sample.legacyfsm.fsm.DecreaseValueAction#getStepValue <em>Step Value</em>}' attribute.
@@ -44,6 +44,6 @@ public interface DecreaseValueAction extends Action {
 	 * @see #getStepValue()
 	 * @generated
 	 */
-	void setStepValue(long value);
+	void setStepValue(int value);
 
 } // DecreaseValueAction

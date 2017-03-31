@@ -15,7 +15,6 @@ import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
 import org.gemoc.sample.legacyfsm.fsm.FsmPackage;
-import org.gemoc.sample.legacyfsm.fsm.InceraseValueAction;
 import org.gemoc.sample.legacyfsm.fsm.IncreaseValueAction;
 
 /**

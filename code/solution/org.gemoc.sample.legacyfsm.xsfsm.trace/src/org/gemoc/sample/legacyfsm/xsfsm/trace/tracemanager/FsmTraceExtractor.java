@@ -91,12 +91,6 @@ public class FsmTraceExtractor implements ITraceExtractor {
 
 	private List<List<? extends fsmTrace.States.Value>> getAllValueTraces() {
 		final List<List<? extends fsmTrace.States.Value>> result = new ArrayList<>();
-		for (fsmTrace.States.fsm.TracedNumberVariable tracedObject : traceRoot.getFsm_tracedNumberVariables()) {
-			result.add(tracedObject.getValueSequence());
-		}
-		for (fsmTrace.States.fsm.TracedStateMachine tracedObject : traceRoot.getFsm_tracedStateMachines()) {
-			result.add(tracedObject.getCurrentStateSequence());
-		}
 		return result;
 	}
 

@@ -46,7 +46,7 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="NumberVariable" eSuperTypes="//Variable">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="initialValue" lowerBound="1">
-      <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//ELong"/>
+      <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
     </eStructuralFeatures>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Guard" abstract="true">
@@ -56,7 +56,7 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="NumberGuard" abstract="true" eSuperTypes="//Guard">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" lowerBound="1" defaultValueLiteral="-1">
-      <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//ELong"/>
+      <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="source" lowerBound="1" eType="//NumberVariable"/>
   </eClassifiers>
@@ -66,19 +66,19 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="AssignValueAction" eSuperTypes="//Action">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" lowerBound="1">
-      <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//ELong"/>
+      <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
     </eStructuralFeatures>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="LessThanNumberGuard" eSuperTypes="//NumberGuard"/>
   <eClassifiers xsi:type="ecore:EClass" name="GreaterThanNumberGuard" eSuperTypes="//NumberGuard"/>
   <eClassifiers xsi:type="ecore:EClass" name="IncreaseValueAction" eSuperTypes="//Action">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="stepValue" lowerBound="1">
-      <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//ELong"/>
+      <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
     </eStructuralFeatures>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="DecreaseValueAction" eSuperTypes="//Action">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="stepValue" lowerBound="1">
-      <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//ELong"/>
+      <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
     </eStructuralFeatures>
   </eClassifiers>
 </ecore:EPackage>

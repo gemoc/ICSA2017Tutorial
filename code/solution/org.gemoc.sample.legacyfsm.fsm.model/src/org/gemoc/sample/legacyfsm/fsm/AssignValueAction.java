@@ -29,12 +29,12 @@ public interface AssignValueAction extends Action {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Value</em>' attribute.
-	 * @see #setValue(long)
+	 * @see #setValue(int)
 	 * @see org.gemoc.sample.legacyfsm.fsm.FsmPackage#getAssignValueAction_Value()
 	 * @model required="true"
 	 * @generated
 	 */
-	long getValue();
+	int getValue();
 
 	/**
 	 * Sets the value of the '{@link org.gemoc.sample.legacyfsm.fsm.AssignValueAction#getValue <em>Value</em>}' attribute.
@@ -44,6 +44,6 @@ public interface AssignValueAction extends Action {
 	 * @see #getValue()
 	 * @generated
 	 */
-	void setValue(long value);
+	void setValue(int value);
 
 } // AssignValueAction

@@ -56,9 +56,7 @@ public class StatesFactoryImpl extends EFactoryImpl implements StatesFactory {
 	@Override
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
-			case StatesPackage.NUMBER_VARIABLE_VALUE_VALUE: return createNumberVariable_value_Value();
 			case StatesPackage.STATE: return createState();
-			case StatesPackage.STATE_MACHINE_CURRENT_STATE_VALUE: return createStateMachine_currentState_Value();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -69,29 +67,9 @@ public class StatesFactoryImpl extends EFactoryImpl implements StatesFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NumberVariable_value_Value createNumberVariable_value_Value() {
-		NumberVariable_value_ValueImpl numberVariable_value_Value = new NumberVariable_value_ValueImpl();
-		return numberVariable_value_Value;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public State createState() {
 		StateImpl state = new StateImpl();
 		return state;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public StateMachine_currentState_Value createStateMachine_currentState_Value() {
-		StateMachine_currentState_ValueImpl stateMachine_currentState_Value = new StateMachine_currentState_ValueImpl();
-		return stateMachine_currentState_Value;
 	}
 
 	/**

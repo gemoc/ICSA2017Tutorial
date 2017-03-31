@@ -29,12 +29,12 @@ public interface NumberVariable extends Variable {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Initial Value</em>' attribute.
-	 * @see #setInitialValue(long)
+	 * @see #setInitialValue(int)
 	 * @see org.gemoc.sample.legacyfsm.fsm.FsmPackage#getNumberVariable_InitialValue()
 	 * @model required="true"
 	 * @generated
 	 */
-	long getInitialValue();
+	int getInitialValue();
 
 	/**
 	 * Sets the value of the '{@link org.gemoc.sample.legacyfsm.fsm.NumberVariable#getInitialValue <em>Initial Value</em>}' attribute.
@@ -44,6 +44,6 @@ public interface NumberVariable extends Variable {
 	 * @see #getInitialValue()
 	 * @generated
 	 */
-	void setInitialValue(long value);
+	void setInitialValue(int value);
 
 } // NumberVariable

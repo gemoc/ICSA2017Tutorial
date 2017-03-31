@@ -4,7 +4,7 @@ package fsmTrace.Steps;
 
 import fr.inria.diverse.trace.commons.model.trace.SmallStep;
 
-import fsmTrace.States.fsm.TracedStateMachine;
+import org.gemoc.sample.legacyfsm.xsfsm.xsfsm.fsm.StateMachine;
 
 /**
  * <!-- begin-user-doc -->
@@ -21,9 +21,9 @@ public interface Fsm_StateMachine_AssignInitialValues extends SpecificStep, Smal
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model kind="operation" required="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='return (fsmTrace.States.fsm.TracedStateMachine) this.getMseoccurrence().getMse().getCaller();'"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='return (org.gemoc.sample.legacyfsm.xsfsm.xsfsm.fsm.StateMachine) this.getMseoccurrence().getMse().getCaller();'"
 	 * @generated
 	 */
-	TracedStateMachine getCaller();
+	StateMachine getCaller();
 
 } // Fsm_StateMachine_AssignInitialValues

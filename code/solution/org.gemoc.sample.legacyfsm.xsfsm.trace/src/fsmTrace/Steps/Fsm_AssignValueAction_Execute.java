@@ -16,7 +16,7 @@ import org.gemoc.sample.legacyfsm.xsfsm.xsfsm.fsm.AssignValueAction;
  * @model
  * @generated
  */
-public interface Fsm_AssignValueAction_Execute extends SpecificStep, SmallStep, Fsm_Transition_Fire_AbstractSubStep {
+public interface Fsm_AssignValueAction_Execute extends Fsm_Transition_Fire_AbstractSubStep, SpecificStep, SmallStep {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

@@ -16,12 +16,12 @@ public class AssignValueActionAdapter extends EObjectAdapter<AssignValueAction> 
   }
   
   @Override
-  public long getValue() {
+  public int getValue() {
     return adaptee.getValue();
   }
   
   @Override
-  public void setValue(final long o) {
+  public void setValue(final int o) {
     adaptee.setValue(o);
   }
   
@@ -42,7 +42,7 @@ public class AssignValueActionAdapter extends EObjectAdapter<AssignValueAction> 
     org.gemoc.sample.legacyfsm.xsfsm.xsfsm.aspects.AssignValueActionAspect.execute(adaptee);
   }
   
-  protected final static long VALUE_EDEFAULT = 0L;
+  protected final static int VALUE_EDEFAULT = 0;
   
   @Override
   public EClass eClass() {
@@ -55,7 +55,7 @@ public class AssignValueActionAdapter extends EObjectAdapter<AssignValueAction> 
     	case org.gemoc.sample.legacyfsm.xsfsm.xsfsmmt.fsm.FsmPackage.ASSIGN_VALUE_ACTION__TARGET:
     		return getTarget();
     	case org.gemoc.sample.legacyfsm.xsfsm.xsfsmmt.fsm.FsmPackage.ASSIGN_VALUE_ACTION__VALUE:
-    		return new java.lang.Long(getValue());
+    		return new java.lang.Integer(getValue());
     }
     
     return super.eGet(featureID, resolve, coreType);
@@ -82,7 +82,7 @@ public class AssignValueActionAdapter extends EObjectAdapter<AssignValueAction> 
     		 newValue);
     		return;
     	case org.gemoc.sample.legacyfsm.xsfsm.xsfsmmt.fsm.FsmPackage.ASSIGN_VALUE_ACTION__VALUE:
-    		setValue(((java.lang.Long) newValue).longValue());
+    		setValue(((java.lang.Integer) newValue).intValue());
     		return;
     }
     

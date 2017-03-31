@@ -49,7 +49,9 @@ class StateMachineAspect {
 
         println("Start the main")
         try {
-            _self.step
+            while (true) {
+                _self.step
+            }
         } catch (Exception nt) {
             println("Stopped due to " + nt.message)
         }
@@ -67,7 +69,8 @@ class StateMachineAspect {
 
     @Step
     @InitializeModel
-    def public void assignInitialValues() {
+    def public void assignInitialValues(EList<String> arguments) {
+        _self.currentState = _self.initialState
         for (Variable v : _self.variables) {
             if (v instanceof NumberVariable) {
                 val NumberVariable ref = v as NumberVariable
@@ -102,7 +105,7 @@ class VariableAspect {
 
 @Aspect(className=NumberVariable)
 class NumberVariableAspect {
-    public Long value;
+    public int value;
 }
 
 @Aspect(className=Guard)
@@ -123,7 +126,7 @@ class NumberGuardAspect extends GuardAspect {
 class EqualNumberGuardAspect extends NumberGuardAspect {
     def boolean holds() {
         val NumberVariable source = _self.source
-        val Long value = _self.value
+        val int value = _self.value
         return value == source.value
     }
 }
@@ -132,7 +135,7 @@ class EqualNumberGuardAspect extends NumberGuardAspect {
 class GreaterThanNumberGuardAspect extends NumberGuardAspect {
     def boolean holds() {
         val NumberVariable source = _self.source
-        val Long value = _self.value
+        val int value = _self.value
         return source.value > value
     }
 }
@@ -141,7 +144,7 @@ class GreaterThanNumberGuardAspect extends NumberGuardAspect {
 class LessThanNumberGuardAspect extends NumberGuardAspect {
     def boolean holds() {
         val NumberVariable source = _self.source
-        val Long value = _self.value
+        val int value = _self.value
         return source.value < value
     }
 }

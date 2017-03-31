@@ -18,9 +18,7 @@ import org.eclipse.emf.ecore.EObject;
  * </p>
  * <ul>
  *   <li>{@link fsmTrace.States.State#getEndedSteps <em>Ended Steps</em>}</li>
- *   <li>{@link fsmTrace.States.State#getNumberVariable_value_Values <em>Number Variable value Values</em>}</li>
  *   <li>{@link fsmTrace.States.State#getStartedSteps <em>Started Steps</em>}</li>
- *   <li>{@link fsmTrace.States.State#getStateMachine_currentState_Values <em>State Machine current State Values</em>}</li>
  * </ul>
  *
  * @see fsmTrace.States.StatesPackage#getState()
@@ -47,24 +45,6 @@ public interface State extends EObject {
 	EList<SpecificStep> getEndedSteps();
 
 	/**
-	 * Returns the value of the '<em><b>Number Variable value Values</b></em>' reference list.
-	 * The list contents are of type {@link fsmTrace.States.NumberVariable_value_Value}.
-	 * It is bidirectional and its opposite is '{@link fsmTrace.States.NumberVariable_value_Value#getStates <em>States</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Number Variable value Values</em>' reference list isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Number Variable value Values</em>' reference list.
-	 * @see fsmTrace.States.StatesPackage#getState_NumberVariable_value_Values()
-	 * @see fsmTrace.States.NumberVariable_value_Value#getStates
-	 * @model opposite="states" ordered="false"
-	 * @generated
-	 */
-	EList<NumberVariable_value_Value> getNumberVariable_value_Values();
-
-	/**
 	 * Returns the value of the '<em><b>Started Steps</b></em>' reference list.
 	 * The list contents are of type {@link fsmTrace.Steps.SpecificStep}.
 	 * It is bidirectional and its opposite is '{@link fsmTrace.Steps.SpecificStep#getStartingState <em>Starting State</em>}'.
@@ -81,23 +61,5 @@ public interface State extends EObject {
 	 * @generated
 	 */
 	EList<SpecificStep> getStartedSteps();
-
-	/**
-	 * Returns the value of the '<em><b>State Machine current State Values</b></em>' reference list.
-	 * The list contents are of type {@link fsmTrace.States.StateMachine_currentState_Value}.
-	 * It is bidirectional and its opposite is '{@link fsmTrace.States.StateMachine_currentState_Value#getStates <em>States</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>State Machine current State Values</em>' reference list isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>State Machine current State Values</em>' reference list.
-	 * @see fsmTrace.States.StatesPackage#getState_StateMachine_currentState_Values()
-	 * @see fsmTrace.States.StateMachine_currentState_Value#getStates
-	 * @model opposite="states" ordered="false"
-	 * @generated
-	 */
-	EList<StateMachine_currentState_Value> getStateMachine_currentState_Values();
 
 } // State

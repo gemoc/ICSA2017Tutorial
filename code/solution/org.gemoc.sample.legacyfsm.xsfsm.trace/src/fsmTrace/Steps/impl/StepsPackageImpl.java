@@ -8,8 +8,6 @@ import fsmTrace.FsmTracePackage;
 
 import fsmTrace.States.StatesPackage;
 
-import fsmTrace.States.fsm.impl.FsmPackageImpl;
-
 import fsmTrace.States.impl.StatesPackageImpl;
 
 import fsmTrace.Steps.Fsm_AssignValueAction_Execute;
@@ -222,19 +220,16 @@ public class StepsPackageImpl extends EPackageImpl implements StepsPackage {
 		// Obtain or create and register interdependencies
 		FsmTracePackageImpl theFsmTracePackage = (FsmTracePackageImpl)(EPackage.Registry.INSTANCE.getEPackage(FsmTracePackage.eNS_URI) instanceof FsmTracePackageImpl ? EPackage.Registry.INSTANCE.getEPackage(FsmTracePackage.eNS_URI) : FsmTracePackage.eINSTANCE);
 		StatesPackageImpl theStatesPackage = (StatesPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(StatesPackage.eNS_URI) instanceof StatesPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(StatesPackage.eNS_URI) : StatesPackage.eINSTANCE);
-		FsmPackageImpl theFsmPackage_1 = (FsmPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(fsmTrace.States.fsm.FsmPackage.eNS_URI) instanceof FsmPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(fsmTrace.States.fsm.FsmPackage.eNS_URI) : fsmTrace.States.fsm.FsmPackage.eINSTANCE);
 
 		// Create package meta-data objects
 		theStepsPackage.createPackageContents();
 		theFsmTracePackage.createPackageContents();
 		theStatesPackage.createPackageContents();
-		theFsmPackage_1.createPackageContents();
 
 		// Initialize created meta-data
 		theStepsPackage.initializePackageContents();
 		theFsmTracePackage.initializePackageContents();
 		theStatesPackage.initializePackageContents();
-		theFsmPackage_1.initializePackageContents();
 
 		// Mark meta-data to indicate it can't be changed
 		theStepsPackage.freeze();
@@ -507,7 +502,6 @@ public class StepsPackageImpl extends EPackageImpl implements StepsPackage {
 		// Obtain other dependent packages
 		TracePackage theTracePackage = (TracePackage)EPackage.Registry.INSTANCE.getEPackage(TracePackage.eNS_URI);
 		FsmPackage theFsmPackage = (FsmPackage)EPackage.Registry.INSTANCE.getEPackage(FsmPackage.eNS_URI);
-		fsmTrace.States.fsm.FsmPackage theFsmPackage_1 = (fsmTrace.States.fsm.FsmPackage)EPackage.Registry.INSTANCE.getEPackage(fsmTrace.States.fsm.FsmPackage.eNS_URI);
 		StatesPackage theStatesPackage = (StatesPackage)EPackage.Registry.INSTANCE.getEPackage(StatesPackage.eNS_URI);
 
 		// Create type parameters
@@ -515,24 +509,24 @@ public class StepsPackageImpl extends EPackageImpl implements StepsPackage {
 		// Set bounds for type parameters
 
 		// Add supertypes to classes
+		fsm_AssignValueAction_ExecuteEClass.getESuperTypes().add(this.getFsm_Transition_Fire_AbstractSubStep());
 		fsm_AssignValueAction_ExecuteEClass.getESuperTypes().add(this.getSpecificStep());
 		fsm_AssignValueAction_ExecuteEClass.getESuperTypes().add(theTracePackage.getSmallStep());
-		fsm_AssignValueAction_ExecuteEClass.getESuperTypes().add(this.getFsm_Transition_Fire_AbstractSubStep());
+		fsm_DecreaseValueAction_ExecuteEClass.getESuperTypes().add(this.getFsm_Transition_Fire_AbstractSubStep());
 		fsm_DecreaseValueAction_ExecuteEClass.getESuperTypes().add(this.getSpecificStep());
 		fsm_DecreaseValueAction_ExecuteEClass.getESuperTypes().add(theTracePackage.getSmallStep());
-		fsm_DecreaseValueAction_ExecuteEClass.getESuperTypes().add(this.getFsm_Transition_Fire_AbstractSubStep());
 		fsm_EqualNumberGuard_HoldsEClass.getESuperTypes().add(this.getFsm_StateMachine_Step_AbstractSubStep());
 		fsm_EqualNumberGuard_HoldsEClass.getESuperTypes().add(this.getSpecificStep());
 		fsm_EqualNumberGuard_HoldsEClass.getESuperTypes().add(theTracePackage.getSmallStep());
 		fsm_GreaterThanNumberGuard_HoldsEClass.getESuperTypes().add(this.getFsm_StateMachine_Step_AbstractSubStep());
 		fsm_GreaterThanNumberGuard_HoldsEClass.getESuperTypes().add(this.getSpecificStep());
 		fsm_GreaterThanNumberGuard_HoldsEClass.getESuperTypes().add(theTracePackage.getSmallStep());
+		fsm_Guard_HoldsEClass.getESuperTypes().add(this.getFsm_StateMachine_Step_AbstractSubStep());
 		fsm_Guard_HoldsEClass.getESuperTypes().add(this.getSpecificStep());
 		fsm_Guard_HoldsEClass.getESuperTypes().add(theTracePackage.getSmallStep());
-		fsm_Guard_HoldsEClass.getESuperTypes().add(this.getFsm_StateMachine_Step_AbstractSubStep());
+		fsm_IncreaseValueAction_ExecuteEClass.getESuperTypes().add(this.getFsm_Transition_Fire_AbstractSubStep());
 		fsm_IncreaseValueAction_ExecuteEClass.getESuperTypes().add(this.getSpecificStep());
 		fsm_IncreaseValueAction_ExecuteEClass.getESuperTypes().add(theTracePackage.getSmallStep());
-		fsm_IncreaseValueAction_ExecuteEClass.getESuperTypes().add(this.getFsm_Transition_Fire_AbstractSubStep());
 		fsm_LessThanNumberGuard_HoldsEClass.getESuperTypes().add(this.getFsm_StateMachine_Step_AbstractSubStep());
 		fsm_LessThanNumberGuard_HoldsEClass.getESuperTypes().add(this.getSpecificStep());
 		fsm_LessThanNumberGuard_HoldsEClass.getESuperTypes().add(theTracePackage.getSmallStep());
@@ -599,11 +593,11 @@ public class StepsPackageImpl extends EPackageImpl implements StepsPackage {
 
 		initEClass(fsm_StateMachine_AssignInitialValuesEClass, Fsm_StateMachine_AssignInitialValues.class, "Fsm_StateMachine_AssignInitialValues", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		addEOperation(fsm_StateMachine_AssignInitialValuesEClass, theFsmPackage_1.getTracedStateMachine(), "getCaller", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEOperation(fsm_StateMachine_AssignInitialValuesEClass, theFsmPackage.getStateMachine(), "getCaller", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		initEClass(fsm_StateMachine_StepEClass, Fsm_StateMachine_Step.class, "Fsm_StateMachine_Step", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		addEOperation(fsm_StateMachine_StepEClass, theFsmPackage_1.getTracedStateMachine(), "getCaller", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEOperation(fsm_StateMachine_StepEClass, theFsmPackage.getStateMachine(), "getCaller", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		initEClass(fsm_StateMachine_Step_AbstractSubStepEClass, Fsm_StateMachine_Step_AbstractSubStep.class, "Fsm_StateMachine_Step_AbstractSubStep", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
@@ -611,7 +605,7 @@ public class StepsPackageImpl extends EPackageImpl implements StepsPackage {
 
 		initEClass(fsm_Transition_FireEClass, Fsm_Transition_Fire.class, "Fsm_Transition_Fire", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		addEOperation(fsm_Transition_FireEClass, theFsmPackage_1.getTracedTransition(), "getCaller", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEOperation(fsm_Transition_FireEClass, theFsmPackage.getTransition(), "getCaller", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		initEClass(fsm_Transition_Fire_AbstractSubStepEClass, Fsm_Transition_Fire_AbstractSubStep.class, "Fsm_Transition_Fire_AbstractSubStep", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 

@@ -25,18 +25,18 @@ public class NumberVariableAdapter extends EObjectAdapter<NumberVariable> implem
   }
   
   @Override
-  public long getInitialValue() {
+  public int getInitialValue() {
     return adaptee.getInitialValue();
   }
   
   @Override
-  public void setInitialValue(final long o) {
+  public void setInitialValue(final int o) {
     adaptee.setInitialValue(o);
   }
   
   protected final static String NAME_EDEFAULT = "UnnamedVariable";
   
-  protected final static long INITIAL_VALUE_EDEFAULT = 0L;
+  protected final static int INITIAL_VALUE_EDEFAULT = 0;
   
   @Override
   public EClass eClass() {
@@ -49,7 +49,7 @@ public class NumberVariableAdapter extends EObjectAdapter<NumberVariable> implem
     	case org.gemoc.sample.legacyfsm.fsm.FsmPackage.NUMBER_VARIABLE__NAME:
     		return getName();
     	case org.gemoc.sample.legacyfsm.fsm.FsmPackage.NUMBER_VARIABLE__INITIAL_VALUE:
-    		return new java.lang.Long(getInitialValue());
+    		return new java.lang.Integer(getInitialValue());
     }
     
     return super.eGet(featureID, resolve, coreType);
@@ -76,7 +76,7 @@ public class NumberVariableAdapter extends EObjectAdapter<NumberVariable> implem
     		 newValue);
     		return;
     	case org.gemoc.sample.legacyfsm.fsm.FsmPackage.NUMBER_VARIABLE__INITIAL_VALUE:
-    		setInitialValue(((java.lang.Long) newValue).longValue());
+    		setInitialValue(((java.lang.Integer) newValue).intValue());
     		return;
     }
     

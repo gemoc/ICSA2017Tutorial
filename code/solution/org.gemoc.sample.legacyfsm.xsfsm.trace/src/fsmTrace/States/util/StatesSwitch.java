@@ -66,23 +66,9 @@ public class StatesSwitch<T> extends Switch<T> {
 	@Override
 	protected T doSwitch(int classifierID, EObject theEObject) {
 		switch (classifierID) {
-			case StatesPackage.NUMBER_VARIABLE_VALUE_VALUE: {
-				NumberVariable_value_Value numberVariable_value_Value = (NumberVariable_value_Value)theEObject;
-				T result = caseNumberVariable_value_Value(numberVariable_value_Value);
-				if (result == null) result = caseValue(numberVariable_value_Value);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
 			case StatesPackage.STATE: {
 				State state = (State)theEObject;
 				T result = caseState(state);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case StatesPackage.STATE_MACHINE_CURRENT_STATE_VALUE: {
-				StateMachine_currentState_Value stateMachine_currentState_Value = (StateMachine_currentState_Value)theEObject;
-				T result = caseStateMachine_currentState_Value(stateMachine_currentState_Value);
-				if (result == null) result = caseValue(stateMachine_currentState_Value);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -97,21 +83,6 @@ public class StatesSwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Number Variable value Value</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Number Variable value Value</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseNumberVariable_value_Value(NumberVariable_value_Value object) {
-		return null;
-	}
-
-	/**
 	 * Returns the result of interpreting the object as an instance of '<em>State</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
@@ -123,21 +94,6 @@ public class StatesSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseState(State object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>State Machine current State Value</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>State Machine current State Value</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseStateMachine_currentState_Value(StateMachine_currentState_Value object) {
 		return null;
 	}
 

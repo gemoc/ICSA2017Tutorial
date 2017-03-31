@@ -33,7 +33,7 @@ public class NumberVariableImpl extends VariableImpl implements NumberVariable {
 	 * @generated
 	 * @ordered
 	 */
-	protected static final long INITIAL_VALUE_EDEFAULT = 0L;
+	protected static final int INITIAL_VALUE_EDEFAULT = 0;
 
 	/**
 	 * The cached value of the '{@link #getInitialValue() <em>Initial Value</em>}' attribute.
@@ -43,7 +43,7 @@ public class NumberVariableImpl extends VariableImpl implements NumberVariable {
 	 * @generated
 	 * @ordered
 	 */
-	protected long initialValue = INITIAL_VALUE_EDEFAULT;
+	protected int initialValue = INITIAL_VALUE_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -69,7 +69,7 @@ public class NumberVariableImpl extends VariableImpl implements NumberVariable {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public long getInitialValue() {
+	public int getInitialValue() {
 		return initialValue;
 	}
 
@@ -78,8 +78,8 @@ public class NumberVariableImpl extends VariableImpl implements NumberVariable {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setInitialValue(long newInitialValue) {
-		long oldInitialValue = initialValue;
+	public void setInitialValue(int newInitialValue) {
+		int oldInitialValue = initialValue;
 		initialValue = newInitialValue;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, FsmPackage.NUMBER_VARIABLE__INITIAL_VALUE, oldInitialValue, initialValue));
@@ -108,7 +108,7 @@ public class NumberVariableImpl extends VariableImpl implements NumberVariable {
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case FsmPackage.NUMBER_VARIABLE__INITIAL_VALUE:
-				setInitialValue((Long)newValue);
+				setInitialValue((Integer)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);

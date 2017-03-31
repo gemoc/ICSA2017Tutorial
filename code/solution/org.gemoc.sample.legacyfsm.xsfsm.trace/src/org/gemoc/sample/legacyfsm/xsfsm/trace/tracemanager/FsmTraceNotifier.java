@@ -48,10 +48,6 @@ public class FsmTraceNotifier implements ITraceNotifier {
 						final fsmTrace.States.State newState = (fsmTrace.States.State) o;
 						newStates.add(newState);
 						endedSteps.addAll(newState.getEndedSteps());
-					} else if (o instanceof fsmTrace.States.fsm.TracedNumberVariable) {
-						newDimensions.add(((fsmTrace.States.fsm.TracedNumberVariable) o).getValueSequence());
-					} else if (o instanceof fsmTrace.States.fsm.TracedStateMachine) {
-						newDimensions.add(((fsmTrace.States.fsm.TracedStateMachine) o).getCurrentStateSequence());
 					}
 				}
 			});
