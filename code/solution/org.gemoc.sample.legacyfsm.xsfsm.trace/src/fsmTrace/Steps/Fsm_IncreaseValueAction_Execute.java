@@ -16,7 +16,7 @@ import org.gemoc.sample.legacyfsm.xsfsm.xsfsm.fsm.IncreaseValueAction;
  * @model
  * @generated
  */
-public interface Fsm_IncreaseValueAction_Execute extends Fsm_Transition_Fire_AbstractSubStep, SpecificStep, SmallStep {
+public interface Fsm_IncreaseValueAction_Execute extends SpecificStep, SmallStep, Fsm_Transition_Fire_AbstractSubStep {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

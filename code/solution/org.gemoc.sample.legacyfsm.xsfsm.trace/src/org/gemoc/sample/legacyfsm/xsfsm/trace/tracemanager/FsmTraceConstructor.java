@@ -43,16 +43,136 @@ public class FsmTraceConstructor implements ITraceConstructor {
 			for (Resource r : allResources) {
 				for (TreeIterator<EObject> i = r.getAllContents(); i.hasNext();) {
 					EObject o = i.next();
+
+					if (o instanceof org.gemoc.sample.legacyfsm.xsfsm.xsfsm.fsm.NamedElement) {
+						org.gemoc.sample.legacyfsm.xsfsm.xsfsm.fsm.NamedElement o_cast = (org.gemoc.sample.legacyfsm.xsfsm.xsfsm.fsm.NamedElement) o;
+						addNewObjectToState(o_cast, lastState);
+					} else
+
+					if (o instanceof org.gemoc.sample.legacyfsm.xsfsm.xsfsm.fsm.Variable) {
+						org.gemoc.sample.legacyfsm.xsfsm.xsfsm.fsm.Variable o_cast = (org.gemoc.sample.legacyfsm.xsfsm.xsfsm.fsm.Variable) o;
+						addNewObjectToState(o_cast, lastState);
+					}
 				}
 			}
 			this.traceRoot.getStatesTrace().add(lastState);
 		}
 	}
 
+	private boolean addNewObjectToState(org.gemoc.sample.legacyfsm.xsfsm.xsfsm.fsm.NamedElement o_cast,
+			fsmTrace.States.State newState) {
+		boolean added = false;
+		if (o_cast instanceof org.gemoc.sample.legacyfsm.xsfsm.xsfsm.fsm.State) {
+			added = addNewObjectToState((org.gemoc.sample.legacyfsm.xsfsm.xsfsm.fsm.State) o_cast, newState);
+		} else if (o_cast instanceof org.gemoc.sample.legacyfsm.xsfsm.xsfsm.fsm.Transition) {
+			added = addNewObjectToState((org.gemoc.sample.legacyfsm.xsfsm.xsfsm.fsm.Transition) o_cast, newState);
+		} else if (o_cast instanceof org.gemoc.sample.legacyfsm.xsfsm.xsfsm.fsm.StateMachine) {
+			added = addNewObjectToState((org.gemoc.sample.legacyfsm.xsfsm.xsfsm.fsm.StateMachine) o_cast, newState);
+		}
+
+		return added;
+	}// end addNewObjectToState
+
+	private boolean addNewObjectToState(org.gemoc.sample.legacyfsm.xsfsm.xsfsm.fsm.NumberVariable o_cast,
+			fsmTrace.States.State newState) {
+		boolean added = false;
+
+		if (!added && !exeToTraced.containsKey(o_cast)) {
+			fsmTrace.States.fsm.TracedNumberVariable tracedObject = fsmTrace.States.fsm.FsmFactory.eINSTANCE
+					.createTracedNumberVariable();
+			tracedObject.setOriginalObject((org.gemoc.sample.legacyfsm.xsfsm.xsfsm.fsm.NumberVariable) o_cast);
+			exeToTraced.put(o_cast, tracedObject);
+			traceRoot.getFsm_tracedNumberVariables().add(tracedObject);
+
+			// Creation of the first value of the field value
+			fsmTrace.States.NumberVariable_value_Value firstValue_value = fsmTrace.States.StatesFactory.eINSTANCE
+					.createNumberVariable_value_Value();
+
+			firstValue_value.setValue((int) o_cast.getValue());
+			tracedObject.getValueSequence().add(firstValue_value);
+			newState.getNumberVariable_value_Values().add(firstValue_value);
+
+		} // end if (!exeToTraced.containsKey
+		return added;
+	}// end addNewObjectToState
+
+	private boolean addNewObjectToState(org.gemoc.sample.legacyfsm.xsfsm.xsfsm.fsm.State o_cast,
+			fsmTrace.States.State newState) {
+		boolean added = false;
+
+		if (!added && !exeToTraced.containsKey(o_cast)) {
+			fsmTrace.States.fsm.TracedState tracedObject = fsmTrace.States.fsm.FsmFactory.eINSTANCE.createTracedState();
+			tracedObject.setOriginalObject((org.gemoc.sample.legacyfsm.xsfsm.xsfsm.fsm.State) o_cast);
+			exeToTraced.put(o_cast, tracedObject);
+			traceRoot.getFsm_tracedStates().add(tracedObject);
+
+		} // end if (!exeToTraced.containsKey
+		return added;
+	}// end addNewObjectToState
+
+	private boolean addNewObjectToState(org.gemoc.sample.legacyfsm.xsfsm.xsfsm.fsm.StateMachine o_cast,
+			fsmTrace.States.State newState) {
+		boolean added = false;
+
+		if (!added && !exeToTraced.containsKey(o_cast)) {
+			fsmTrace.States.fsm.TracedStateMachine tracedObject = fsmTrace.States.fsm.FsmFactory.eINSTANCE
+					.createTracedStateMachine();
+			tracedObject.setOriginalObject((org.gemoc.sample.legacyfsm.xsfsm.xsfsm.fsm.StateMachine) o_cast);
+			exeToTraced.put(o_cast, tracedObject);
+			traceRoot.getFsm_tracedStateMachines().add(tracedObject);
+
+			// Creation of the first value of the field currentState
+			fsmTrace.States.StateMachine_currentState_Value firstValue_currentState = fsmTrace.States.StatesFactory.eINSTANCE
+					.createStateMachine_currentState_Value();
+
+			if (o_cast.getCurrentState() != null) {
+				addNewObjectToState((org.gemoc.sample.legacyfsm.xsfsm.xsfsm.fsm.State) o_cast.getCurrentState(),
+						newState);
+				firstValue_currentState.setCurrentState(
+						(fsmTrace.States.fsm.TracedState) ((fsmTrace.States.fsm.TracedState) exeToTraced
+								.get(o_cast.getCurrentState())));
+			} else {
+				firstValue_currentState.setCurrentState((fsmTrace.States.fsm.TracedState) null);
+			}
+
+			tracedObject.getCurrentStateSequence().add(firstValue_currentState);
+			newState.getStateMachine_currentState_Values().add(firstValue_currentState);
+
+		} // end if (!exeToTraced.containsKey
+		return added;
+	}// end addNewObjectToState
+
+	private boolean addNewObjectToState(org.gemoc.sample.legacyfsm.xsfsm.xsfsm.fsm.Transition o_cast,
+			fsmTrace.States.State newState) {
+		boolean added = false;
+
+		if (!added && !exeToTraced.containsKey(o_cast)) {
+			fsmTrace.States.fsm.TracedTransition tracedObject = fsmTrace.States.fsm.FsmFactory.eINSTANCE
+					.createTracedTransition();
+			tracedObject.setOriginalObject((org.gemoc.sample.legacyfsm.xsfsm.xsfsm.fsm.Transition) o_cast);
+			exeToTraced.put(o_cast, tracedObject);
+			traceRoot.getFsm_tracedTransitions().add(tracedObject);
+
+		} // end if (!exeToTraced.containsKey
+		return added;
+	}// end addNewObjectToState
+
+	private boolean addNewObjectToState(org.gemoc.sample.legacyfsm.xsfsm.xsfsm.fsm.Variable o_cast,
+			fsmTrace.States.State newState) {
+		boolean added = false;
+		if (o_cast instanceof org.gemoc.sample.legacyfsm.xsfsm.xsfsm.fsm.NumberVariable) {
+			added = addNewObjectToState((org.gemoc.sample.legacyfsm.xsfsm.xsfsm.fsm.NumberVariable) o_cast, newState);
+		}
+
+		return added;
+	}// end addNewObjectToState
+
 	private boolean copiedState = false;
 
 	private fsmTrace.States.State copyState(fsmTrace.States.State oldState) {
 		fsmTrace.States.State newState = fsmTrace.States.StatesFactory.eINSTANCE.createState();
+		newState.getStateMachine_currentState_Values().addAll(oldState.getStateMachine_currentState_Values());
+		newState.getNumberVariable_value_Values().addAll(oldState.getNumberVariable_value_Values());
 		copiedState = true;
 		return newState;
 	}
@@ -70,6 +190,70 @@ public class FsmTraceConstructor implements ITraceConstructor {
 			fsmTrace.States.State newState = copyState(lastState);
 			for (org.gemoc.xdsmlframework.api.engine_addon.modelchangelistener.ModelChange modelChange : changes) {
 				EObject o = modelChange.getChangedObject();
+				// Here we must look at non-collection mutable fields
+				// We must rollback the last values from the copied state, and add new values as well
+				// ie. mix of remove and new
+				if (modelChange instanceof org.gemoc.xdsmlframework.api.engine_addon.modelchangelistener.NonCollectionFieldModelChange) {
+					stateChanged = true;
+
+					org.gemoc.xdsmlframework.api.engine_addon.modelchangelistener.NonCollectionFieldModelChange modelChange_cast = (org.gemoc.xdsmlframework.api.engine_addon.modelchangelistener.NonCollectionFieldModelChange) modelChange;
+					org.eclipse.emf.ecore.EStructuralFeature p = modelChange_cast.getChangedField();
+
+					if (o instanceof org.gemoc.sample.legacyfsm.xsfsm.xsfsm.fsm.StateMachine) {
+						org.gemoc.sample.legacyfsm.xsfsm.xsfsm.fsm.StateMachine o_cast = (org.gemoc.sample.legacyfsm.xsfsm.xsfsm.fsm.StateMachine) o;
+
+						if (p.getFeatureID() == org.gemoc.sample.legacyfsm.xsfsm.xsfsm.fsm.FsmPackage.eINSTANCE
+								.getStateMachine_CurrentState().getFeatureID()) {
+
+							// Rollback: we remove the last value of this field from the new state
+							fsmTrace.States.fsm.TracedStateMachine traced = (fsmTrace.States.fsm.TracedStateMachine) exeToTraced
+									.get(o);
+							fsmTrace.States.StateMachine_currentState_Value lastValue = traced.getCurrentStateSequence()
+									.get(traced.getCurrentStateSequence().size() - 1);
+							newState.getStateMachine_currentState_Values().remove(lastValue);
+
+							// And we create a proper new value
+							fsmTrace.States.StateMachine_currentState_Value newValue = fsmTrace.States.StatesFactory.eINSTANCE
+									.createStateMachine_currentState_Value();
+
+							fsmTrace.States.fsm.TracedState value = null;
+							if (o_cast.getCurrentState() != null) {
+								value = ((fsmTrace.States.fsm.TracedState) exeToTraced.get(o_cast.getCurrentState()));
+							}
+
+							newValue.setCurrentState((fsmTrace.States.fsm.TracedState) value);
+
+							traced.getCurrentStateSequence().add(newValue);
+							newState.getStateMachine_currentState_Values().add(newValue);
+						}
+					}
+
+					if (o instanceof org.gemoc.sample.legacyfsm.xsfsm.xsfsm.fsm.NumberVariable) {
+						org.gemoc.sample.legacyfsm.xsfsm.xsfsm.fsm.NumberVariable o_cast = (org.gemoc.sample.legacyfsm.xsfsm.xsfsm.fsm.NumberVariable) o;
+
+						if (p.getFeatureID() == org.gemoc.sample.legacyfsm.xsfsm.xsfsm.fsm.FsmPackage.eINSTANCE
+								.getNumberVariable_Value().getFeatureID()) {
+
+							// Rollback: we remove the last value of this field from the new state
+							fsmTrace.States.fsm.TracedNumberVariable traced = (fsmTrace.States.fsm.TracedNumberVariable) exeToTraced
+									.get(o);
+							fsmTrace.States.NumberVariable_value_Value lastValue = traced.getValueSequence()
+									.get(traced.getValueSequence().size() - 1);
+							newState.getNumberVariable_value_Values().remove(lastValue);
+
+							// And we create a proper new value
+							fsmTrace.States.NumberVariable_value_Value newValue = fsmTrace.States.StatesFactory.eINSTANCE
+									.createNumberVariable_value_Value();
+
+							int value = o_cast.getValue();
+
+							newValue.setValue((int) value);
+
+							traced.getValueSequence().add(newValue);
+							newState.getNumberVariable_value_Values().add(newValue);
+						}
+					}
+				}
 			}
 			if (stateChanged) {
 				final fsmTrace.Steps.SpecificStep currentStep = context.peekFirst();
@@ -81,6 +265,8 @@ public class FsmTraceConstructor implements ITraceConstructor {
 				lastState = newState;
 				traceRoot.getStatesTrace().add(lastState);
 			} else if (copiedState) {
+				newState.getStateMachine_currentState_Values().clear();
+				newState.getNumberVariable_value_Values().clear();
 			}
 			copiedState = false;
 		}

@@ -10,6 +10,8 @@ import fsmTrace.SpecificTrace;
 
 import fsmTrace.States.StatesPackage;
 
+import fsmTrace.States.fsm.impl.FsmPackageImpl;
+
 import fsmTrace.States.impl.StatesPackageImpl;
 
 import fsmTrace.Steps.StepsPackage;
@@ -92,16 +94,19 @@ public class FsmTracePackageImpl extends EPackageImpl implements FsmTracePackage
 		// Obtain or create and register interdependencies
 		StepsPackageImpl theStepsPackage = (StepsPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(StepsPackage.eNS_URI) instanceof StepsPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(StepsPackage.eNS_URI) : StepsPackage.eINSTANCE);
 		StatesPackageImpl theStatesPackage = (StatesPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(StatesPackage.eNS_URI) instanceof StatesPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(StatesPackage.eNS_URI) : StatesPackage.eINSTANCE);
+		FsmPackageImpl theFsmPackage_1 = (FsmPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(fsmTrace.States.fsm.FsmPackage.eNS_URI) instanceof FsmPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(fsmTrace.States.fsm.FsmPackage.eNS_URI) : fsmTrace.States.fsm.FsmPackage.eINSTANCE);
 
 		// Create package meta-data objects
 		theFsmTracePackage.createPackageContents();
 		theStepsPackage.createPackageContents();
 		theStatesPackage.createPackageContents();
+		theFsmPackage_1.createPackageContents();
 
 		// Initialize created meta-data
 		theFsmTracePackage.initializePackageContents();
 		theStepsPackage.initializePackageContents();
 		theStatesPackage.initializePackageContents();
+		theFsmPackage_1.initializePackageContents();
 
 		// Mark meta-data to indicate it can't be changed
 		theFsmTracePackage.freeze();
@@ -225,8 +230,44 @@ public class FsmTracePackageImpl extends EPackageImpl implements FsmTracePackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getSpecificTrace_StatesTrace() {
+	public EReference getSpecificTrace_Fsm_tracedNumberVariables() {
 		return (EReference)specificTraceEClass.getEStructuralFeatures().get(11);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getSpecificTrace_Fsm_tracedStateMachines() {
+		return (EReference)specificTraceEClass.getEStructuralFeatures().get(12);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getSpecificTrace_Fsm_tracedStates() {
+		return (EReference)specificTraceEClass.getEStructuralFeatures().get(13);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getSpecificTrace_Fsm_tracedTransitions() {
+		return (EReference)specificTraceEClass.getEStructuralFeatures().get(14);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getSpecificTrace_StatesTrace() {
+		return (EReference)specificTraceEClass.getEStructuralFeatures().get(15);
 	}
 
 	/**
@@ -269,6 +310,10 @@ public class FsmTracePackageImpl extends EPackageImpl implements FsmTracePackage
 		createEReference(specificTraceEClass, SPECIFIC_TRACE__FSM_STATE_MACHINE_ASSIGN_INITIAL_VALUES_SEQUENCE);
 		createEReference(specificTraceEClass, SPECIFIC_TRACE__FSM_STATE_MACHINE_STEP_SEQUENCE);
 		createEReference(specificTraceEClass, SPECIFIC_TRACE__FSM_TRANSITION_FIRE_SEQUENCE);
+		createEReference(specificTraceEClass, SPECIFIC_TRACE__FSM_TRACED_NUMBER_VARIABLES);
+		createEReference(specificTraceEClass, SPECIFIC_TRACE__FSM_TRACED_STATE_MACHINES);
+		createEReference(specificTraceEClass, SPECIFIC_TRACE__FSM_TRACED_STATES);
+		createEReference(specificTraceEClass, SPECIFIC_TRACE__FSM_TRACED_TRANSITIONS);
 		createEReference(specificTraceEClass, SPECIFIC_TRACE__STATES_TRACE);
 	}
 
@@ -299,6 +344,7 @@ public class FsmTracePackageImpl extends EPackageImpl implements FsmTracePackage
 		StepsPackage theStepsPackage = (StepsPackage)EPackage.Registry.INSTANCE.getEPackage(StepsPackage.eNS_URI);
 		StatesPackage theStatesPackage = (StatesPackage)EPackage.Registry.INSTANCE.getEPackage(StatesPackage.eNS_URI);
 		TracePackage theTracePackage = (TracePackage)EPackage.Registry.INSTANCE.getEPackage(TracePackage.eNS_URI);
+		fsmTrace.States.fsm.FsmPackage theFsmPackage_1 = (fsmTrace.States.fsm.FsmPackage)EPackage.Registry.INSTANCE.getEPackage(fsmTrace.States.fsm.FsmPackage.eNS_URI);
 
 		// Add subpackages
 		getESubpackages().add(theStepsPackage);
@@ -329,6 +375,10 @@ public class FsmTracePackageImpl extends EPackageImpl implements FsmTracePackage
 		initEReference(getSpecificTrace_Fsm_StateMachine_AssignInitialValues_Sequence(), theStepsPackage.getFsm_StateMachine_AssignInitialValues(), null, "Fsm_StateMachine_AssignInitialValues_Sequence", null, 0, -1, SpecificTrace.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getSpecificTrace_Fsm_StateMachine_Step_Sequence(), theStepsPackage.getFsm_StateMachine_Step(), null, "Fsm_StateMachine_Step_Sequence", null, 0, -1, SpecificTrace.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getSpecificTrace_Fsm_Transition_Fire_Sequence(), theStepsPackage.getFsm_Transition_Fire(), null, "Fsm_Transition_Fire_Sequence", null, 0, -1, SpecificTrace.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getSpecificTrace_Fsm_tracedNumberVariables(), theFsmPackage_1.getTracedNumberVariable(), null, "fsm_tracedNumberVariables", null, 0, -1, SpecificTrace.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
+		initEReference(getSpecificTrace_Fsm_tracedStateMachines(), theFsmPackage_1.getTracedStateMachine(), null, "fsm_tracedStateMachines", null, 0, -1, SpecificTrace.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
+		initEReference(getSpecificTrace_Fsm_tracedStates(), theFsmPackage_1.getTracedState(), null, "fsm_tracedStates", null, 0, -1, SpecificTrace.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
+		initEReference(getSpecificTrace_Fsm_tracedTransitions(), theFsmPackage_1.getTracedTransition(), null, "fsm_tracedTransitions", null, 0, -1, SpecificTrace.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
 		initEReference(getSpecificTrace_StatesTrace(), theStatesPackage.getState(), null, "statesTrace", null, 0, -1, SpecificTrace.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Create resource

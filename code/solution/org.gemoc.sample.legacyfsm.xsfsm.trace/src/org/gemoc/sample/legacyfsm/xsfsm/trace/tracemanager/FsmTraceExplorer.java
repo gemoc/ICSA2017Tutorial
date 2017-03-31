@@ -1,6 +1,7 @@
 package org.gemoc.sample.legacyfsm.xsfsm.trace.tracemanager;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -60,6 +61,12 @@ public class FsmTraceExplorer implements ITraceExplorer {
 
 	private List<List<? extends fsmTrace.States.Value>> getAllValueTraces() {
 		final List<List<? extends fsmTrace.States.Value>> result = new ArrayList<>();
+		for (fsmTrace.States.fsm.TracedNumberVariable tracedObject : traceRoot.getFsm_tracedNumberVariables()) {
+			result.add(tracedObject.getValueSequence());
+		}
+		for (fsmTrace.States.fsm.TracedStateMachine tracedObject : traceRoot.getFsm_tracedStateMachines()) {
+			result.add(tracedObject.getCurrentStateSequence());
+		}
 		return result;
 	}
 
@@ -294,6 +301,34 @@ public class FsmTraceExplorer implements ITraceExplorer {
 	private void goTo(EObject eObject) {
 		if (eObject instanceof fsmTrace.States.State) {
 			fsmTrace.States.State stateToGo = (fsmTrace.States.State) eObject;
+			for (fsmTrace.States.StateMachine_currentState_Value value : stateToGo
+					.getStateMachine_currentState_Values()) {
+				if (value.getParent() instanceof fsmTrace.States.fsm.TracedStateMachine) {
+					fsmTrace.States.fsm.TracedStateMachine parent_cast = (fsmTrace.States.fsm.TracedStateMachine) value
+							.getParent();
+					org.gemoc.sample.legacyfsm.xsfsm.xsfsm.fsm.State toset = (org.gemoc.sample.legacyfsm.xsfsm.xsfsm.fsm.State) getTracedToExe(
+							value.getCurrentState());
+					org.gemoc.sample.legacyfsm.xsfsm.xsfsm.fsm.State current = ((org.gemoc.sample.legacyfsm.xsfsm.xsfsm.fsm.StateMachine) parent_cast
+							.getOriginalObject()).getCurrentState();
+					if (current != toset) {
+						((org.gemoc.sample.legacyfsm.xsfsm.xsfsm.fsm.StateMachine) parent_cast.getOriginalObject())
+								.setCurrentState((org.gemoc.sample.legacyfsm.xsfsm.xsfsm.fsm.State) toset);
+					}
+				}
+			}
+			for (fsmTrace.States.NumberVariable_value_Value value : stateToGo.getNumberVariable_value_Values()) {
+				if (value.getParent() instanceof fsmTrace.States.fsm.TracedNumberVariable) {
+					fsmTrace.States.fsm.TracedNumberVariable parent_cast = (fsmTrace.States.fsm.TracedNumberVariable) value
+							.getParent();
+					int toset = value.getValue();
+					int current = ((org.gemoc.sample.legacyfsm.xsfsm.xsfsm.fsm.NumberVariable) parent_cast
+							.getOriginalObject()).getValue();
+					if (current != toset) {
+						((org.gemoc.sample.legacyfsm.xsfsm.xsfsm.fsm.NumberVariable) parent_cast.getOriginalObject())
+								.setValue((int) toset);
+					}
+				}
+			}
 			backValueCache.clear();
 		} else if (eObject instanceof fsmTrace.States.Value) {
 			goTo(((fsmTrace.States.Value) eObject).getStatesNoOpposite().get(0));
@@ -316,6 +351,18 @@ public class FsmTraceExplorer implements ITraceExplorer {
 				throw e;
 			}
 		}
+	}
+
+	private Collection<? extends EObject> getTracedToExe(Collection<? extends EObject> tracedObjects) {
+		Collection<EObject> result = new ArrayList<EObject>();
+		for (EObject tracedObject : tracedObjects) {
+			result.add(getTracedToExe(tracedObject));
+		}
+		return result;
+	}
+
+	private EObject getTracedToExe(EObject tracedObject) {
+		return tracedToExe.get(tracedObject);
 	}
 
 	private void jumpBeforeStep(fsmTrace.Steps.SpecificStep step) {

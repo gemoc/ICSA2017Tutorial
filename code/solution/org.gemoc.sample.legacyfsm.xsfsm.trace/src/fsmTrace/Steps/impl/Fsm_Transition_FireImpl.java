@@ -11,6 +11,9 @@ import fr.inria.diverse.trace.commons.model.trace.impl.StepImpl;
 import fsmTrace.States.State;
 import fsmTrace.States.StatesPackage;
 
+import fsmTrace.States.fsm.TracedTransition;
+
+import fsmTrace.Steps.Fsm_StateMachine_Step_AbstractSubStep;
 import fsmTrace.Steps.Fsm_Transition_Fire;
 import fsmTrace.Steps.Fsm_Transition_Fire_AbstractSubStep;
 import fsmTrace.Steps.StepsPackage;
@@ -29,8 +32,6 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
-
-import org.gemoc.sample.legacyfsm.xsfsm.xsfsm.fsm.Transition;
 
 /**
  * <!-- begin-user-doc -->
@@ -234,8 +235,8 @@ public class Fsm_Transition_FireImpl extends StepImpl implements Fsm_Transition_
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Transition getCaller() {
-		return (org.gemoc.sample.legacyfsm.xsfsm.xsfsm.fsm.Transition) this.getMseoccurrence().getMse().getCaller();
+	public TracedTransition getCaller() {
+		return (fsmTrace.States.fsm.TracedTransition) this.getMseoccurrence().getMse().getCaller();
 	}
 
 	/**
@@ -376,6 +377,11 @@ public class Fsm_Transition_FireImpl extends StepImpl implements Fsm_Transition_
 				default: return -1;
 			}
 		}
+		if (baseClass == Fsm_StateMachine_Step_AbstractSubStep.class) {
+			switch (derivedFeatureID) {
+				default: return -1;
+			}
+		}
 		return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
 	}
 
@@ -393,6 +399,11 @@ public class Fsm_Transition_FireImpl extends StepImpl implements Fsm_Transition_
 			}
 		}
 		if (baseClass == SequentialStep.class) {
+			switch (baseFeatureID) {
+				default: return -1;
+			}
+		}
+		if (baseClass == Fsm_StateMachine_Step_AbstractSubStep.class) {
 			switch (baseFeatureID) {
 				default: return -1;
 			}

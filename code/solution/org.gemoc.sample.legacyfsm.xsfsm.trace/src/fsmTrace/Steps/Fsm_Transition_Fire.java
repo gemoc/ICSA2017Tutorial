@@ -4,7 +4,7 @@ package fsmTrace.Steps;
 
 import fr.inria.diverse.trace.commons.model.trace.SequentialStep;
 
-import org.gemoc.sample.legacyfsm.xsfsm.xsfsm.fsm.Transition;
+import fsmTrace.States.fsm.TracedTransition;
 
 /**
  * <!-- begin-user-doc -->
@@ -16,14 +16,14 @@ import org.gemoc.sample.legacyfsm.xsfsm.xsfsm.fsm.Transition;
  * @model
  * @generated
  */
-public interface Fsm_Transition_Fire extends Fsm_StateMachine_Step_AbstractSubStep, SpecificStep, SequentialStep<Fsm_Transition_Fire_AbstractSubStep> {
+public interface Fsm_Transition_Fire extends SpecificStep, SequentialStep<Fsm_Transition_Fire_AbstractSubStep>, Fsm_StateMachine_Step_AbstractSubStep {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model kind="operation" required="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='return (org.gemoc.sample.legacyfsm.xsfsm.xsfsm.fsm.Transition) this.getMseoccurrence().getMse().getCaller();'"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='return (fsmTrace.States.fsm.TracedTransition) this.getMseoccurrence().getMse().getCaller();'"
 	 * @generated
 	 */
-	Transition getCaller();
+	TracedTransition getCaller();
 
 } // Fsm_Transition_Fire

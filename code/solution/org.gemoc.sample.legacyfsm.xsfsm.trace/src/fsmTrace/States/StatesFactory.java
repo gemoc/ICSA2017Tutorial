@@ -22,6 +22,15 @@ public interface StatesFactory extends EFactory {
 	StatesFactory eINSTANCE = fsmTrace.States.impl.StatesFactoryImpl.init();
 
 	/**
+	 * Returns a new object of class '<em>Number Variable value Value</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Number Variable value Value</em>'.
+	 * @generated
+	 */
+	NumberVariable_value_Value createNumberVariable_value_Value();
+
+	/**
 	 * Returns a new object of class '<em>State</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -29,6 +38,15 @@ public interface StatesFactory extends EFactory {
 	 * @generated
 	 */
 	State createState();
+
+	/**
+	 * Returns a new object of class '<em>State Machine current State Value</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>State Machine current State Value</em>'.
+	 * @generated
+	 */
+	StateMachine_currentState_Value createStateMachine_currentState_Value();
 
 	/**
 	 * Returns the package supported by this factory.

@@ -9,6 +9,9 @@ Bundle-Localization: plugin
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Export-Package: fsmTrace,
  fsmTrace.States,
+ fsmTrace.States.fsm,
+ fsmTrace.States.fsm.impl,
+ fsmTrace.States.fsm.util,
  fsmTrace.States.impl,
  fsmTrace.States.util,
  fsmTrace.Steps,
