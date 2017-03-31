@@ -18,7 +18,7 @@ During this tutorial, the participants will extend a given finite state machine 
 ## Legend
 
 * ⚠️ Read carefully, tricky details follow,
-* ​:no_entry: Breaking changes. You should download a new version of the language under development for temopral reasons. You may proceed with you local changes, but we might not be able to support its evolution tue to the short time frame of the tutorial. 
+* ​:no_entry: Breaking changes. You should download a new version of the language under development for temporal reasons. You may proceed with you local changes, but we might not be able to support its evolution tue to the short time frame of the tutorial. 
 
 
 
