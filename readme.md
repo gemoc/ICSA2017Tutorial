@@ -1,4 +1,4 @@
-# Language Engineering with The GEMOC Studio (Tutorial at [ICSA 2017](http://icsa-conferences.org/2017))
+# Language Engineering with The GEMOC Studio (at [ICSA'17](http://icsa-conferences.org/2017))
 
 * [Scope](#scope)
 * [Program](#program)
