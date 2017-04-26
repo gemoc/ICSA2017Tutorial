@@ -150,7 +150,7 @@ After creating the *invariant* for the *State* concept, start the modeling workb
 
 ### 2.3 Completing the dynamic semantics
 
-:no_entry: For temporal constraints, we provide an implementation of the FSM dynamic semantics. We suggest, to restart from the FSM version in the [folder 2.3](https://github.com/gemoc/ICSA2017Tutorial/tree/master/code/2.3). Prior to that, delete all projects from your workspace (or switch to another workspace). 
+:no_entry: For temporal constraints, we provide an implementation of the FSM dynamic semantics. We suggest, to restart from the FSM version in the [folder 2.3](https://github.com/gemoc/ICSA2017Tutorial/tree/master/code/2.3-execution). Prior to that, delete all projects from your workspace (or switch to another workspace). 
 
 The operational semantics of FSM are defined in the file tfsmAspects.xtend of project org.gemoc.sample.legacyfsm.fsm.k3dsa. This file which employs [Kermeta 3 (K3)](http://www.kermeta.org) and the [Interpreter Design Pattern](https://en.wikipedia.org/wiki/Interpreter_pattern) to describe the dynamic behavior of FM models and its contents is woven into the metamodel of your executable DSL (i.e., XSFSM, not FSM!). In this file, you have aspects for all classes of your metamodel. Some of these aspects use annotations to define execution functions or entry points. 
 
