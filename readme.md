@@ -36,7 +36,7 @@ During this tutorial, the participants will extend a given finite state machine 
 
 + Use either the latest [GEMOC Studio](http://gemoc.org/studio.html) and with a [Java 1.8 JDK](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) and clone the [tutorial's repository](https://github.com/gemoc/ICSA2017Tutorial.git) or use [prepared virtualbox machine](http://gemoc.irisa.fr/pub/studio/vm/Lubuntu%2064%20GEMOC%202.3.0.a.ova).
 + The slides for the tutorials are available on [here](https://github.com/gemoc/ICSA2017Tutorial/blob/master/slides/tutorial-slides.pptx). Additional slides are available [here](https://github.com/gemoc/ICSA2017Tutorial/tree/master/slides/additional).
-+ Most of the documentation on the GEMOC approch is available [here](http://GEMOC.org/GEMOC-studio/publish/guide/html_single/Guide.html).
++ Most of the documentation on the GEMOC approch is available [here](http://gemoc.org/gemoc-studio/publish/guide/html_single/Guide.html).
 + Documentation of MontiArc's [structural](http://www.se-rwth.de/publications/MontiArc-Architectural-Modeling-of-Interactive-Distributed-and-Cyber-Physical-Systems.pdf) and [behavioral](http://www.se-rwth.de/publications/Architecture-and-Behavior-Modeling-of-Cyber-Physical-Systems-with-MontiArcAutomaton.pdf) features is available as well.
 
 You can refer to the documentation at any time.
