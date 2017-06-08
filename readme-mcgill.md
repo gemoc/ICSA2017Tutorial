@@ -1,24 +1,22 @@
-# Language Engineering with The GEMOC Studio (at [ICSA'17](http://icsa-conferences.org/2017))
+# Language Engineering with The GEMOC Studio (focus on "Model Execution, Animation and Debug")
 
 * [Scope](#scope)
 * [Program](#program)
 * [Materials](#materials)
 
 
-This tutorial provides a practical approach for developing and integrating various Domain-Specific (modeling) Languages (DSLs) used in the development of modern complex software-intensive systems, with the main objective to support abstraction and separation of concerns. This tutorial leverages the tooling provided by the GEMOC Studio to present the various facilities offered by the Eclipse platform (incl., EMF/Ecore, Sirius) and introduces the advanced features to extend a DSL with a well-defined execution semantics. From such a specification, we demonstrate the ability of the studio to automatically support model execution, graphical animation, omniscient debugging, concurrency analysis and concurrent execution of heterogeneous models. The tutorial is composed of both lectures and hands-on sessions. Hands-on sessions allow participants to experiment on a concrete use case of an architecture description language used to coordinate heterogeneous behavioral and structural components.
-
-
+This tutorial provides a practical approach for developing Domain-Specific (modeling) Languages (DSLs) used in the development of modern complex software-intensive systems, with the main objective to support abstraction and separation of concerns. This tutorial leverages the tooling provided by the GEMOC Studio to present the various facilities offered by the Eclipse platform (incl., EMF/Ecore, Sirius) and introduces the advanced features to extend a DSL with a well-defined execution semantics. From such a specification, we demonstrate the ability of the studio to automatically support model execution, graphical animation and omniscient debugging. The tutorial is composed of both lectures and hands-on sessions.
 
 ## Scope
 
-During this tutorial, the participants will extend a given finite state machine DSL in terms of syntax and semantics and integrate it into a simplified version of the [MontiArc component & connector ADL](http://www.se-rwth.de/topics/Software-Architecture.php) using the GEMOC Studio language workbench. The ADL is tailored for designing component-based distributed interactive systems that rely on state-based models to describe component behavior. In the modeling workbench, the participants will design integrated models. Based on such a design, participants will be able to concurrently execute the various components according to the execution semantics (message passing) of MontiArc, to graphically animate the architecture, and to debug the system behavior.
-
+During this tutorial, the participants will extend a given finite state machine DSL in terms of syntax and semantics using the GEMOC Studio language workbench.
 
 
 ## Legend
 
 * :warning: Read carefully, tricky details follow.
 * ​:no_entry: Breaking changes. You should download a new version of the language under development for temporal reasons. You may proceed with you local changes, but we might not be able to support its evolution due to the short time frame of the tutorial. 
+
 ## Program
 
 - [Part 1. General introduction](#part-1-general-introduction)
@@ -27,7 +25,6 @@ During this tutorial, the participants will extend a given finite state machine 
   - [2.2 Adding new concepts to your language](#22-adding-new-concepts-to-your-language)
   - [2.3 Completing the dynamic semantics](#23-completing-the-dynamic-semantics)
   - [2.4 Defining concrete syntax with Sirius](#24-defining-concrete-syntax-with-sirius)
-  - [2.5 Composing languages](#25-composing-languages)
 - [Part 3. Wrap-up and discussion](#part-3-wrap-up-and-discussion)
 
 
@@ -35,9 +32,8 @@ During this tutorial, the participants will extend a given finite state machine 
 ## Materials
 
 + Use either the latest [GEMOC Studio](http://gemoc.org/studio.html) and with a [Java 1.8 JDK](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) and clone the [tutorial's repository](https://github.com/gemoc/ICSA2017Tutorial.git) or use [prepared virtualbox machine](http://gemoc.irisa.fr/pub/studio/vm/Lubuntu%2064%20GEMOC%202.3.0.a.ova).
-+ The slides for the tutorials are available on [here](https://github.com/gemoc/ICSA2017Tutorial/blob/master/slides/tutorial-slides.pptx). Additional slides are available [here](https://github.com/gemoc/ICSA2017Tutorial/tree/master/slides/additional).
++ The slides for the tutorials are available on [here](https://github.com/gemoc/ICSA2017Tutorial/blob/master/slides/tutorial-mcgill-slides.pptx). Additional slides are available [here](https://github.com/gemoc/ICSA2017Tutorial/tree/master/slides/additional).
 + Most of the documentation on the GEMOC approch is available [here](http://gemoc.org/gemoc-studio/publish/guide/html_single/Guide.html).
-+ Documentation of MontiArc's [structural](http://www.se-rwth.de/publications/MontiArc-Architectural-Modeling-of-Interactive-Distributed-and-Cyber-Physical-Systems.pdf) and [behavioral](http://www.se-rwth.de/publications/Architecture-and-Behavior-Modeling-of-Cyber-Physical-Systems-with-MontiArcAutomaton.pdf) features is available as well.
 
 You can refer to the documentation at any time.
 
@@ -45,13 +41,13 @@ You can refer to the documentation at any time.
 
 ## Part 1. General introduction
 
-This part introduces the structure and goals of the tutorial. Moverover it covers an introduction to software language engineering, GEMOC Studio and the GEMOC initiative. The slides are available [here](https://github.com/gemoc/ICSA2017Tutorial/blob/master/slides/tutorial-slides.pptx).
+This part introduces the structure and goals of the tutorial. Moverover it covers an introduction to software language engineering, GEMOC Studio and the GEMOC initiative. The slides are available [here](https://github.com/gemoc/ICSA2017Tutorial/blob/master/slides/tutorial-mcgill-slides.pptx).
 
 
 
 ## Part 2. Language engineering
 
-In this part, you will - due to temporal restrictions - extend the metamodel and semantics of a language for finite state machines (FSM) that ultimately will be integrated in the MontiArc component & connector ADL. In the first step, you will load the projects implementing the language into the language workbench, start the modeling workbench, and execute/debug an FSM. Afterwards, you will extend the metamodel of the FSM language with three new concepts related to FSM variables and their usage. Then you will add behavior of these new concepts to the language. After that, you switch to the MontiArc language and add new concrete (graphical) syntax to it, before you integrate FSM into MontiArc, combine their behavior, and execute the result.
+In this part, you will - due to temporal restrictions - extend the metamodel and semantics of a language for finite state machines (FSM). In the first step, you will load the projects implementing the language into the language workbench, start the modeling workbench, and execute/debug an FSM. Afterwards, you will extend the metamodel of the FSM language with three new concepts related to FSM variables and their usage. Then you will add behavior of these new concepts to the language, and add a new concrete (graphical) syntax to them.
 
 
 
