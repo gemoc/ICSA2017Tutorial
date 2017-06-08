@@ -197,7 +197,7 @@ Let's debug/animate this model!
 
 ### 2.4: Defining concrete syntax with Sirius
 
-In this step, you will define the graphical concrete syntax for a specific modeling element of the MontiArc language using the [Sirius](https://www.eclipse.org/sirius/doc/specifier/diagrams/Diagrams.html) framework. 
+In this step, you will define the graphical concrete syntax for a specific modeling element of the FSM language using [Sirius](https://www.eclipse.org/sirius/doc/specifier/diagrams/Diagrams.html). 
 
 :no_entry: For temporal restrictions, we have prepared the state of FSM so far in the folder [2.4-sirius-start](https://github.com/gemoc/ICSA2017Tutorial/tree/master/code/2.4-sirius-start). Please remove your projects from the workspace (or switch to another workspace) and import the projects from this folder.  
 
