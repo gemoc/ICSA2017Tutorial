@@ -205,7 +205,7 @@ As you have added variables, guard, and actions to the metamodel, these should b
 
 ![](figs/24-debugging.png)
 
-In *description/XSFSM.odesign* of project *org.gemoc.sample.legacyfsm.xsfsm.design*, you'll find the Sirius designer model that renders the concrete graphical syntax of your language in the modeling workbench. This designer model is connected to you metamodel as depicted below:
+In *description/XSFSM.odesign* of project *org.gemoc.sample.legacyfsm.xsfsm.design*, you'll find the Sirius designer model that renders the concrete graphical syntax of your language in the modeling workbench. This designer model is connected to your metamodel as depicted below:
 
 ![](figs/24-metamodel.png)
 
