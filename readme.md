@@ -36,7 +36,7 @@ During this tutorial, the participants will extend a given finite state machine 
 
 + Use either the latest [GEMOC Studio](http://gemoc.org/studio.html) and with a [Java 1.8 JDK](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) and clone the [tutorial's repository](https://github.com/gemoc/ICSA2017Tutorial.git) or use [prepared virtualbox machine](http://gemoc.irisa.fr/pub/studio/vm/Lubuntu%2064%20GEMOC%202.3.0.a.ova).
 + The slides for the tutorials are available on [here](https://github.com/gemoc/ICSA2017Tutorial/blob/master/slides/tutorial-slides.pptx). Additional slides are available [here](https://github.com/gemoc/ICSA2017Tutorial/tree/master/slides/additional).
-+ Most of the documentation on the GEMOC approch is available [here](http://GEMOC.org/GEMOC-studio/publish/guide/html_single/Guide.html).
++ Most of the documentation on the GEMOC approch is available [here](http://gemoc.org/gemoc-studio/publish/guide/html_single/Guide.html).
 + Documentation of MontiArc's [structural](http://www.se-rwth.de/publications/MontiArc-Architectural-Modeling-of-Interactive-Distributed-and-Cyber-Physical-Systems.pdf) and [behavioral](http://www.se-rwth.de/publications/Architecture-and-Behavior-Modeling-of-Cyber-Physical-Systems-with-MontiArcAutomaton.pdf) features is available as well.
 
 You can refer to the documentation at any time.
@@ -197,7 +197,7 @@ Let's debug/animate this model!
 
 ### 2.4: Defining concrete syntax with Sirius
 
-In this step, you will define the graphical concrete syntax for a specific modeling element of the MontiArc language using the [Sirius](https://www.eclipse.org/sirius/doc/specifier/diagrams/Diagrams.html) framework. 
+In this step, you will define the graphical concrete syntax for a specific modeling element of the FSM language using [Sirius](https://www.eclipse.org/sirius/doc/specifier/diagrams/Diagrams.html). 
 
 :no_entry: For temporal restrictions, we have prepared the state of FSM so far in the folder [2.4-sirius-start](https://github.com/gemoc/ICSA2017Tutorial/tree/master/code/2.4-sirius-start). Please remove your projects from the workspace (or switch to another workspace) and import the projects from this folder.  
 
